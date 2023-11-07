@@ -1,7 +1,25 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import './App.css';
 
 export default function App() {
+
+  const [soData, setSoData] = useState([]);
+  const [redditData, setRedditData] = useState([]);
+  const [cachedData, setCachedData] = useState([]);
+
+  useEffect(() => {
+    fetchSOData();
+  }, []);
+
+  const fetchSOData = async () => {
+    const response = await Axios('https://localhost:8000/stack/get/question_by_tag/1/50/ / / / /html,css,react/');
+    setSoData(response.data);
+  }
+
+  useEffect(() => {
+    console.log(soData)},
+    [soData]
+  );
 
   return (
     <StackQuestionContainer />
@@ -11,8 +29,8 @@ export default function App() {
 
 function StackQuestionContainer(){
 
-  const [questionTitle, setQuestionTitle] = useState("Title");
-  const [questionTags, setQuestionTags] = useState(["Tag"]);
+  const [questionTitle, setQuestionTitle] = useState("How do I align divs so that they appear side-by-side?");
+  const [questionTags, setQuestionTags] = useState([{id: 1, name: "html"}, {id: 2, name: "css"}, {id: 3, name: "alignment"}]);
   const [questionUser, setQuestionUser] = useState("User");
   const [questionAccepted, setQuestionAccepted] = useState("Accepted");
   const [questionAnswerCount, setQuestionAnswerCount] = useState(0);
@@ -36,7 +54,7 @@ function StackQuestionContainer(){
     <div className="stack-question-container">
       <StackQuestionTitle question={question}/>
       <StackQuestionTags question={question}/>
-      <div>
+      <div className="stack-question-data-holder">
         <StackQuestionUser question={question}/>
         <StackQuestionAccepted question={question}/>
         <StackQuestionAnswerCount question={question}/>
@@ -59,14 +77,14 @@ function StackQuestionTitle({question}){
 function StackQuestionTags({question}){
 
   const tags = question.tagList.map(tag =>
-    <li key={tag.id}>
+    <div className='question-tag-element' key={tag.id}>
       {tag.name}
-    </li>
+    </div>
     );
 
   return(
     <div className="stack-question-tags">
-      <ul>{tags}</ul>
+      {tags}
     </div>
   );
 }
