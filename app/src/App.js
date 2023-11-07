@@ -1,4 +1,5 @@
 import {useEffect, useState} from 'react';
+import Axios from 'axios';
 import './App.css';
 
 export default function App() {
@@ -11,15 +12,15 @@ export default function App() {
     fetchSOData();
   }, []);
 
-  const fetchSOData = async () => {
-    const response = await Axios('https://localhost:8000/stack/get/question_by_tag/1/50/ / / / /html,css,react/');
-    setSoData(response.data);
-  }
-
   useEffect(() => {
     console.log(soData)},
     [soData]
   );
+
+  const fetchSOData = async () => {
+    const response = await Axios('http://localhost:8000/stack/get/question_by_tag/1/50/ / / / /html,css,react/');
+    setSoData(response.data);
+  }
 
   return (
     <StackQuestionContainer />
