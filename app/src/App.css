@@ -36,3 +36,29 @@
     transform: rotate(360deg);
   }
 }
+
+
+.stack-question-container {
+  width: 80%;
+  margin: 10px auto;
+  padding: 10px;
+  background-color: orange;
+}
+
+.stack-question.title{
+  width: 100%;
+}
+
+.stack-question-tags{}
+
+.stack-question-user{}
+
+.stack-question-accepted{}
+
+.stack-question-answer-count{}
+
+.stack-question-created-date{}
+
+.stack-question-last-activity-date{}
+
+.stack-question-vote-number{}
