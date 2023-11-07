@@ -36,12 +36,14 @@ function StackQuestionContainer(){
     <div className="stack-question-container">
       <StackQuestionTitle question={question}/>
       <StackQuestionTags question={question}/>
-      <StackQuestionUser question={question}/>
-      <StackQuestionAccepted question={question}/>
-      <StackQuestionAnswerCount question={question}/>
-      <StackQuestionCreatedDate question={question}/>
-      <StackQuestionLastActivityDate question={question}/>
-      <StackQuestionVoteNumber question={question}/>
+      <div>
+        <StackQuestionUser question={question}/>
+        <StackQuestionAccepted question={question}/>
+        <StackQuestionAnswerCount question={question}/>
+        <StackQuestionCreatedDate question={question}/>
+        <StackQuestionLastActivityDate question={question}/>
+        <StackQuestionVoteNumber question={question}/>
+      </div>
     </div>
   );
 }
