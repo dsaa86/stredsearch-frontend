@@ -2,30 +2,48 @@ import {useEffect, useState} from 'react';
 import Axios from 'axios';
 import './App.css';
 
+import SearchApp from './components/SearchApp.js';
+
 export default function App() {
 
-  const [soData, setSoData] = useState([]);
-  const [redditData, setRedditData] = useState([]);
-  const [cachedData, setCachedData] = useState([]);
+  const [soRouteData, setSoRouteData] = useState(false);
 
   useEffect(() => {
-    fetchSOData();
+    fetchSoRouteData();
   }, []);
 
-  useEffect(() => {
-    console.log(soData)},
-    [soData]
-  );
-
-  const fetchSOData = async () => {
-    const response = await Axios('http://localhost:8000/stack/get/question_by_tag/1/50/ / / / /html,css,react/');
-    setSoData(response.data);
+  const fetchSoRouteData = async () => {
+    const response = await Axios('http://localhost:8000/stack/get/routes/');
+    setSoRouteData(response.data);
   }
 
+  // const [soData, setSoData] = useState([]);
+  // const [redditData, setRedditData] = useState([]);
+  // const [cachedData, setCachedData] = useState([]);
+
+  // useEffect(() => {
+  //   fetchSOData();
+  // }, []);
+
+  // useEffect(() => {
+  //   console.log(soData)},
+  //   [soData]
+  // );
+
+  // const fetchSOData = async () => {
+  //   const response = await Axios('http://localhost:8000/stack/get/question_by_tag/1/50/ / / / /html,css,react/');
+  //   setSoData(response.data);
+  // }
+
   return (
-    <StackQuestionContainer />
+    <>
+      <SearchApp soRouteData={soRouteData}/>
+      <StackQuestionContainer />
+    </>
   );
 }
+
+
 
 
 function StackQuestionContainer(){
