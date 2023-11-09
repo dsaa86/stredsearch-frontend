@@ -2,7 +2,7 @@ import {useEffect, useState} from 'react';
 import Axios from 'axios';
 import './StackOptionsStyle.css';
 
-export default function SOQueryOptions({soRouteData}){
+export default function SOQueryOptions({soSearchData, setSoSearchData}){
 
     return(
         <div>

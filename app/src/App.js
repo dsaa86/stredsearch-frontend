@@ -6,29 +6,36 @@ import SearchApp from './components/SearchApp.js';
 
 export default function App() {
 
-  
+  const [soSearchData, setSoSearchData] = useState([]);
+  const [redditSearchData, setRedditSearchData] = useState([]);
 
-  // const [soData, setSoData] = useState([]);
-  // const [redditData, setRedditData] = useState([]);
-  // const [cachedData, setCachedData] = useState([]);
-
-  // useEffect(() => {
-  //   fetchSOData();
-  // }, []);
-
-  // useEffect(() => {
-  //   console.log(soData)},
-  //   [soData]
-  // );
-
-  // const fetchSOData = async () => {
-  //   const response = await Axios('http://localhost:8000/stack/get/question_by_tag/1/50/ / / / /html,css,react/');
-  //   setSoData(response.data);
-  // }
+  useEffect(() => {
+    setSoSearchData({
+      category : "questions",
+      route : "question_by_tag",
+      page : "1",
+      pagesize : "50",
+      from_date : "",
+      to_date : "",
+      sort: "activity",
+      order : "desc",
+      tagged : "html,css,react",
+      site : "stackoverflow",
+      nottagged : "",
+      intitle : "",
+      user : "",
+      query : "",
+      body : "", 
+      accepted : "",
+      closed : "",
+      migrated : "",
+      wiki : "",
+    })
+  }, []);
 
   return (
     <>
-      <SearchApp/>
+      <SearchApp soSearchData={soSearchData} setSoSearchData={setSoSearchData}/>
       <StackQuestionContainer />
     </>
   );

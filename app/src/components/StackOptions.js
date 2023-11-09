@@ -21,24 +21,24 @@ import SOMigratedQuestionOptions from './stackoptions-components/SOMigratedQuest
 import SOHasWikiOptions from './stackoptions-components/SOHasWikiOptions';
 
 
-export default function StackOptions(){
+export default function StackOptions({soSearchData, setSoSearchData}){
 
     return(
         <div className="stack-options-container">
-            <SORouteSelect/>
-            <SOPageOptions />
-            <SODateOptions />
-            <SOSortandOrderOptions />
-            <SOTagsOptions />
-            <SONotTaggedOptions />
-            <SOInTitleOptions />
-            <SOUserOptions />
-            <SOQueryOptions />
-            <SOBodyOptions />
-            <SOAcceptedAnswerOptions />
-            <SOClosedQuestionOptions />
-            <SOMigratedQuestionOptions />
-            <SOHasWikiOptions />
+            <SORouteSelect soSearchData={soSearchData} setSoSearchData={setSoSearchData}/>
+            <SOPageOptions soSearchData={soSearchData} setSoSearchData={setSoSearchData}/>
+            <SODateOptions soSearchData={soSearchData} setSoSearchData={setSoSearchData} />
+            <SOSortandOrderOptions soSearchData={soSearchData} setSoSearchData={setSoSearchData}/>
+            <SOTagsOptions soSearchData={soSearchData} setSoSearchData={setSoSearchData}/>
+            <SONotTaggedOptions soSearchData={soSearchData} setSoSearchData={setSoSearchData} />
+            <SOInTitleOptions soSearchData={soSearchData} setSoSearchData={setSoSearchData} />
+            <SOUserOptions soSearchData={soSearchData} setSoSearchData={setSoSearchData} />
+            <SOQueryOptions soSearchData={soSearchData} setSoSearchData={setSoSearchData} />
+            <SOBodyOptions soSearchData={soSearchData} setSoSearchData={setSoSearchData} />
+            <SOAcceptedAnswerOptions soSearchData={soSearchData} setSoSearchData={setSoSearchData} />
+            <SOClosedQuestionOptions soSearchData={soSearchData} setSoSearchData={setSoSearchData} />
+            <SOMigratedQuestionOptions soSearchData={soSearchData} setSoSearchData={setSoSearchData} />
+            <SOHasWikiOptions soSearchData={soSearchData} setSoSearchData={setSoSearchData} />
             
             
             

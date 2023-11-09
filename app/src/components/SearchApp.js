@@ -6,10 +6,10 @@ import { extractUniqueValuesFromArray, prettifyString } from '../AppHelperFuncti
 import StredSearch from './StredSearch';
 
 
-export default function SearchApp(){
+export default function SearchApp({soSearchData, setSoSearchData}){
     return(
         <div className="search-app-container">
-            <StredSearch/>
+            <StredSearch soSearchData={soSearchData} setSoSearchData={setSoSearchData}/>
         </div>
     );
 }

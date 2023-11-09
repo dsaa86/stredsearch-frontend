@@ -2,7 +2,7 @@ import {useEffect, useState} from 'react';
 import Axios from 'axios';
 import './StackOptionsStyle.css';
 
-export default function SOInTitleOptions({soRouteData}){
+export default function SOInTitleOptions({soSearchData, setSoSearchData}){
 
     return(
         <div>

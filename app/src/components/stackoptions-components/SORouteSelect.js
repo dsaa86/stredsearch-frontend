@@ -4,13 +4,14 @@ import './StackOptionsStyle.css';
 
 import { extractUniqueValuesFromArray, prettifyString } from '../../AppHelperFunctions';
 
-export default function SORouteSelect(){
+export default function SORouteSelect({soSearchData, setSoSearchData}){
 
     const [soRouteData, setSoRouteData] = useState(false);
     const [routeCategories, setRouteCategories] = useState();
     const [currentCategory, setCurrentCategory] = useState();
     const [mappedRoutesFromCategories, setMappedRoutesFromCategories] = useState();
     const [routes, setRoutes] = useState([]);
+    const [currentRoute, setCurrentRoute] = useState();
 
     useEffect(() => {
         fetchSoRouteData();
@@ -18,32 +19,39 @@ export default function SORouteSelect(){
 
     useEffect(() => {
         if(soRouteData){
-            // const routeCategories = getRouteCategories();
-            
-            console.log("Setting route categories")
             setRouteCategories(getRouteCategories());
         }}, [soRouteData]);
 
     useEffect(() => {
         if(routeCategories){
-            console.log("Setting current category")
             setCurrentCategory(routeCategories[0]);
         }
     }, [routeCategories]);
 
     useEffect(() => {
         if(currentCategory){
-            console.log("Setting mapped routes from categories")
             setMappedRoutesFromCategories(getMappedRoutesFromCategories());
         }
     }, [currentCategory]);
 
     useEffect(() => {
         if(mappedRoutesFromCategories){
-            console.log("Setting Routes")
-            setRouteHandler();
+            setRoutes(mappedRoutesFromCategories[currentCategory]);
         }
     }, [mappedRoutesFromCategories]);
+
+    useEffect(() => {
+        if(routes && mappedRoutesFromCategories){
+            setCurrentRoute(mappedRoutesFromCategories[currentCategory][0]);
+            console.log(currentRoute)
+        }
+    }, [routes, mappedRoutesFromCategories]);
+
+    useEffect(() => {
+        if(currentRoute && currentCategory){
+            setSoSearchData({...soSearchData, category : currentCategory, route : currentRoute,})
+        }
+    }, [currentRoute, currentCategory]);
 
 
     const fetchSoRouteData = async () => {
@@ -84,47 +92,41 @@ export default function SORouteSelect(){
         return extractedRoutes;
     }
 
-    const setRouteHandler = () => {
-        setRoutes(
-            mappedRoutesFromCategories[currentCategory].map(
-                route =>
-                    <option value={route}>{prettifyString(route)}</option>
-            )
-        );
-    };
-
     const handleRouteCategoryChange = event => {
         setCurrentCategory(event.target.value);
         setRoutes(
-            mappedRoutesFromCategories[event.target.value].map(
-                route =>
-                    <option value={route}>{prettifyString(route)}</option>
-            )
+            mappedRoutesFromCategories[event.target.value]
         );
+    };
+
+    const handleRouteChange = event => {
+        setCurrentRoute(event.target.value);
     };
     
     return(
         <div className="input-wrapper stack-options-route-select-container">
-                {soRouteData && currentCategory ? (
-                    <>
+            {soRouteData && currentCategory && currentRoute ? (
+                <>
                     <span className="row-padding">Search Category</span>
                     <select className="row-padding row-margin" value={currentCategory} onChange={handleRouteCategoryChange}>
                         {
-                            routeCategories.map(route =>
-                                <option value={route}>{prettifyString(route)}</option>
+                            routeCategories.map((route, index) =>
+                                <option key={index} value={route}>{prettifyString(route)}</option>
                             )
                         }
                     </select>
                     <span className="row-padding row-margin">Search Routes</span>
-                    <select className="row-padding" id="so-route-selector">
-                        {routes}
+                    <select className="row-padding" id="so-route-selector" value={currentRoute} onChange={handleRouteChange}>
+                        {routes.map( (route, index) =>
+                            <option key={index} value={route}>{prettifyString(route)}</option>
+                        )}
                     </select>
                 </>
-                ) : (
-                    <div>Loading...</div>
-                
-                )}
-                
-            </div>
+            ) : (
+                <div>
+                    Loading...
+                </div>
+            )}        
+        </div>
     );
 }

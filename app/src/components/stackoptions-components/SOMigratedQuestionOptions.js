@@ -2,7 +2,7 @@ import {useEffect, useState} from 'react';
 import Axios from 'axios';
 import './StackOptionsStyle.css';
 
-export default function SOMigratedQuestionOptions({soRouteData}){
+export default function SOMigratedQuestionOptions({soSearchData, setSoSearchData}){
 
     return(
         <>
