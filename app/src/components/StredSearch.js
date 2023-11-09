@@ -6,7 +6,7 @@ import SoRedditPicker from './SO-RedditPicker';
 import StackOptions from './StackOptions';
 import RedditOptions from './RedditOptions';
 
-export default function StredSearch({soRouteData}){
+export default function StredSearch(){
 
     const [showReddit, setShowReddit] = useState(false);
     const [showSO, setShowSO] = useState(false);
@@ -36,7 +36,7 @@ export default function StredSearch({soRouteData}){
                 <span>Which online repo would you like to search?</span>
                 <SoRedditPicker showSO={showSO} showReddit={showReddit} soCheckHandler={soCheckHandler} redditCheckHandler={redditCheckHandler}/>
                 {showSO &&
-                    <StackOptions soRouteData={soRouteData}/>
+                    <StackOptions/>
                 }
                 {showReddit &&
                     <RedditOptions />

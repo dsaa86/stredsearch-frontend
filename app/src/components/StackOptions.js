@@ -21,11 +21,11 @@ import SOMigratedQuestionOptions from './stackoptions-components/SOMigratedQuest
 import SOHasWikiOptions from './stackoptions-components/SOHasWikiOptions';
 
 
-export default function StackOptions({soRouteData}){
+export default function StackOptions(){
 
     return(
         <div className="stack-options-container">
-            <SORouteSelect soRouteData={soRouteData}/>
+            <SORouteSelect/>
             <SOPageOptions />
             <SODateOptions />
             <SOSortandOrderOptions />
@@ -45,16 +45,11 @@ export default function StackOptions({soRouteData}){
             
             
             
-            <input type="checkbox" id="so-accepted-input" name="so-accepted-input" value="accepted"/>
-            <label for="so-accepted-input">Accepted</label>
-            <input type="checkbox" id="so-closed-input" name="so-closed-input" value="closed"/>
-            <label for="so-closed-input">Closed</label>
-            <input type="checkbox" id="so-migrated-input" name="so-migrated-input" value="migrated"/>
-            <label for="so-migrated-input">Migrated</label>
-            <input type="checkbox" id="so-wiki-input" name="so-wiki-input" value="wiki"/>
-            <label for="so-wiki-input">Wiki</label>
-            <input type="checkbox" id="so-notice-input" name="so-notice-input" value="notice"/>
-            <label for="so-notice-input">Notice</label>
+            
+            
+            
+            
+            
         </div>
     );
 }

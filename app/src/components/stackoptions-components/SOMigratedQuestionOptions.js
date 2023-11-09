@@ -5,9 +5,10 @@ import './StackOptionsStyle.css';
 export default function SOMigratedQuestionOptions({soRouteData}){
 
     return(
-        <div>
-            
-        </div>
+        <>
+            <label for="so-migrated-input">Migrated</label>
+            <input type="checkbox" id="so-migrated-input" name="so-migrated-input" value="migrated"/>
+        </>
     );
 
 }

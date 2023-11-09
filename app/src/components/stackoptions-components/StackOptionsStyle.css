@@ -1,3 +1,16 @@
+.stack-options-container .input-wrapper {
+    display:flex;
+}
+
+.input-wrapper{
+    justify-content: left;
+}
+
+.stack-options-container{
+    flex-direction: column;
+    justify-content: space-between;
+}
+
 .stack-options-route-select-container{}
 
 .row-padding{

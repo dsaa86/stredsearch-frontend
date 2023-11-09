@@ -5,9 +5,10 @@ import './StackOptionsStyle.css';
 export default function SOAcceptedAnswerOptions({soRouteData}){
 
     return(
-        <div>
-            
-        </div>
+        <>
+            <label for="so-accepted-input">Accepted</label>
+            <input type="checkbox" id="so-accepted-input" name="so-accepted-input" value="accepted"/>
+        </>
     );
 
 }

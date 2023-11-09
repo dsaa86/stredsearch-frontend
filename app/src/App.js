@@ -6,16 +6,7 @@ import SearchApp from './components/SearchApp.js';
 
 export default function App() {
 
-  const [soRouteData, setSoRouteData] = useState(false);
-
-  useEffect(() => {
-    fetchSoRouteData();
-  }, []);
-
-  const fetchSoRouteData = async () => {
-    const response = await Axios('http://localhost:8000/stack/get/routes/');
-    setSoRouteData(response.data);
-  }
+  
 
   // const [soData, setSoData] = useState([]);
   // const [redditData, setRedditData] = useState([]);
@@ -37,7 +28,7 @@ export default function App() {
 
   return (
     <>
-      <SearchApp soRouteData={soRouteData}/>
+      <SearchApp/>
       <StackQuestionContainer />
     </>
   );

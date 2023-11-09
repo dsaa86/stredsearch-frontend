@@ -5,9 +5,10 @@ import './StackOptionsStyle.css';
 export default function SOClosedQuestionOptions({soRouteData}){
 
     return(
-        <div>
-            
-        </div>
+        <>
+        <label for="so-closed-input">Closed</label>
+        <input type="checkbox" id="so-closed-input" name="so-closed-input" value="closed"/>
+        </>
     );
 
 }
