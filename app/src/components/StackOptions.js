@@ -1,6 +1,7 @@
 import '../SearchApp.css';
 import './stackoptions-components/StackOptionsStyle.css';
 
+import SearchOptionsHeader from './generic-components/search-options-header';
 import SORouteSelect from './stackoptions-components/SORouteSelect';
 import SOPageOptions from './stackoptions-components/SOPageOptions';
 import SODateOptions from './stackoptions-components/SODateOptions';
@@ -18,11 +19,7 @@ export default function StackOptions({soSearchData, setSoSearchData}){
 
     return(
         <div className="container stack-options-container">
-            <div className="row">
-                <div className="col-sm">
-                    <h1>Stack Overflow Search Options</h1>
-                </div>
-            </div>
+            <SearchOptionsHeader title={"Stack Overflow Search Options"}/>
             <SORouteSelect soSearchData={soSearchData} setSoSearchData={setSoSearchData}/>
             <SOPageOptions soSearchData={soSearchData} setSoSearchData={setSoSearchData}/>
             <SODateOptions soSearchData={soSearchData} setSoSearchData={setSoSearchData} />

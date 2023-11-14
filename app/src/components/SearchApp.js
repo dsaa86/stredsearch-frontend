@@ -31,10 +31,10 @@ export default function SearchApp(){
                 user : "",
                 query : "",
                 body : "", 
-                accepted : "",
-                closed : "",
-                migrated : "",
-                wiki : "",
+                accepted : false,
+                closed : false,
+                migrated : false,
+                wiki : false,
             }
         )
     }, []);

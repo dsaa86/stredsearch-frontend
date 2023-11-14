@@ -1,43 +1,27 @@
 import {useEffect, useState} from 'react';
-import Axios from 'axios';
 import '../SearchApp.css';
 
+import SearchOptionsHeader from './generic-components/search-options-header';
+import RedditSearchQuery from './redditoptions-components/RedditSearchQuery';
+import RedditSubReddits from './redditoptions-components/RedditSubreddits';
+import RedditSearchBy from './redditoptions-components/RedditSearchBy';
+
 export default function RedditOptions({redditSearchData, setRedditSearchData}){
+
+    // useEffect(() => {
+    //     if(currentRoute && currentCategory){
+    //         setSoSearchData({...soSearchData, category : currentCategory, route : currentRoute,})
+    //     }
+    // }, [currentRoute, currentCategory]);
+
+
+
     return(
         <div className="container reddit-options-container">
-            <div className="row">
-                <div className="col-sm">
-                    <h1>Reddit Search Options</h1>
-                </div>
-            </div>
-            <div className="row">
-                <div className="col-sm-3">
-                    <span>Search Query</span>
-                </div>
-                <div className="col-sm">
-                    <input type="text" id="reddit-query-input" name="reddit-query-input" className="col"/>
-                </div>
-            </div>
-            <div className="row">
-                <div className="col-sm-3">
-                    <span>Subreddits</span>
-                </div>
-                <div className='col-sm'>
-                    <input type="text" id="reddit-subreddit-input" name="reddit-subreddit-input" className="col"/>
-                </div>
-            </div>
-            <div className="row">
-                <div className="col-sm-3">
-                    <span>Search By</span>
-                </div>
-                <div className="col-sm">
-                    <select>
-                        <option value="list">Questions</option>
-                        <option value="list">Sub Reddits</option>
-                        <option value="comments">Comments</option>
-                    </select>
-                </div>
-            </div>
+            <SearchOptionsHeader title={"Reddit Search Options"}/>
+            <RedditSearchQuery redditSearchData={redditSearchData} setRedditSearchData={setRedditSearchData}/>
+            <RedditSubReddits redditSearchData={redditSearchData} setRedditSearchData={setRedditSearchData}/>
+            <RedditSearchBy redditSearchData={redditSearchData} setRedditSearchData={setRedditSearchData}/>
         </div>
     );
 }
