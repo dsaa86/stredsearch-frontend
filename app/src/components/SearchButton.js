@@ -6,11 +6,11 @@ import { extractUniqueValuesFromArray, prettifyString } from '../AppHelperFuncti
 import StredSearch from './StredSearch';
 
 
-export default function SearchButton(){
+export default function SearchButton({buttonHandler}){
 
     return(
         <div className="search-app-container">
-            <button>Search</button>
+            <button onClick={buttonHandler}>Search</button>
         </div>
     );
 }

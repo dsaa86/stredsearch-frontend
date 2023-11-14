@@ -2,7 +2,7 @@ import {useEffect, useState} from 'react';
 import Axios from 'axios';
 import './StackOptionsStyle.css';
 
-export default function SONotTaggedOptions({soSearchData, setSoSearchData}){
+export default function SONotTaggedOptions({soFieldStatus, soSearchData, setSoSearchData}){
 
     const [soNotTagged, setSoNotTagged] = useState("");
 
@@ -23,7 +23,7 @@ export default function SONotTaggedOptions({soSearchData, setSoSearchData}){
                 <label htmlFor="so-not-tagged-input">Question Not Tagged</label>
             </div>        
             <div className="col-sm">                
-                <input type="text" id="so-not-tagged-input" name="so-not-tagged-input" className="col" onChange={handleSoNotTaggedChange}/>
+                <input type="text" id="so-not-tagged-input" name="so-not-tagged-input" className="col" onChange={handleSoNotTaggedChange} disabled={!(soFieldStatus.nottagged)}/>
             </div>
         </div>
     );

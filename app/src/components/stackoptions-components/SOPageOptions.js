@@ -6,8 +6,6 @@ export default function SOPageOptions({soFieldStatus, soSearchData, setSoSearchD
 
     const [pageNumber, setPageNumber] = useState(1);
     const [pageSize, setPageSize] = useState(10);
-    const [pageNumberEnabled, setPageNumberEnabled] = useState(true);
-    const [pageSizeEnabled, setPageSizeEnabled] = useState(true);
 
     const pageNumberChangeHandler = (e) => {
         setPageNumber(e.target.value);
@@ -30,13 +28,6 @@ export default function SOPageOptions({soFieldStatus, soSearchData, setSoSearchD
         setSoSearchData({...soSearchData, page: pageNumber, pagesize: pageSize});
     }, [pageNumber, pageSize]);
 
-    useEffect(() => {
-        // Obj stores fields as enabled==true or disabled==false; the 'disabled' attribute of the input requires the negation of the object's value to work.
-        setPageNumberEnabled(!(soFieldStatus.page_number));
-        setPageSizeEnabled(!(soFieldStatus.page_size));
-    }, [soFieldStatus.page_size, soFieldStatus.page_number]);
-
-
 
     return(
         <div className="row">
@@ -46,7 +37,7 @@ export default function SOPageOptions({soFieldStatus, soSearchData, setSoSearchD
                         <label for="so-page-size-input" className="">Page Size</label>
                     </div>
                     <div className="col-sm">
-                        <input className="col" id="so-page-size-input" name="so-page-size-input" min="1" max="100" type="number" onChange={pageSizeChangeHandler} disabled={pageSizeEnabled} />
+                        <input className="col" id="so-page-size-input" name="so-page-size-input" min="1" max="100" type="number" onChange={pageSizeChangeHandler} disabled={!(soFieldStatus.page_size)} defaultValue={50}/>
                     </div>
                 </div>
             </div>
@@ -56,7 +47,7 @@ export default function SOPageOptions({soFieldStatus, soSearchData, setSoSearchD
                         <label for="so-page-input" className="">Page Number</label>
                     </div>
                     <div className="col-sm">
-                        <input className="col" id="so-page-input" name="so-page-input" min="1" className="" type="number" onChange={pageNumberChangeHandler} disabled={pageNumberEnabled} />
+                        <input className="col" id="so-page-input" name="so-page-input" min="1" type="number" onChange={pageNumberChangeHandler} disabled={!(soFieldStatus.page_number)} defaultValue={1}/>
                     </div>
                 </div>
             </div>

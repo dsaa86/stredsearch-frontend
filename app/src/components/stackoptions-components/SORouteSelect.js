@@ -56,7 +56,6 @@ export default function SORouteSelect({fieldStatus, soFieldStatus, setSoFieldSta
     useEffect(() => {
         if(routes && mappedRoutesFromCategories){
             setCurrentRoute(mappedRoutesFromCategories[currentCategory][0]);
-            console.log(currentRoute)
         }
     }, [routes, mappedRoutesFromCategories]);
 

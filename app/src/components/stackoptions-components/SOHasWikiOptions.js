@@ -2,7 +2,7 @@ import {useEffect, useState} from 'react';
 import Axios from 'axios';
 import './StackOptionsStyle.css';
 
-export default function SOHasWikiOptions({soSearchData, setSoSearchData}){
+export default function SOHasWikiOptions({soFieldStatus, soSearchData, setSoSearchData}){
 
     const [wiki, setWiki] = useState(false);
 
@@ -31,7 +31,7 @@ export default function SOHasWikiOptions({soSearchData, setSoSearchData}){
                     <label for="so-wiki-input" className="col">Wiki</label>
                 </div>
                 <div className="col-sm">
-                    <input type="checkbox" id="so-wiki-input" name="so-wiki-input" value="wiki" className="col" onChange={handleChangeWikiOption}/>
+                    <input type="checkbox" id="so-wiki-input" name="so-wiki-input" value="wiki" className="col" onChange={handleChangeWikiOption} disabled={!(soFieldStatus.wiki)}/>
                 </div>
             </div>
         </div>

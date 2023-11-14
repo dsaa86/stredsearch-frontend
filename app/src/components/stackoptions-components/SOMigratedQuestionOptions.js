@@ -2,7 +2,7 @@ import {useEffect, useState} from 'react';
 import Axios from 'axios';
 import './StackOptionsStyle.css';
 
-export default function SOMigratedQuestionOptions({soSearchData, setSoSearchData}){
+export default function SOMigratedQuestionOptions({soFieldStatus, soSearchData, setSoSearchData}){
 
     const [migratedQuestion, setMigratedQuestion] = useState(false);
 
@@ -31,7 +31,7 @@ export default function SOMigratedQuestionOptions({soSearchData, setSoSearchData
                     <label for="so-migrated-input" className="col">Migrated</label>
                 </div>
                 <div className="col-sm">
-                    <input type="checkbox" id="so-migrated-input" name="so-migrated-input" value="migrated" className="col" onChange={handleChangeMigratedQuestion}/>
+                    <input type="checkbox" id="so-migrated-input" name="so-migrated-input" value="migrated" className="col" onChange={handleChangeMigratedQuestion} disabled={!(soFieldStatus.migrated)}/>
                 </div>
             </div>
         </div >

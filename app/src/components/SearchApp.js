@@ -13,6 +13,19 @@ export default function SearchApp(){
     const [showReddit, setShowReddit] = useState(false);
     const [showSO, setShowSO] = useState(false);
 
+    const searchButtonHandler = () => {
+        if(!showReddit && !showSO){
+            alert("Please select a search option");
+            return;
+        }
+        if(showSO){
+            console.log(soSearchData);
+        }
+        if(showReddit){
+            console.log(redditSearchData);
+        }
+    };
+
     useEffect(() => {
         setSoSearchData(
             {
@@ -54,7 +67,7 @@ export default function SearchApp(){
     return(
         <div className="search-app-container">
             <StredSearch showReddit={showReddit} setShowReddit={setShowReddit} showSO={showSO} setShowSO={setShowSO} soSearchData={soSearchData} setSoSearchData={setSoSearchData} redditSearchData={redditSearchData} setRedditSearchData={setRedditSearchData}/>
-            <SearchButton />
+            <SearchButton buttonHandler={searchButtonHandler}/>
         </div>
     );
 }

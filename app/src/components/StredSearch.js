@@ -21,16 +21,22 @@ export default function StredSearch({showReddit, setShowReddit, showSO, setShowS
 
     return(
         <div className="stredsearch-container">
-            <div>
-                <span>Which online repo would you like to search?</span>
-                <SoRedditPicker showSO={showSO} showReddit={showReddit} soCheckHandler={soCheckHandler} redditCheckHandler={redditCheckHandler}/>
-                {showSO &&
-                    <StackOptions soSearchData={soSearchData} setSoSearchData={setSoSearchData}/>
-                }
-                {showReddit &&
-                    <RedditOptions redditSearchData={redditSearchData} setRedditSearchData={setRedditSearchData}/>
-                }
+            <div className="container">
+                <div className="row">
+                    <div className="col">
+                        <h2>Which online repo would you like to search?</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <SoRedditPicker showSO={showSO} showReddit={showReddit} soCheckHandler={soCheckHandler} redditCheckHandler={redditCheckHandler}/>
+                </div>
             </div>
+            {showSO &&
+                        <StackOptions soSearchData={soSearchData} setSoSearchData={setSoSearchData}/>
+            }
+            {showReddit &&
+                <RedditOptions redditSearchData={redditSearchData} setRedditSearchData={setRedditSearchData}/>
+            }
         </div>
     );
 }

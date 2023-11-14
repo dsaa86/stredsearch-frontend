@@ -2,7 +2,7 @@ import {useEffect, useState} from 'react';
 import Axios from 'axios';
 import './StackOptionsStyle.css';
 
-export default function SOInTitleOptions({soSearchData, setSoSearchData}){
+export default function SOInTitleOptions({soFieldStatus, soSearchData, setSoSearchData}){
 
     const [inTitle, setInTitle] = useState("");
 
@@ -23,7 +23,7 @@ export default function SOInTitleOptions({soSearchData, setSoSearchData}){
                 <label htmlFor="so-in-title-input">In Title</label>
             </div>
             <div className="col-sm">
-                <input type="text" id="so-in-title-input" name="so-in-title-input" className="col" onChange={handleChangeInTitle}/>
+                <input type="text" id="so-in-title-input" name="so-in-title-input" className="col" onChange={handleChangeInTitle} disabled={!(soFieldStatus.intitle)} />
             </div>
         </div>
     );

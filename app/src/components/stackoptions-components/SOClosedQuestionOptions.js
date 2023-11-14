@@ -2,7 +2,7 @@ import {useEffect, useState} from 'react';
 import Axios from 'axios';
 import './StackOptionsStyle.css';
 
-export default function SOClosedQuestionOptions({soSearchData, setSoSearchData}){
+export default function SOClosedQuestionOptions({soFieldStatus, soSearchData, setSoSearchData}){
 
     const [closedQuestion, setClosedQuestion] = useState(false);
     const handleChangeClosedQuestion = (e) => {
@@ -30,7 +30,7 @@ export default function SOClosedQuestionOptions({soSearchData, setSoSearchData})
                     <label for="so-closed-input" className="col">Closed</label>
                 </div>
                 <div className="col-sm">
-                    <input type="checkbox" id="so-closed-input" name="so-closed-input" value="closed" className="col" onChange={handleChangeClosedQuestion}/>
+                    <input type="checkbox" id="so-closed-input" name="so-closed-input" value="closed" className="col" onChange={handleChangeClosedQuestion} disabled={!(soFieldStatus.closed)} />
                 </div>
             </div>
         </div>

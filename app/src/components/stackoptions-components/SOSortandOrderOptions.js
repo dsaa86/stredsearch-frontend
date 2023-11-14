@@ -2,7 +2,7 @@ import {useEffect, useState} from 'react';
 import Axios from 'axios';
 import './StackOptionsStyle.css';
 
-export default function SOSortandOrderOptions({soSearchData, setSoSearchData}){
+export default function SOSortandOrderOptions({soFieldStatus, soSearchData, setSoSearchData}){
 
     const [sortOptions, setSortOptions] = useState([]);
     const [orderOptions, setOrderOptions] = useState([]);
@@ -27,13 +27,13 @@ export default function SOSortandOrderOptions({soSearchData, setSoSearchData}){
                         <label for="sort-options" className="">Sort By</label>
                     </div>
                     <div className="col-sm">
-                        <select id="sort-options" className="col" value={sortOptions} onChange={handleChangeSort}>
-                        <option value="activity">Activity</option>
-                        <option value="votes">Votes</option>
-                        <option value="creation">Creation</option>
-                        <option value="hot">Hot</option>
-                        <option value="week">Week</option>
-                        <option value="month">Month</option>
+                        <select id="sort-options" className="col" value={sortOptions} onChange={handleChangeSort} disabled={!(soFieldStatus.sort)}>
+                            <option value="activity">Activity</option>
+                            <option value="votes">Votes</option>
+                            <option value="creation">Creation</option>
+                            <option value="hot">Hot</option>
+                            <option value="week">Week</option>
+                            <option value="month">Month</option>
                         </select>
                     </div>
                 </div>
@@ -44,7 +44,7 @@ export default function SOSortandOrderOptions({soSearchData, setSoSearchData}){
                         <label for="order-options" className="">Order By</label>
                     </div>
                     <div className="col-sm">
-                        <select id="order-options" className="col" value={orderOptions} onChange={handleChangeOrder}>
+                        <select id="order-options" className="col" value={orderOptions} onChange={handleChangeOrder} disabled={!(soFieldStatus.order)}>
                         <option value="desc">Descending</option>
                         <option value="asc">Ascending</option>
                         </select>
