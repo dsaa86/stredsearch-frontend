@@ -4,8 +4,20 @@ import './StackOptionsStyle.css';
 
 import { extractUniqueValuesFromArray, prettifyString } from '../../AppHelperFunctions';
 
+const updateSoSearchFieldStatus = (currentRoute, setSoFieldStatus, fieldStatus) => {
+    if(currentRoute === "question_by_tag"){
+        setSoFieldStatus(fieldStatus.question_by_tag);
+    } else if(currentRoute === "related_questions"){
+        setSoFieldStatus(fieldStatus.related_questions);
+    } else if(currentRoute === "search"){
+        setSoFieldStatus(fieldStatus.search);
+    } else if(currentRoute === "advanced-search"){
+        setSoFieldStatus(fieldStatus.advanced_search);
+    }
+};
 
-export default function SORouteSelect({soSearchData, setSoSearchData}){
+
+export default function SORouteSelect({fieldStatus, soFieldStatus, setSoFieldStatus, soSearchData, setSoSearchData}){
 
     const [soRouteData, setSoRouteData] = useState(false);
     const [routeCategories, setRouteCategories] = useState();
@@ -54,6 +66,9 @@ export default function SORouteSelect({soSearchData, setSoSearchData}){
         }
     }, [currentRoute, currentCategory]);
 
+    useEffect(() => {
+        updateSoSearchFieldStatus(currentRoute, setSoFieldStatus, fieldStatus)
+    }, [currentRoute]);
 
     const fetchSoRouteData = async () => {
         const response = await Axios('http://localhost:8000/stack/get/routes/');
@@ -98,10 +113,12 @@ export default function SORouteSelect({soSearchData, setSoSearchData}){
         setRoutes(
             mappedRoutesFromCategories[event.target.value]
         );
+        updateSoSearchFieldStatus(event, setSoFieldStatus, fieldStatus)
     };
 
     const handleRouteChange = event => {
         setCurrentRoute(event.target.value);
+        // updateSoSearchFieldStatus(event, setSoFieldStatus, fieldStatus)
     };
     
     return(
