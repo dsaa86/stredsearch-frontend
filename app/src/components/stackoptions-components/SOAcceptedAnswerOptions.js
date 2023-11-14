@@ -25,10 +25,16 @@ export default function SOAcceptedAnswerOptions({soSearchData, setSoSearchData})
     }, [acceptedAnswer]);
 
     return(
-        <>
-            <label for="so-accepted-input">Accepted</label>
-            <input type="checkbox" id="so-accepted-input" name="so-accepted-input" value="accepted" onChange={handleChangeAcceptedAnswer}/>
-        </>
+        <div className="col-sm">
+            <div className="row">
+                <div className="col-sm-3">
+                    <label for="so-accepted-input" className="col">Accepted</label>
+                </div>
+                <div className="col-sm">
+                    <input type="checkbox" id="so-accepted-input" name="so-accepted-input" value="accepted" className="col" onChange={handleChangeAcceptedAnswer}/>
+                </div>
+            </div>
+        </div>
     );
 
 }

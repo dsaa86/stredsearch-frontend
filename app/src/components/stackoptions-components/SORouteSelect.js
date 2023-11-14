@@ -4,6 +4,7 @@ import './StackOptionsStyle.css';
 
 import { extractUniqueValuesFromArray, prettifyString } from '../../AppHelperFunctions';
 
+
 export default function SORouteSelect({soSearchData, setSoSearchData}){
 
     const [soRouteData, setSoRouteData] = useState(false);
@@ -104,29 +105,45 @@ export default function SORouteSelect({soSearchData, setSoSearchData}){
     };
     
     return(
-        <div className="input-wrapper stack-options-route-select-container">
+        <div className="row">
             {soRouteData && currentCategory && currentRoute ? (
                 <>
-                    <span className="row-padding">Search Category</span>
-                    <select className="row-padding row-margin" value={currentCategory} onChange={handleRouteCategoryChange}>
-                        {
-                            routeCategories.map((route, index) =>
-                                <option key={index} value={route}>{prettifyString(route)}</option>
-                            )
-                        }
-                    </select>
-                    <span className="row-padding row-margin">Search Routes</span>
-                    <select className="row-padding" id="so-route-selector" value={currentRoute} onChange={handleRouteChange}>
-                        {routes.map( (route, index) =>
-                            <option key={index} value={route}>{prettifyString(route)}</option>
-                        )}
-                    </select>
+                <div className="col-sm-6">
+                    <div className="row">
+                        <div className="col-sm-6">
+                            <span>Search Category</span>
+                        </div>
+                        <div className="col-sm">
+                            <select className="col" value={currentCategory} onChange={handleRouteCategoryChange}>
+                                {
+                                    routeCategories.map((route, index) =>
+                                        <option key={index} value={route}>{prettifyString(route)}</option>
+                                    )
+                                }
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div className="col-sm-6">
+                    <div className="row">
+                        <div className="col-sm-6">
+                            <span>Search Routes</span>
+                        </div>
+                        <div className="col-sm">
+                            <select className="col" id="so-route-selector" value={currentRoute} onChange={handleRouteChange}>
+                                {routes.map( (route, index) =>
+                                    <option key={index} value={route}>{prettifyString(route)}</option>
+                                )}
+                            </select>
+                        </div>
+                    </div>
+                </div>
                 </>
             ) : (
                 <div>
                     Loading...
                 </div>
-            )}        
+            )}
         </div>
     );
 }

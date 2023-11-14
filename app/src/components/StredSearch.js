@@ -6,13 +6,10 @@ import SoRedditPicker from './SO-RedditPicker';
 import StackOptions from './StackOptions';
 import RedditOptions from './RedditOptions';
 
-export default function StredSearch({soSearchData, setSoSearchData}){
+export default function StredSearch({showReddit, setShowReddit, showSO, setShowSO, soSearchData, setSoSearchData, redditSearchData, setRedditSearchData}){
 
-    const [showReddit, setShowReddit] = useState(false);
-    const [showSO, setShowSO] = useState(false);
-
-    const [soCategory, setSoCategory] = useState("");
-    const [soRoutes, setSoRoutes] = useState([]);
+    // const [soCategory, setSoCategory] = useState("");
+    // const [soRoutes, setSoRoutes] = useState([]);
 
     const soCheckHandler = () => {
         setShowSO(!showSO);
@@ -21,14 +18,6 @@ export default function StredSearch({soSearchData, setSoSearchData}){
     const redditCheckHandler = () => {
         setShowReddit(!showReddit);
     }
-
-    // const [soParams, setSoParams] = useState([]);
-
-    // const routes = soRouteData.map(route =>
-    //     <div>
-    //         {route}
-    //     </div>
-    // );
 
     return(
         <div className="stredsearch-container">
@@ -39,7 +28,7 @@ export default function StredSearch({soSearchData, setSoSearchData}){
                     <StackOptions soSearchData={soSearchData} setSoSearchData={setSoSearchData}/>
                 }
                 {showReddit &&
-                    <RedditOptions />
+                    <RedditOptions redditSearchData={redditSearchData} setRedditSearchData={setRedditSearchData}/>
                 }
             </div>
         </div>

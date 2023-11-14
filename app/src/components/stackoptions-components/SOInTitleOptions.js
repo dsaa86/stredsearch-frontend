@@ -18,9 +18,13 @@ export default function SOInTitleOptions({soSearchData, setSoSearchData}){
     }, [inTitle]);
 
     return(
-        <div>
-            <label htmlFor="so-in-title-input">In Title</label>
-            <input type="text" id="so-in-title-input" name="so-in-title-input" className="row-padding row-margin" onChange={handleChangeInTitle}/>
+        <div className="row">
+            <div className="col-sm-3">
+                <label htmlFor="so-in-title-input">In Title</label>
+            </div>
+            <div className="col-sm">
+                <input type="text" id="so-in-title-input" name="so-in-title-input" className="col" onChange={handleChangeInTitle}/>
+            </div>
         </div>
     );
 

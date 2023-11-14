@@ -15,9 +15,13 @@ export default function SOUserOptions({soSearchData, setSoSearchData}){
     }, [user]);
 
     return(
-        <div>
-            <label htmlFor="so-user-input" className="row-padding row-margin">User</label>
-            <input type="text" id="so-user-input" name="so-user-input" className="row-margin row-padding" onChange={handleChangeUser}/>
+        <div className="row">
+            <div className="col-sm-3">
+                <label htmlFor="so-user-input" className="">User</label>
+            </div>
+            <div className="col-sm">
+                <input type="text" id="so-user-input" name="so-user-input" className="col" onChange={handleChangeUser}/>
+            </div>
         </div>
     );
 

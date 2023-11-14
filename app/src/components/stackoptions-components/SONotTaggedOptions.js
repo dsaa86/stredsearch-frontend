@@ -4,7 +4,7 @@ import './StackOptionsStyle.css';
 
 export default function SONotTaggedOptions({soSearchData, setSoSearchData}){
 
-    const [soNotTagged, setSoNotTagged] = useState(false);
+    const [soNotTagged, setSoNotTagged] = useState("");
 
     const handleSoNotTaggedChange = (e) => {
         setSoNotTagged(e.target.value);
@@ -18,9 +18,13 @@ export default function SONotTaggedOptions({soSearchData, setSoSearchData}){
     }, [soNotTagged]);
 
     return(
-        <div>
-            <label htmlFor="so-not-tagged-input">Question Not Tagged</label>
-            <input type="text" id="so-not-tagged-input" name="so-not-tagged-input"  className="row-padding row-margin" onChange={handleSoNotTaggedChange}/>
+        <div className="row">
+            <div className="col-sm-3">
+                <label htmlFor="so-not-tagged-input">Question Not Tagged</label>
+            </div>        
+            <div className="col-sm">                
+                <input type="text" id="so-not-tagged-input" name="so-not-tagged-input" className="col" onChange={handleSoNotTaggedChange}/>
+            </div>
         </div>
     );
 

@@ -18,9 +18,13 @@ export default function SOBodyOptions({soSearchData, setSoSearchData}){
     }, [body]);
 
     return(
-        <div>
-            <label for="so-body-input" className="row-margin row-padding">Body</label>
-            <input type="text" id="so-body-input" name="so-body-input" className="row-margin row-padding" onChange={handleChangeBody}/>
+        <div className="row">
+            <div className="col-sm-3">
+                <label for="so-body-input" className="">Body</label>
+            </div>
+            <div className="col-sm">
+                <input type="text" id="so-body-input" name="so-body-input" className="col" onChange={handleChangeBody}/>
+            </div>
         </div>
     );
 

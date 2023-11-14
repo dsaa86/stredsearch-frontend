@@ -15,9 +15,13 @@ export default function SOQueryOptions({soSearchData, setSoSearchData}){
     }, [query]);
 
     return(
-        <div>
-            <label htmlFor="so-query-input" className="row-margin row-padding">Query</label>
-            <input type="text" id="so-query-input" name="so-query-input" className="row-margin row-padding" onChange={handleChangeQuery}/>
+        <div className="row">
+            <div className="col-sm-3">
+                <label htmlFor="so-query-input" className="">Query</label>
+            </div>
+            <div className="col-sm">
+                <input type="text" id="so-query-input" name="so-query-input" className="col" onChange={handleChangeQuery}/>
+            </div>
         </div>
     );
     

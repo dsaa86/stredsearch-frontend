@@ -3,7 +3,7 @@ import Axios from 'axios';
 import './StackOptionsStyle.css';
 
 export default function SOTagsOptions({soSearchData, setSoSearchData}){
-    const [soTags, setSoTags] = useState([]);
+    const [soTags, setSoTags] = useState("");
 
     const handleChangeTags = (e) => {
         setSoTags(e.target.value);
@@ -17,9 +17,13 @@ export default function SOTagsOptions({soSearchData, setSoSearchData}){
     }, [soTags]);
 
     return(
-        <div>
-            <label htmlFor="so-tag-input" className="row-padding row-margin">Question Tags</label>
-            <input type="text" id="so-tag-input" name="so-tag-input" className="row-padding row-margin" onChange={handleChangeTags}/>
+        <div className="row">
+            <div className="col-sm-3">
+                <label htmlFor="so-tag-input" className="">Question Tags</label>
+            </div>
+            <div className="col-sm">
+                <input type="text" id="so-tag-input" name="so-tag-input" className="col" onChange={handleChangeTags}/>
+            </div>
         </div>
     );
 

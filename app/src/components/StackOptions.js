@@ -1,9 +1,5 @@
-import {useEffect, useState} from 'react';
-import Axios from 'axios';
 import '../SearchApp.css';
 import './stackoptions-components/StackOptionsStyle.css';
-
-import { extractUniqueValuesFromArray, prettifyString } from '../AppHelperFunctions';
 
 import SORouteSelect from './stackoptions-components/SORouteSelect';
 import SOPageOptions from './stackoptions-components/SOPageOptions';
@@ -15,16 +11,18 @@ import SOInTitleOptions from './stackoptions-components/SOInTitleOptions';
 import SOUserOptions from './stackoptions-components/SOUserOptions';
 import SOQueryOptions from './stackoptions-components/SOQueryOptions';
 import SOBodyOptions from './stackoptions-components/SOBodyOptions';
-import SOAcceptedAnswerOptions from './stackoptions-components/SOAcceptedAnswerOptions';
-import SOClosedQuestionOptions from './stackoptions-components/SOClosedQuestionOptions';
-import SOMigratedQuestionOptions from './stackoptions-components/SOMigratedQuestionOptions';
-import SOHasWikiOptions from './stackoptions-components/SOHasWikiOptions';
+import SOTickBoxOptionsContainer from './stackoptions-components/SOTickBoxOptionsContainer';
 
 
 export default function StackOptions({soSearchData, setSoSearchData}){
 
     return(
-        <div className="stack-options-container">
+        <div className="container stack-options-container">
+            <div className="row">
+                <div className="col-sm">
+                    <h1>Stack Overflow Search Options</h1>
+                </div>
+            </div>
             <SORouteSelect soSearchData={soSearchData} setSoSearchData={setSoSearchData}/>
             <SOPageOptions soSearchData={soSearchData} setSoSearchData={setSoSearchData}/>
             <SODateOptions soSearchData={soSearchData} setSoSearchData={setSoSearchData} />
@@ -35,21 +33,7 @@ export default function StackOptions({soSearchData, setSoSearchData}){
             <SOUserOptions soSearchData={soSearchData} setSoSearchData={setSoSearchData} />
             <SOQueryOptions soSearchData={soSearchData} setSoSearchData={setSoSearchData} />
             <SOBodyOptions soSearchData={soSearchData} setSoSearchData={setSoSearchData} />
-            <SOAcceptedAnswerOptions soSearchData={soSearchData} setSoSearchData={setSoSearchData} />
-            <SOClosedQuestionOptions soSearchData={soSearchData} setSoSearchData={setSoSearchData} />
-            <SOMigratedQuestionOptions soSearchData={soSearchData} setSoSearchData={setSoSearchData} />
-            <SOHasWikiOptions soSearchData={soSearchData} setSoSearchData={setSoSearchData} />
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
+            <SOTickBoxOptionsContainer soSearchData={soSearchData} setSoSearchData={setSoSearchData} />
         </div>
     );
 }

@@ -6,36 +6,11 @@ import SearchApp from './components/SearchApp.js';
 
 export default function App() {
 
-  const [soSearchData, setSoSearchData] = useState([]);
-  const [redditSearchData, setRedditSearchData] = useState([]);
 
-  useEffect(() => {
-    setSoSearchData({
-      category : "questions",
-      route : "question_by_tag",
-      page : "1",
-      pagesize : "50",
-      from_date : "",
-      to_date : "",
-      sort: "activity",
-      order : "desc",
-      tagged : "html,css,react",
-      site : "stackoverflow",
-      nottagged : "",
-      intitle : "",
-      user : "",
-      query : "",
-      body : "", 
-      accepted : "",
-      closed : "",
-      migrated : "",
-      wiki : "",
-    })
-  }, []);
 
   return (
     <>
-      <SearchApp soSearchData={soSearchData} setSoSearchData={setSoSearchData}/>
+      <SearchApp/>
       <StackQuestionContainer />
     </>
   );

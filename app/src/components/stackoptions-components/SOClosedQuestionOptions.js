@@ -24,10 +24,16 @@ export default function SOClosedQuestionOptions({soSearchData, setSoSearchData})
     }, [closedQuestion]);
 
     return(
-        <>
-        <label for="so-closed-input">Closed</label>
-        <input type="checkbox" id="so-closed-input" name="so-closed-input" value="closed" onChange={handleChangeClosedQuestion}/>
-        </>
+        <div className="col-sm">
+            <div className="row">
+                <div className="col-sm-3">
+                    <label for="so-closed-input" className="col">Closed</label>
+                </div>
+                <div className="col-sm">
+                    <input type="checkbox" id="so-closed-input" name="so-closed-input" value="closed" className="col" onChange={handleChangeClosedQuestion}/>
+                </div>
+            </div>
+        </div>
     );
 
 }

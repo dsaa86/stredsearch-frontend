@@ -25,10 +25,16 @@ export default function SOHasWikiOptions({soSearchData, setSoSearchData}){
     }, [wiki]);
 
     return(
-        <>
-            <label for="so-wiki-input">Wiki</label>
-            <input type="checkbox" id="so-wiki-input" name="so-wiki-input" value="wiki" onChange={handleChangeWikiOption}/>
-        </>
+        <div className="col-sm">
+            <div className="row">
+                <div className="col-sm-3">
+                    <label for="so-wiki-input" className="col">Wiki</label>
+                </div>
+                <div className="col-sm">
+                    <input type="checkbox" id="so-wiki-input" name="so-wiki-input" value="wiki" className="col" onChange={handleChangeWikiOption}/>
+                </div>
+            </div>
+        </div>
     );
 
 }

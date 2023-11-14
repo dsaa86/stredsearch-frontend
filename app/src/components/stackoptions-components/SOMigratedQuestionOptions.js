@@ -25,10 +25,16 @@ export default function SOMigratedQuestionOptions({soSearchData, setSoSearchData
     }, [migratedQuestion]);
 
     return(
-        <>
-            <label for="so-migrated-input">Migrated</label>
-            <input type="checkbox" id="so-migrated-input" name="so-migrated-input" value="migrated" onChange={handleChangeMigratedQuestion}/>
-        </>
+        <div className="col-sm">
+            <div className="row">
+                <div className="col-sm-3">
+                    <label for="so-migrated-input" className="col">Migrated</label>
+                </div>
+                <div className="col-sm">
+                    <input type="checkbox" id="so-migrated-input" name="so-migrated-input" value="migrated" className="col" onChange={handleChangeMigratedQuestion}/>
+                </div>
+            </div>
+        </div >
     );
 
 }

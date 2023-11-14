@@ -29,11 +29,27 @@ export default function SOPageOptions({soSearchData, setSoSearchData}){
     }, [pageNumber, pageSize]);
 
     return(
-        <div>
-            <label for="so-page-size-input" className="row-padding row-margin">Page Size</label>
-            <input id="so-page-size-input" name="so-page-size-input" min="1" max="100" className="row-padding numeric-input" type="number" onChange={pageSizeChangeHandler}/>
-            <label for="so-page-input" className="row-padding row-margin">Page Number</label>
-            <input id="so-page-input" name="so-page-input" min="1" className="row-padding numeric-input" type="number" onChange={pageNumberChangeHandler}/>
+        <div className="row">
+            <div className="col-sm-6">
+                <div className="row">
+                    <div className="col-sm-6">
+                        <label for="so-page-size-input" className="">Page Size</label>
+                    </div>
+                    <div className="col-sm">
+                        <input className="col" id="so-page-size-input" name="so-page-size-input" min="1" max="100" type="number" onChange={pageSizeChangeHandler}/>
+                    </div>
+                </div>
+            </div>
+            <div className="col-sm-6">
+                <div className="row">
+                    <div className="col-sm-6">
+                        <label for="so-page-input" className="">Page Number</label>
+                    </div>
+                    <div className="col-sm">
+                        <input className="col" id="so-page-input" name="so-page-input" min="1" type="number" onChange={pageNumberChangeHandler}/>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 
