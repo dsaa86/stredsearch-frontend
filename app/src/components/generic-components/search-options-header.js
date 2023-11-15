@@ -3,7 +3,7 @@ export default function SearchOptionsHeader({title}){
     return(
             <div className="row">
                 <div className="col-sm">
-                    <h1>{title}</h1>
+                    <h3>{title}</h3>
                 </div>
             </div>
     );

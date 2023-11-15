@@ -22,7 +22,12 @@ export default function SODateOptions({soFieldStatus, soSearchData, setSoSearchD
     }
 
     useEffect(() => {
-        setSoSearchData({...soSearchData, from_date: fromDate, to_date: toDate});
+        const fromDateObject = new Date(fromDate);
+        const fromDateString = String(fromDateObject.getTime());
+        const toDateObject = new Date(toDate)
+        const toDateString = String(toDateObject.getTime());
+
+        setSoSearchData({...soSearchData, from_date: fromDateString, to_date: toDateString});
     }, [fromDate, toDate]);
 
 

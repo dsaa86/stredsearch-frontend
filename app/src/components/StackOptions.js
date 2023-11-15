@@ -22,7 +22,7 @@ const fieldStatus = {
         "page_size" : true,
         "from_date" : true,
         "to_date" : true,
-        "sort" : true,
+        "resultsSort" : true,
         "order" : true,
         "tagged" : true,
         "nottagged" : false,
@@ -40,7 +40,7 @@ const fieldStatus = {
         "page_size" : true,
         "from_date" : true,
         "to_date" : true,
-        "sort" : true,
+        "resultsSort" : true,
         "order" : true,
         "tagged" : false,
         "nottagged" : false,
@@ -58,7 +58,7 @@ const fieldStatus = {
         "page_size" : true,
         "from_date" : true,
         "to_date" : true,
-        "sort" : true,
+        "resultsSort" : true,
         "order" : true,
         "tagged" : true,
         "nottagged" : true,
@@ -76,7 +76,7 @@ const fieldStatus = {
         "page_size" : true,
         "from_date" : true,
         "to_date" : true,
-        "sort" : true,
+        "resultsSort" : true,
         "order" : true,
         "tagged" : true,
         "nottagged" : true,
@@ -90,7 +90,6 @@ const fieldStatus = {
         "wiki" : true,
     },
 }
-
 
 
 export default function StackOptions({soSearchData, setSoSearchData}){

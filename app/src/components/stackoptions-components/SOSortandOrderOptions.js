@@ -16,7 +16,7 @@ export default function SOSortandOrderOptions({soFieldStatus, soSearchData, setS
     };
 
     useEffect(() => {
-        setSoSearchData({...soSearchData, sort: sortOptions, order: orderOptions});
+        setSoSearchData({...soSearchData, resultsSort: sortOptions, order: orderOptions});
     }, [sortOptions, orderOptions]);
 
     return(
@@ -27,7 +27,7 @@ export default function SOSortandOrderOptions({soFieldStatus, soSearchData, setS
                         <label for="sort-options" className="">Sort By</label>
                     </div>
                     <div className="col-sm">
-                        <select id="sort-options" className="col" value={sortOptions} onChange={handleChangeSort} disabled={!(soFieldStatus.sort)}>
+                        <select id="sort-options" className="col" value={sortOptions} onChange={handleChangeSort} disabled={!(soFieldStatus.resultsSort)}>
                             <option value="activity">Activity</option>
                             <option value="votes">Votes</option>
                             <option value="creation">Creation</option>
