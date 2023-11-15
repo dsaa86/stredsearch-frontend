@@ -23,9 +23,18 @@ export default function SODateOptions({soFieldStatus, soSearchData, setSoSearchD
 
     useEffect(() => {
         const fromDateObject = new Date(fromDate);
-        const fromDateString = String(fromDateObject.getTime());
+        let fromDateString = String(fromDateObject.getTime());
         const toDateObject = new Date(toDate)
-        const toDateString = String(toDateObject.getTime());
+        let toDateString = String(toDateObject.getTime());
+
+        if (toDateString == "NaN"){
+            toDateString = String(new Date().getTime());
+        }
+        if (fromDateString == "NaN"){
+            const dateObj = new Date()
+            dateObj.setFullYear(2000, 0, 2);
+            fromDateString = String(dateObj.getTime());
+        }
 
         setSoSearchData({...soSearchData, from_date: fromDateString, to_date: toDateString});
     }, [fromDate, toDate]);
