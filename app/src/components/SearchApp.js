@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react';
 import axios from 'axios';
 import '../SearchApp.css';
-import {queryStackOverflow} from './functions/SearchFunctions';
+import {queryStackOverflow, queryReddit} from './functions/SearchFunctions';
 
 import StredSearch from './StredSearch';
 import SearchButton from './SearchButton';
@@ -17,7 +17,8 @@ export default function SearchApp(){
     const [showReddit, setShowReddit] = useState(false);
     const [showSO, setShowSO] = useState(false);
 
-    const [soSearchResults, setSoSearchResults] = useState({});
+    const [soSearchResults, setSoSearchResults] = useState([]);
+    const [redditSearchResults, setRedditSearchResults] = useState([]);
 
     useEffect(() => {
         setSoSearchData(
@@ -50,7 +51,7 @@ export default function SearchApp(){
             {
                 query : "",
                 subreddit : "",
-                search_by : "list",
+                search_by : "link",
             }
         )
     }, []);
@@ -71,7 +72,12 @@ export default function SearchApp(){
             queryStackOverflow(cancelTokenSource.token, setSoSearchResults, soSearchData);
         }
         if(showReddit){
-            console.log(redditSearchData);
+            setRedditSearchResults([])
+            if(cancelTokenSource){
+                cancelTokenSource.cancel("Operation canceled by the user.");
+            }
+            cancelTokenSource = axios.CancelToken.source();
+            queryReddit(cancelTokenSource.token, setRedditSearchResults, redditSearchData);
         }
     };
 

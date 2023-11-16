@@ -2,14 +2,8 @@ import {useEffect, useState} from 'react';
 
 export default function RedditSearchBy({redditSearchData, setRedditSearchData}){
 
-    const [searchBy, setSearchBy] = useState("list");
-
-    useEffect(() => {
-        setRedditSearchData({...redditSearchData, search_by : searchBy})
-    }, [searchBy]);
-
     const handleInputChange = (e) => {
-        setSearchBy(e.target.value);
+        setRedditSearchData({...redditSearchData, search_by : e.target.value});
     };
 
     return(

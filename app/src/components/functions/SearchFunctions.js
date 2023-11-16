@@ -56,3 +56,39 @@ const asyncRequestStackOverflow = async (url, cancelToken) => {
     const response = await axios.get(url, {cancelToken});
     return response.data;
 };
+
+
+export const queryReddit = (cancelToken, setRedditSearchResults, redditSearchData) => {
+    const url = buildRedditURLFromParams(redditSearchData);
+    console.log(url);
+    asyncRequestReddit(url, cancelToken).then((data) => {
+        setRedditSearchResults(data);
+    }).catch((error) => {
+        if(axios.isCancel(error)){
+            console.log("Request Cancelled: ", error.message);
+        } else{
+            console.log(error);
+        }
+    });
+};
+
+const buildRedditURLFromParams = (redditSearchData) => {
+
+    // eliminate pass-by-reference issues by assigning obj primitives to const variables (and perform rudimentary validation at same time)
+    const query = redditSearchData.query.length >= 1 ? redditSearchData.query : " ";
+    const subreddit = redditSearchData.subreddit.length >= 1 ? redditSearchData.subreddit : " ";
+    const search_by = redditSearchData.search_by;
+
+    return `http://localhost:8000/reddit/get/query/${search_by}/${subreddit}/${query}/100/`;
+}
+
+const asyncRequestReddit = async (url, cancelToken) => {
+    const response = await axios.get(
+        url, 
+        {
+            "cancelToken": cancelToken,
+            "timeout": 20000,
+        }
+    );
+    return response.data;
+};
