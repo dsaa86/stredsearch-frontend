@@ -6,8 +6,10 @@ import {queryStackOverflow, queryReddit} from './functions/SearchFunctions';
 import StredSearch from './StredSearch';
 import SearchButton from './SearchButton';
 import StackResponseContainer from './response-components/stackoverflow/StackResponseContainer';
+import RedditResponseContainer from './response-components/reddit/RedditResponseContainer';
 
-let cancelTokenSource;
+let stackCancelTokenSource;
+let redditCancelTokenSource;
 
 export default function SearchApp(){
 
@@ -64,20 +66,20 @@ export default function SearchApp(){
         }
         if(showSO){
             setSoSearchResults([])
-            if(cancelTokenSource){
-                cancelTokenSource.cancel("Operation canceled by the user.");
+            if(stackCancelTokenSource){
+                stackCancelTokenSource.cancel("Operation canceled by the user.");
             }
 
-            cancelTokenSource = axios.CancelToken.source();
-            queryStackOverflow(cancelTokenSource.token, setSoSearchResults, soSearchData);
+            stackCancelTokenSource = axios.CancelToken.source();
+            queryStackOverflow(stackCancelTokenSource.token, setSoSearchResults, soSearchData);
         }
         if(showReddit){
             setRedditSearchResults([])
-            if(cancelTokenSource){
-                cancelTokenSource.cancel("Operation canceled by the user.");
+            if(redditCancelTokenSource){
+                redditCancelTokenSource.cancel("Operation canceled by the user.");
             }
-            cancelTokenSource = axios.CancelToken.source();
-            queryReddit(cancelTokenSource.token, setRedditSearchResults, redditSearchData);
+            redditCancelTokenSource = axios.CancelToken.source();
+            queryReddit(redditCancelTokenSource.token, setRedditSearchResults, redditSearchData);
         }
     };
 
@@ -90,6 +92,12 @@ export default function SearchApp(){
                     soSearchResults.length > 0 &&
                     soSearchResults.map((question, index) => {
                         return <StackResponseContainer question={question} index={index} key={question.question_id}/>
+                    })
+                }
+                {
+                    redditSearchResults.length > 0 &&
+                    redditSearchResults.map((question, index) => {
+                        return <RedditResponseContainer question={question} index={index} key={question.question_id}/>
                     })
                 }
             </div>

@@ -1,0 +1,24 @@
+.reddit-response-container{
+    margin: 10px auto;
+    padding: 10px;
+    background-color: orange;
+    border-radius: 10px;
+    color: white;
+}
+
+.reddit-question-tags{
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+}
+
+.question-tag-element{
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: #282c34;
+    color: white;
+}
+
+.stack-title a{
+    color: white;
+}
