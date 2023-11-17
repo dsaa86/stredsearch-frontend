@@ -3,8 +3,7 @@ import '../SearchApp.css';
 
 
 import StredSearch from './StredSearch';
-import StackResponseContainer from './response-components/stackoverflow/StackResponseContainer';
-import RedditResponseContainer from './response-components/reddit/RedditResponseContainer';
+import SearchResultsContainer from './SearchResultsContainer';
 
 const useSearchAppController = () => {
 
@@ -77,28 +76,7 @@ export default function SearchApp(){
         <div className="search-app-container">
             <StredSearch showReddit={searchAppController.showReddit} setShowReddit={searchAppController.setShowReddit} showSO={searchAppController.showSO} setShowSO={searchAppController.setShowSO} soSearchData={searchAppController.soSearchData} setSoSearchData={searchAppController.setSoSearchData} redditSearchData={searchAppController.redditSearchData} setRedditSearchData={searchAppController.setRedditSearchData} setSoSearchResults={searchAppController.setSoSearchResults} setRedditSearchResults={searchAppController.setRedditSearchResults} />
             
-            <div id="so-results-container" className="container">
-                <div className="row">
-                    <div className="col">
-                        <h3>Stack Overflow Results</h3>
-                        {
-                            searchAppController.soSearchResults.length > 0 &&
-                            searchAppController.soSearchResults.map((question, index) => {
-                                return <StackResponseContainer question={question} index={index} key={question.question_id}/>
-                            })
-                        }
-                    </div>
-                    <div className="col">
-                        <h3>Reddit Results</h3>
-                        {
-                            searchAppController.redditSearchResults.length > 0 &&
-                            searchAppController.redditSearchResults.map((question, index) => {
-                                return <RedditResponseContainer question={question} index={index} key={question.question_id}/>
-                            })
-                        }
-                    </div>
-                </div>
-            </div>
+            <SearchResultsContainer soSearchResults={searchAppController.soSearchResults} redditSearchResults={searchAppController.redditSearchResults}/>
         </div>
     );
 

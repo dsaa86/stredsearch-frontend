@@ -7,7 +7,6 @@ export default function SearchButton({showReddit, showSO, setSoSearchResults, se
     let stackCancelTokenSource;
     let redditCancelTokenSource;
 
-
     const searchButtonHandler = () => {
 
         if(!showReddit && !showSO){

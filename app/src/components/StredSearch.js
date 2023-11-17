@@ -10,9 +10,6 @@ import SearchButton from './SearchButton';
 
 export default function StredSearch({showReddit, setShowReddit, showSO, setShowSO, soSearchData, setSoSearchData, redditSearchData, setRedditSearchData, setSoSearchResults, setRedditSearchResults}){
 
-    // const [soCategory, setSoCategory] = useState("");
-    // const [soRoutes, setSoRoutes] = useState([]);
-
     const soCheckHandler = () => {
         setShowSO(!showSO);
     }
