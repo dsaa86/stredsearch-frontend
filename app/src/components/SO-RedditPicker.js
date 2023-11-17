@@ -1,10 +1,10 @@
 import {useEffect, useState} from 'react';
 import Axios from 'axios';
-import '../SearchApp.css';
+import './SearchAppComponentsStyle.css';
 
 export default function SoRedditPicker({showSO, showReddit, soCheckHandler, redditCheckHandler}){
     return(
-        <div className="row">
+        <div className="row so-reddit-picker">
             <div className="col-2">
                 <label for="so-checkbox">Stack Overflow</label>
             </div>

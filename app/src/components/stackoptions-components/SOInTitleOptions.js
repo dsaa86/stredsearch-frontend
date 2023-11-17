@@ -19,10 +19,10 @@ export default function SOInTitleOptions({soFieldStatus, soSearchData, setSoSear
 
     return(
         <div className="row">
-            <div className="col-sm-3">
+            <div className="col-sm-3 col-12">
                 <label htmlFor="so-in-title-input">In Title</label>
             </div>
-            <div className="col-sm">
+            <div className="col-sm-9 col-12">
                 <input type="text" id="so-in-title-input" name="so-in-title-input" className="col" onChange={handleChangeInTitle} disabled={!(soFieldStatus.intitle)} />
             </div>
         </div>

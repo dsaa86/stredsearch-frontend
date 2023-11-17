@@ -121,15 +121,15 @@ export default function SORouteSelect({fieldStatus, soFieldStatus, setSoFieldSta
     };
     
     return(
-        <div className="row">
+        <div id="route-option-row" className="row">
             {soRouteData && currentCategory && currentRoute ? (
                 <>
-                <div className="col-sm-6">
+                <div id="search-category-label-and-select" className="col-sm-6 col-12">
                     <div className="row">
-                        <div className="col-sm-6">
+                        <div id="search-category-label" className="col-sm-6 col-12">
                             <span>Search Category</span>
                         </div>
-                        <div className="col-sm">
+                        <div id="search-category-select" className="col-sm-6 col-12">
                             <select className="col" value={currentCategory} onChange={handleRouteCategoryChange}>
                                 {
                                     routeCategories.map((route, index) =>
@@ -140,12 +140,12 @@ export default function SORouteSelect({fieldStatus, soFieldStatus, setSoFieldSta
                         </div>
                     </div>
                 </div>
-                <div className="col-sm-6">
+                <div id="search-route-label-and-select" className="col-sm-6 col-12">
                     <div className="row">
-                        <div className="col-sm-6">
+                        <div id="search-route-label" className="col-sm-6 col-12">
                             <span>Search Routes</span>
                         </div>
-                        <div className="col-sm">
+                        <div id="search-route-select" className="col-sm-6 col-12">
                             <select className="col" id="so-route-selector" value={currentRoute} onChange={handleRouteChange}>
                                 {routes.map( (route, index) =>
                                     <option key={index} value={route}>{prettifyString(route)}</option>
@@ -156,7 +156,7 @@ export default function SORouteSelect({fieldStatus, soFieldStatus, setSoFieldSta
                 </div>
                 </>
             ) : (
-                <div>
+                <div id="default-loader" className="col-12">
                     Loading...
                 </div>
             )}

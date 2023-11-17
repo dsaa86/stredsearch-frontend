@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
-import '../SearchApp.css';
-import './stackoptions-components/StackOptionsStyle.css';
+// import './stackoptions-components/StackOptionsStyle.css';
+import './SearchAppComponentsStyle.css';
 
 import SearchOptionsHeader from './generic-components/search-options-header';
 import SORouteSelect from './stackoptions-components/SORouteSelect';

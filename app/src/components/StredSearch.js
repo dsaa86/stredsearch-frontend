@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react';
 import Axios from 'axios';
-import '../SearchApp.css';
+import './SearchAppComponentsStyle.css';
 
 import SoRedditPicker from './SO-RedditPicker';
 import StackOptions from './StackOptions';

@@ -25,12 +25,12 @@ export default function SOAcceptedAnswerOptions({soFieldStatus, soSearchData, se
     }, [acceptedAnswer]);
 
     return(
-        <div className="col-sm">
+        <div className="col-12 col-sm-12 col-md-6">
             <div className="row">
-                <div className="col-sm-3">
+                <div className="col-2">
                     <label for="so-accepted-input" className="col">Accepted</label>
                 </div>
-                <div className="col-sm">
+                <div className="col-10">
                     <input type="checkbox" id="so-accepted-input" name="so-accepted-input" value="accepted" className="col" onChange={handleChangeAcceptedAnswer} disabled={!(soFieldStatus.accepted)} />
                 </div>
             </div>

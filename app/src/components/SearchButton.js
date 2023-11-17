@@ -1,5 +1,5 @@
 import axios from 'axios';
-import '../SearchApp.css';
+import './SearchAppComponentsStyle.css';
 import {queryStackOverflow, queryReddit} from './functions/SearchFunctions';
 
 export default function SearchButton({showReddit, showSO, setSoSearchResults, setRedditSearchResults, soSearchData, redditSearchData}){
@@ -33,7 +33,7 @@ export default function SearchButton({showReddit, showSO, setSoSearchResults, se
     };
 
     return(
-        <div className="search-app-container">
+        <div className="search-button-container">
             <button onClick={searchButtonHandler}>Search</button>
         </div>
     );

@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react';
-import '../SearchApp.css';
+import './SearchAppComponentsStyle.css';
 
 
 import StredSearch from './StredSearch';

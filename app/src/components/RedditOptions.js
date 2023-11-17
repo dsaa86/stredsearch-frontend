@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react';
-import '../SearchApp.css';
+import './SearchAppComponentsStyle.css';
 
 import SearchOptionsHeader from './generic-components/search-options-header';
 import RedditSearchQuery from './redditoptions-components/RedditSearchQuery';

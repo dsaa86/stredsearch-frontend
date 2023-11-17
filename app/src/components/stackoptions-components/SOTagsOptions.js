@@ -14,10 +14,10 @@ export default function SOTagsOptions({soFieldStatus, soSearchData, setSoSearchD
 
     return(
         <div className="row">
-            <div className="col-sm-3">
+            <div className="col-sm-3 col-12">
                 <label htmlFor="so-tag-input" className="">Question Tags</label>
             </div>
-            <div className="col-sm">
+            <div className="col-sm-9 col-12">
                 <input type="text" id="so-tag-input" name="so-tag-input" className="col" onChange={handleChangeTags} disabled={!(soFieldStatus.tagged)}/>
             </div>
         </div>

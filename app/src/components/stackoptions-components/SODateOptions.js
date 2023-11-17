@@ -42,23 +42,23 @@ export default function SODateOptions({soFieldStatus, soSearchData, setSoSearchD
 
     return(
         <div className="row">
-            <div className="col-sm-6">
+            <div id="from-date-label-and-input" className="col-md-6 col-sm-12 col-12">
                 <div className="row">
-                    <div className="col-sm-6">
+                    <div id="from-date-label" className="col-md-6 col-sm-12 col-12">
                         <label for="so-from-date-input" className="">From Date</label>
                     </div>
-                    <div className="col-sm">
-                        <input id="so-from-date-input" name="so-from-date-input"  className="col" type="date" placeholder="From Date" onChange={handleFromDateChange} disabled={!(soFieldStatus.from_date)} defaultValue={defaultDateFromValue} />
+                    <div id="from-date-input" className="col-md-6 col-sm-12 col-12">
+                        <input id="so-from-date-input" name="so-from-date-input"  className="col-12" type="date" placeholder="From Date" onChange={handleFromDateChange} disabled={!(soFieldStatus.from_date)} defaultValue={defaultDateFromValue} />
                     </div>
                 </div>
             </div>
-            <div className="col-sm-6">
+            <div id="to-date-label-and-input" className="col-md-6 col-sm-12 col-12">
                 <div className="row">
-                    <div className="col-sm-6">
+                    <div id="to-date-label" className="col-md-6 col-sm-12 col-12">
                         <label for="so-to-date-input" className="">To Date</label>
                     </div>
-                    <div className="col-sm">
-                        <input id="so-to-date-input" name="so-to-date-input"  className="col" type="date" placeholder="To Date" onChange={handleToDateChange} disabled={!(soFieldStatus.to_date)} defaultValue={defaultDateToValue}/>
+                    <div id="to-date-input" className="col-md-6 col-sm-12 col-12">
+                        <input id="so-to-date-input" name="so-to-date-input"  className="col-12" type="date" placeholder="To Date" onChange={handleToDateChange} disabled={!(soFieldStatus.to_date)} defaultValue={defaultDateToValue}/>
                     </div>
                 </div>
             </div>

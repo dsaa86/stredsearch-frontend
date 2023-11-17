@@ -25,12 +25,12 @@ export default function SOMigratedQuestionOptions({soFieldStatus, soSearchData, 
     }, [migratedQuestion]);
 
     return(
-        <div className="col-sm">
+        <div className="col-12 col-sm-12 col-md-6">
             <div className="row">
-                <div className="col-sm-3">
+                <div className="col-2">
                     <label for="so-migrated-input" className="col">Migrated</label>
                 </div>
-                <div className="col-sm">
+                <div className="col-10">
                     <input type="checkbox" id="so-migrated-input" name="so-migrated-input" value="migrated" className="col" onChange={handleChangeMigratedQuestion} disabled={!(soFieldStatus.migrated)}/>
                 </div>
             </div>

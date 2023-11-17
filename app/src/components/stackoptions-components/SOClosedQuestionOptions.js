@@ -24,12 +24,12 @@ export default function SOClosedQuestionOptions({soFieldStatus, soSearchData, se
     }, [closedQuestion]);
 
     return(
-        <div className="col-sm">
+        <div className="col-12 col-sm-12 col-md-6">
             <div className="row">
-                <div className="col-sm-3">
+                <div className="col-2">
                     <label for="so-closed-input" className="col">Closed</label>
                 </div>
-                <div className="col-sm">
+                <div className="col-10">
                     <input type="checkbox" id="so-closed-input" name="so-closed-input" value="closed" className="col" onChange={handleChangeClosedQuestion} disabled={!(soFieldStatus.closed)} />
                 </div>
             </div>

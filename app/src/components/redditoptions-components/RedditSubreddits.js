@@ -1,5 +1,4 @@
 import {useEffect, useState} from 'react';
-
 export default function RedditSubReddits({redditSearchData, setRedditSearchData}){
 
     const [subreddit, setSubreddit] = useState("");

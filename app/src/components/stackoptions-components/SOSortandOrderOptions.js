@@ -21,12 +21,12 @@ export default function SOSortandOrderOptions({soFieldStatus, soSearchData, setS
 
     return(
         <div className="row">
-            <div className="col-sm-6">
+            <div id="sort-label-and-select" className="col-sm-6 col-12">
                 <div className="row">
-                    <div className="col-sm-6">
+                    <div id="sort-label" className="col-sm-6 col-12">
                         <label for="sort-options" className="">Sort By</label>
                     </div>
-                    <div className="col-sm">
+                    <div id="sort-select" className="col-sm-6 col-12">
                         <select id="sort-options" className="col" value={sortOptions} onChange={handleChangeSort} disabled={!(soFieldStatus.resultsSort)}>
                             <option value="activity">Activity</option>
                             <option value="votes">Votes</option>
@@ -38,12 +38,12 @@ export default function SOSortandOrderOptions({soFieldStatus, soSearchData, setS
                     </div>
                 </div>
             </div>
-            <div className="col-sm-6">
+            <div id="order-label-and-select" className="col-sm-6 col-12">
                 <div className="row">
-                    <div className="col-sm-6">
+                    <div id="order-label" className="col-sm-6 col-12">
                         <label for="order-options" className="">Order By</label>
                     </div>
-                    <div className="col-sm">
+                    <div id="order-select" className="col-sm-6 col-12">
                         <select id="order-options" className="col" value={orderOptions} onChange={handleChangeOrder} disabled={!(soFieldStatus.order)}>
                         <option value="desc">Descending</option>
                         <option value="asc">Ascending</option>

@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react';
-import '../SearchApp.css';
+import './SearchAppComponentsStyle.css';
 
 
 import StackResponseContainer from './response-components/stackoverflow/StackResponseContainer';
@@ -8,7 +8,7 @@ import SearchOptionsHeader from './generic-components/search-options-header';
 export default function StackSearchResultsContainer({soSearchResults}){
 
     return(
-        <div className="col">
+        <div className="col stack-search-results-container">
             <SearchOptionsHeader title={"Stack Overflow Results"} headerType={3}/>
             {
                 soSearchResults.length > 0 &&

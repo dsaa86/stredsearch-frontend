@@ -1,0 +1,61 @@
+.search-app-container{
+    background-color: purple;
+}
+
+/* 
+@media screen and (width < 800px){
+    .stack-options-container, .reddit-options-container, .stack-search-results-container, .reddit-search-results-container {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        padding: 10px;
+        padding-bottom: 10px;
+        border-radius: 100px;
+    }  
+} */
+
+@media screen and (width >= 800px){
+    .stack-options-container, .reddit-options-container, .stack-search-results-container, .reddit-search-results-container {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        padding: 20px;
+        padding-bottom: 10px;
+        border-radius: 10px;
+    }
+}
+
+.cache-search-container{}
+
+.stredsearch-container{
+    background-color: blue;
+}
+
+.so-reddit.picker{
+    background-color: pink;
+}
+
+.stack-options-container{
+    background-color: black;
+}
+
+.reddit-options-container{
+    background-color: yellow;
+}
+
+.search-button-container{
+    background-color: orange;
+}
+
+.search-results-container{
+    width: 100%;
+    background-color: green;
+}
+
+.stack-search-results-container{
+    background-color: brown;
+    margin-right: 5px;
+}
+
+.reddit-search-results-container{
+    background-color: red;
+    margin-left: 5px;
+}

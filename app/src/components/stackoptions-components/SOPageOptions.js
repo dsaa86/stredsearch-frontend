@@ -31,23 +31,23 @@ export default function SOPageOptions({soFieldStatus, soSearchData, setSoSearchD
 
     return(
         <div className="row">
-            <div className="col-sm-6">
+            <div id="page-size-label-and-input" className="col-sm-6 col-12">
                 <div className="row">
-                    <div className="col-sm-6">
+                    <div id="page-size-label" className="col-sm-6 col-12">
                         <label for="so-page-size-input" className="">Page Size</label>
                     </div>
-                    <div className="col-sm">
-                        <input className="col" id="so-page-size-input" name="so-page-size-input" min="1" max="100" type="number" onChange={pageSizeChangeHandler} disabled={!(soFieldStatus.page_size)} defaultValue={50}/>
+                    <div id="page-size-input" className="col-sm-6 col-12">
+                        <input className="col-12" id="so-page-size-input" name="so-page-size-input" min="1" max="100" type="number" onChange={pageSizeChangeHandler} disabled={!(soFieldStatus.page_size)} defaultValue={50}/>
                     </div>
                 </div>
             </div>
-            <div className="col-sm-6">
+            <div id="page-number-label-and-input" className="col-sm-6 col-12">
                 <div className="row">
-                    <div className="col-sm-6">
+                    <div id="page-number-label" className="col-sm-6 col-12">
                         <label for="so-page-input" className="">Page Number</label>
                     </div>
-                    <div className="col-sm">
-                        <input className="col" id="so-page-input" name="so-page-input" min="1" type="number" onChange={pageNumberChangeHandler} disabled={!(soFieldStatus.page_number)} defaultValue={1}/>
+                    <div id="page-number-input" className="col-sm-6 col-12">
+                        <input className="col-12" id="so-page-input" name="so-page-input" min="1" type="number" onChange={pageNumberChangeHandler} disabled={!(soFieldStatus.page_number)} defaultValue={1}/>
                     </div>
                 </div>
             </div>
