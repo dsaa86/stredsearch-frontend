@@ -4,7 +4,7 @@ import '../SearchApp.css';
 
 export default function SoRedditPicker({showSO, showReddit, soCheckHandler, redditCheckHandler}){
     return(
-        <>
+        <div className="row">
             <div className="col-2">
                 <label for="so-checkbox">Stack Overflow</label>
             </div>
@@ -17,6 +17,6 @@ export default function SoRedditPicker({showSO, showReddit, soCheckHandler, redd
             <div className="col-1">
                 <input type="checkbox" id="reddit-checkbox" name="reddit-checkbox" checked={showReddit} onChange={redditCheckHandler}/>
             </div>
-        </>
+        </div>
     );
 }

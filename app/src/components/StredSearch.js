@@ -5,8 +5,10 @@ import '../SearchApp.css';
 import SoRedditPicker from './SO-RedditPicker';
 import StackOptions from './StackOptions';
 import RedditOptions from './RedditOptions';
+import SearchOptionsHeader from './generic-components/search-options-header';
+import SearchButton from './SearchButton';
 
-export default function StredSearch({showReddit, setShowReddit, showSO, setShowSO, soSearchData, setSoSearchData, redditSearchData, setRedditSearchData}){
+export default function StredSearch({showReddit, setShowReddit, showSO, setShowSO, soSearchData, setSoSearchData, redditSearchData, setRedditSearchData, setSoSearchResults, setRedditSearchResults}){
 
     // const [soCategory, setSoCategory] = useState("");
     // const [soRoutes, setSoRoutes] = useState([]);
@@ -22,14 +24,8 @@ export default function StredSearch({showReddit, setShowReddit, showSO, setShowS
     return(
         <div className="stredsearch-container">
             <div className="container">
-                <div className="row">
-                    <div className="col">
-                        <h2>Which online repo would you like to search?</h2>
-                    </div>
-                </div>
-                <div class="row">
-                    <SoRedditPicker showSO={showSO} showReddit={showReddit} soCheckHandler={soCheckHandler} redditCheckHandler={redditCheckHandler}/>
-                </div>
+                <SearchOptionsHeader title={"Select Online Repos for Searching"}/>
+                <SoRedditPicker showSO={showSO} showReddit={showReddit} soCheckHandler={soCheckHandler} redditCheckHandler={redditCheckHandler}/>
             </div>
             {showSO &&
                         <StackOptions soSearchData={soSearchData} setSoSearchData={setSoSearchData}/>
@@ -37,6 +33,7 @@ export default function StredSearch({showReddit, setShowReddit, showSO, setShowS
             {showReddit &&
                 <RedditOptions redditSearchData={redditSearchData} setRedditSearchData={setRedditSearchData}/>
             }
+            <SearchButton showReddit={showReddit} showSO={showSO} setSoSearchResults={setSoSearchResults} setRedditSearchResults={setRedditSearchResults} soSearchData={soSearchData} redditSearchData={redditSearchData}/>
         </div>
     );
 }
