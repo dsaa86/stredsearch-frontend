@@ -33,8 +33,10 @@ export default function SearchButton({showReddit, showSO, setSoSearchResults, se
     };
 
     return(
-        <div className="search-button-container">
-            <button onClick={searchButtonHandler}>Search</button>
-        </div>
+            <div className="container">
+                <div className='row'>
+                    <button className="col-12 btn btn-primary" type="button" onClick={searchButtonHandler}>Search</button>
+                </div>
+            </div>
     );
 }

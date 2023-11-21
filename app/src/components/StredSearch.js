@@ -21,7 +21,7 @@ export default function StredSearch({showReddit, setShowReddit, showSO, setShowS
     return(
         <div className="stredsearch-container">
             <div className="container">
-                <SearchOptionsHeader title={"Select Online Repos for Searching"}/>
+                <SearchOptionsHeader title={"Select Online Repos for Searching"} headerType={1}/>
                 <SoRedditPicker showSO={showSO} showReddit={showReddit} soCheckHandler={soCheckHandler} redditCheckHandler={redditCheckHandler}/>
             </div>
             {showSO &&
