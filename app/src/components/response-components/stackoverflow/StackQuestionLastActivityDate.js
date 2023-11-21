@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react';
-import './StackoverflowResponseComponentsStyle.css'
+import '../../SearchAppComponentsStyle.css';
 
 
 export default function StackQuestionLastActivityDate({lastActivity}) {
@@ -11,8 +11,15 @@ export default function StackQuestionLastActivityDate({lastActivity}) {
     const lastActivityDateString = `${day}/${month}/${year}`
 
     return (
-            <div className="col stack-title stack-question-user">
-                <span>Last Activity: {lastActivityDateString}</span>
+        <>
+            <div className="row">
+                <div className='col-4'>
+                    Last Activity
+                </div>
+                <div className="col-8">
+                {lastActivityDateString}
+                </div>
             </div>
+        </>
     );
 }

@@ -2,19 +2,19 @@ import {useEffect, useState} from 'react';
 import '../../SearchAppComponentsStyle.css';
 
 
-export default function StackQuestionUser({score}) {
+export default function StackQuestionAnswerNumber({answerNumber}) {
 
     return (
-
         <>
             <div className="row">
                 <div className='col-4'>
-                    Score
+                    Total Answers
                 </div>
                 <div className="col-8">
-                    {score}
+                    {answerNumber}
                 </div>
             </div>
         </>
+        
     );
 }

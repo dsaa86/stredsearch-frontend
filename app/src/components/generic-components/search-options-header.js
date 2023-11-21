@@ -2,7 +2,7 @@ export default function SearchOptionsHeader({title, headerType=3}){
 
     return(
             <div className="row">
-                <div className="col-sm">
+                <div className="col-12">
                     { headerType === 1 ? <h1>{title}</h1> : null }
                     { headerType === 2 ? <h2>{title}</h2> : null }
                     { headerType === 3 ? <h3>{title}</h3> : null }

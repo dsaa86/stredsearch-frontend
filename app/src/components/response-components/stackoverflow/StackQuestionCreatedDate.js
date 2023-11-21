@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react';
-import './StackoverflowResponseComponentsStyle.css'
+import '../../SearchAppComponentsStyle.css';
 
 
 export default function StackQuestionCreatedDate({created}) {
@@ -10,8 +10,16 @@ export default function StackQuestionCreatedDate({created}) {
 
     const createdDateString = `${day}/${month}/${year}`
     return (
-            <div className="col stack-title stack-question-user">
-                <span>Created: {createdDateString}</span>
+
+        <>
+            <div className="row">
+                <div className='col-4'>
+                    Question Created
+                </div>
+                <div className="col-8">
+                {createdDateString}
+                </div>
             </div>
+        </>
     );
 }

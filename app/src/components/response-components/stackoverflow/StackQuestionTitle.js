@@ -1,13 +1,14 @@
 import {useEffect, useState} from 'react';
-import './StackoverflowResponseComponentsStyle.css'
+import '../../SearchAppComponentsStyle.css';
+import SearchOptionsHeader from '../../generic-components/search-options-header';
 
 
 export default function StackQuestionTitle({title, link}) {
 
     return (
         <div className="row">
-            <div className="col stack-title">
-                <a href={link} target='_blank'><h4>{ title }</h4></a>
+            <div className="col-12 stack-response-question-title">
+                <a className="stack-response-question-title-link" href={link} target='_blank'><SearchOptionsHeader title={title} headerType={4} /></a>
             </div>
         </div>
     );

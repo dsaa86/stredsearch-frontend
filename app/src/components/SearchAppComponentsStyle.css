@@ -12,25 +12,29 @@
         border-radius: 100px;
     }  
 } */
-
-@media screen and (width >= 800px){
-    .stack-options-container, .reddit-options-container, .stack-search-results-container, .reddit-search-results-container {
-        margin-top: 20px;
-        margin-bottom: 20px;
-        padding: 20px;
-        padding-bottom: 10px;
-        border-radius: 10px;
-    }
+ 
+.stack-options-container, .reddit-options-container {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 20px;
+    padding-bottom: 10px;
+    border-radius: 10px;
 }
+
 
 .cache-search-container{}
 
 .stredsearch-container{
     background-color: blue;
+    padding-bottom: 20px;
 }
 
-.so-reddit.picker{
+.so-reddit-picker{
     background-color: pink;
+    border-radius: 10px;
+    padding: 10px;
+    padding-bottom: 5px;
+    margin-top: 10px;
 }
 
 .stack-options-container{
@@ -50,12 +54,77 @@
     background-color: green;
 }
 
+.stack-search-results-container, .reddit-search-results-container {
+    padding:10px;
+}
+
 .stack-search-results-container{
     background-color: brown;
-    margin-right: 5px;
 }
 
 .reddit-search-results-container{
     background-color: red;
-    margin-left: 5px;
+}
+
+.stack-response-container{
+
+}
+
+.stack-response-question-title{
+}
+
+.stack-response-question-title-link{
+    color: white;
+    text-decoration: none; 
+}
+
+a.stack-response-question-title-link:hover{
+    color: white;
+}
+
+.stack-response-question-tags-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.stack-response-question-tag{
+    position: relative;
+    background-color:blueviolet;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 5px;
+
+}
+
+.stack-response-question-tag-span{
+    display: flex;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.stack-response-question-metadata-holder{}
+
+.stack-question-response-user-container{
+    padding: 5px;
+    margin: 5px;
+}
+
+.stack-question-accepted, .stack-question-not-accepted {
+    padding: 5px;
+    border-radius: 5px;
+    margin: 5px;
+}
+
+.stack-question-accepted{
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.stack-question-not-accepted{
+    background-color: #f8d7da;
+    color: #721c24;
 }

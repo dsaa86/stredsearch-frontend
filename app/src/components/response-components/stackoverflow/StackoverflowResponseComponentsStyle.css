@@ -28,15 +28,7 @@
     padding: 50px 0;
 }
 
-.stack-question-accepted{
-    background-color: #d4edda;
-    color: #155724;
-}
 
-.stack-question-not-accepted{
-    background-color: #f8d7da;
-    color: #721c24;
-}
 
 .stack-question-data-holder{
     margin-left:10px;
