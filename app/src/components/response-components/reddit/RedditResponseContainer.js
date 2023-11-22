@@ -1,17 +1,23 @@
-import {useEffect, useState} from 'react';
+import "../../SearchAppComponentsStyle.css";
 
-import './RedditResponseComponentsStyle.css'
+import RedditResponseSubReddit from "../reddit/RedditResponseSubReddit";
+import RedditResponseTitle from "../reddit/RedditResponseTitle";
 
-import RedditResponseSubReddit from '../reddit/RedditResponseSubReddit';
-import RedditResponseTitle from '../reddit/RedditResponseTitle';
+export default function RedditResponseContainer({ question }) {
+	const subreddit = question.question_link
+		.replace("https://www.reddit.com/r/", "")
+		.split("/")[0];
 
-export default function RedditResponseContainer({question}) {
-    const subreddit = question.question_link.replace("https://www.reddit.com/r/", "").split("/")[0];
-
-    return (
-        <div className="container reddit-response-container">
-            <RedditResponseTitle title={question.question_title} link={question.question_link}/>
-            <RedditResponseSubReddit subreddit={subreddit}/>
-        </div>
-    );
+	return (
+		<div
+			id=""
+			className="container reddit-response-container"
+		>
+			<RedditResponseTitle
+				title={question.question_title}
+				link={question.question_link}
+			/>
+			<RedditResponseSubReddit subreddit={subreddit} />
+		</div>
+	);
 }

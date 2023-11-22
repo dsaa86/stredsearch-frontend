@@ -1,5 +1,4 @@
 .search-app-container{
-    background-color: purple;
 }
 
 /* 
@@ -25,12 +24,10 @@
 .cache-search-container{}
 
 .stredsearch-container{
-    background-color: blue;
     padding-bottom: 20px;
 }
 
 .so-reddit-picker{
-    background-color: pink;
     border-radius: 10px;
     padding: 10px;
     padding-bottom: 5px;
@@ -38,20 +35,18 @@
 }
 
 .stack-options-container{
-    background-color: black;
+    border: 2px solid grey;
 }
 
 .reddit-options-container{
-    background-color: yellow;
+    border: 2px solid grey;
 }
 
 .search-button-container{
-    background-color: orange;
 }
 
 .search-results-container{
     width: 100%;
-    background-color: green;
 }
 
 .stack-search-results-container, .reddit-search-results-container {
@@ -59,15 +54,13 @@
 }
 
 .stack-search-results-container{
-    background-color: brown;
 }
 
 .reddit-search-results-container{
-    background-color: red;
 }
 
 .stack-response-container{
-
+    background-color:orange;
 }
 
 .stack-response-question-title{
@@ -127,4 +120,36 @@ a.stack-response-question-title-link:hover{
 .stack-question-not-accepted{
     background-color: #f8d7da;
     color: #721c24;
+}
+
+.reddit-response-container{
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color:black;
+}
+
+
+.reddit-response-question-subreddit-container{
+    margin: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.reddit-response-question-subreddit{
+    position: relative;
+    background-color:orange;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 5px;
+
+}
+
+.reddit-response-question-tag-span{
+    display: flex;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
 }
