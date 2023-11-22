@@ -1,5 +1,99 @@
 import axios from "axios";
 
+export const validateStackOverflowSearchParams = (soSearchData) => {
+	let stackSearchParamsAreValid = {
+		response: false,
+		invalidFields: [],
+	};
+
+	if (soSearchData.route == "question_by_tag") {
+		if (soSearchData.tagged.length >= 1) {
+			stackSearchParamsAreValid.response = true;
+		} else {
+			stackSearchParamsAreValid.response = false;
+			stackSearchParamsAreValid.invalidFields.push("Tags");
+		}
+	}
+	if (soSearchData.route == "related_questions") {
+		if (soSearchData.query.length >= 1) {
+			stackSearchParamsAreValid.response = true;
+		} else {
+			stackSearchParamsAreValid.response = false;
+			stackSearchParamsAreValid.invalidFields.push("Query");
+		}
+	}
+	if (soSearchData.route == "search") {
+		if (soSearchData.tagged.length >= 1) {
+			stackSearchParamsAreValid.response = true;
+		} else {
+			stackSearchParamsAreValid.response = false;
+			stackSearchParamsAreValid.invalidFields.push("Tags");
+		}
+		if (soSearchData.intitle.length >= 1) {
+			stackSearchParamsAreValid.response = true;
+		} else {
+			stackSearchParamsAreValid.response = false;
+			stackSearchParamsAreValid.invalidFields.push("In Title");
+		}
+	}
+	if (soSearchData.route == "advanced-search") {
+		if (soSearchData.tagged.length >= 1) {
+			stackSearchParamsAreValid.response = true;
+		} else {
+			stackSearchParamsAreValid.response = false;
+			stackSearchParamsAreValid.invalidFields.push("Tags");
+		}
+		if (soSearchData.intitle.length >= 1) {
+			stackSearchParamsAreValid.response = true;
+		} else {
+			stackSearchParamsAreValid.response = false;
+			stackSearchParamsAreValid.invalidFields.push("In Title");
+		}
+		if (soSearchData.user.length >= 1) {
+			stackSearchParamsAreValid.response = true;
+		} else {
+			stackSearchParamsAreValid.response = false;
+			stackSearchParamsAreValid.invalidFields.push("User");
+		}
+		if (soSearchData.query.length >= 1) {
+			stackSearchParamsAreValid.response = true;
+		} else {
+			stackSearchParamsAreValid.response = false;
+			stackSearchParamsAreValid.invalidFields.push("Query");
+		}
+		if (soSearchData.body.length >= 1) {
+			stackSearchParamsAreValid.response = true;
+		} else {
+			stackSearchParamsAreValid.response = false;
+			stackSearchParamsAreValid.invalidFields.push("Body");
+		}
+	}
+	return stackSearchParamsAreValid;
+};
+
+export const validateRedditSearchParams = (redditSearchData) => {
+	let redditSearchParamsAreValid = {
+		response: false,
+		invalidFields: [],
+	};
+
+	if (redditSearchData.query.length >= 1) {
+		redditSearchParamsAreValid.response = true;
+	} else {
+		redditSearchParamsAreValid.response = false;
+		redditSearchParamsAreValid.invalidFields.push("Query");
+	}
+
+	if (redditSearchData.subreddit.length >= 1) {
+		redditSearchParamsAreValid.response = true;
+	} else {
+		redditSearchParamsAreValid.response = false;
+		redditSearchParamsAreValid.invalidFields.push("Subreddit");
+	}
+
+	return redditSearchParamsAreValid;
+};
+
 export const queryStackOverflow = (
 	cancelToken,
 	setSoSearchResults,
