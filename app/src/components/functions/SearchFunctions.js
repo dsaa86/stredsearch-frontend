@@ -209,4 +209,44 @@ const asyncRequestReddit = async (url, cancelToken) => {
 	return response.data;
 };
 
-export const queryLocalSearch = () => {};
+export const queryLocalSearch = async (
+	searchParameter,
+	dataToSearch,
+	cancelToken,
+	setSearchResults,
+) => {
+	const url = `http://localhost:8000/search/${dataToSearch}/?search=${searchParameter}`;
+
+	const response = await axios
+		.get(url, {
+			cancelToken: cancelToken,
+		})
+		.then((data) => {
+			if (dataToSearch === "reddit") {
+				let redditDataCorrectedFieldTitles = [];
+				data.data.forEach((item) => {
+					const itemWithUpdatedFieldTitles = {
+						question_title: item.title,
+						question_link: item.link,
+					};
+
+					redditDataCorrectedFieldTitles.push(
+						itemWithUpdatedFieldTitles,
+					);
+				});
+				setSearchResults(redditDataCorrectedFieldTitles);
+				return true;
+			}
+
+			setSearchResults(data.data);
+			return true;
+		})
+		.catch((error) => {
+			if (axios.isCancel(error)) {
+				console.log("Request Cancelled: ", error.message);
+			} else {
+				console.log(error);
+			}
+			return false;
+		});
+};
