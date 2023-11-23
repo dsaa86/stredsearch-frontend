@@ -3,6 +3,7 @@ import "./SearchAppComponentsStyle.css";
 
 import StredSearch from "./StredSearch";
 import SearchResultsContainer from "./SearchResultsContainer";
+import LocalSearch from "./LocalSearch";
 
 const useSearchAppController = () => {
 	const [soSearchData, setSoSearchData] = useState([]);
@@ -68,6 +69,7 @@ export default function SearchApp() {
 	return (
 		<>
 			<div className="search-app-container">
+				<LocalSearch />
 				<StredSearch
 					showReddit={searchAppController.showReddit}
 					setShowReddit={searchAppController.setShowReddit}

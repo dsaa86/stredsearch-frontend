@@ -208,3 +208,5 @@ const asyncRequestReddit = async (url, cancelToken) => {
 	});
 	return response.data;
 };
+
+export const queryLocalSearch = () => {};

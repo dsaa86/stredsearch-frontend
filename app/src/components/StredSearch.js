@@ -34,9 +34,10 @@ export default function StredSearch({
 		<div className="stredsearch-container">
 			<div className="container">
 				<SearchOptionsHeader
-					title={"Select Online Repos for Searching"}
+					title={"Search Live Data on Stackoverflow and Reddit"}
 					headerType={1}
 				/>
+				<SearchOptionsHeader title={"Select Search Options"} />
 				<SoRedditPicker
 					showSO={showSO}
 					showReddit={showReddit}

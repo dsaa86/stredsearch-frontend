@@ -1,7 +1,5 @@
 TODO: Add global site search
 
-TODO: Correct Reddit question DB submission
-
 TODO: Check gutters of containers
 
 TODO: Create modals for error in search params
@@ -15,3 +13,5 @@ TODO: Create UI test with Selenium
 TODO: Implement CI through GitHub
 
 TODO: Better handling of errors during external API calls
+
+TODO: Ability to create user account and retrive past search history
