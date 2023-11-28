@@ -1,10 +1,8 @@
-TODO: Add global site search
-
 TODO: Check gutters of containers
 
-TODO: Create modals for error in search params
+FIXME: Create modals for error in search params
 
-TODO: Check styling of SO results box
+FIXME: Check styling of SO results box
 
 TODO: Create test suite for React
 
@@ -15,3 +13,9 @@ TODO: Implement CI through GitHub
 TODO: Better handling of errors during external API calls
 
 TODO: Ability to create user account and retrive past search history
+
+FIXME: Local search Stack Overflow tags not rendering 'search.StackTags.none'
+
+TODO: Review ALL REACT code and refactor to follow single-purpose paradigm
+
+TODO: Include some default DB population questions / data for demonstration purposes

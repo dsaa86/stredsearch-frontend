@@ -4,6 +4,9 @@ import "./SearchAppComponentsStyle.css";
 import StredSearch from "./StredSearch";
 import SearchResultsContainer from "./SearchResultsContainer";
 import LocalSearch from "./LocalSearch";
+import SiteHeader from "./site-header/SiteHeader";
+import LoginForm from "./site-header/LoginForm";
+import RegisterForm from "./site-header/RegisterForm";
 
 const useSearchAppController = () => {
 	const [soSearchData, setSoSearchData] = useState([]);
@@ -14,6 +17,10 @@ const useSearchAppController = () => {
 
 	const [soSearchResults, setSoSearchResults] = useState([]);
 	const [redditSearchResults, setRedditSearchResults] = useState([]);
+
+	const [loginStatus, setLoginStatus] = useState(false);
+	const [showLoginForm, setShowLoginForm] = useState(false);
+	const [showRegisterForm, setShowRegisterForm] = useState(false);
 
 	useEffect(() => {
 		setSoSearchData({
@@ -47,6 +54,22 @@ const useSearchAppController = () => {
 		});
 	}, []);
 
+	useEffect(() => {
+		const keyPressHandler = (event) => {
+			if (event.key == "Escape") {
+				event.preventDefault();
+				setShowLoginForm(false);
+				setShowRegisterForm(false);
+			}
+		};
+
+		document.addEventListener("keydown", keyPressHandler);
+
+		return () => {
+			document.removeEventListener("keydown", keyPressHandler);
+		};
+	}, []);
+
 	return {
 		soSearchData: soSearchData,
 		setSoSearchData: setSoSearchData,
@@ -60,6 +83,12 @@ const useSearchAppController = () => {
 		setSoSearchResults: setSoSearchResults,
 		redditSearchResults: redditSearchResults,
 		setRedditSearchResults: setRedditSearchResults,
+		loginStatus: loginStatus,
+		setLoginStatus: setLoginStatus,
+		showLoginForm: showLoginForm,
+		setShowLoginForm: setShowLoginForm,
+		showRegisterForm: showRegisterForm,
+		setShowRegisterForm: setShowRegisterForm,
 	};
 };
 
@@ -69,34 +98,75 @@ export default function SearchApp() {
 	return (
 		<>
 			<div className="search-app-container">
-				<LocalSearch />
-				<StredSearch
-					showReddit={searchAppController.showReddit}
-					setShowReddit={searchAppController.setShowReddit}
-					showSO={searchAppController.showSO}
-					setShowSO={searchAppController.setShowSO}
-					soSearchData={searchAppController.soSearchData}
-					setSoSearchData={searchAppController.setSoSearchData}
-					redditSearchData={searchAppController.redditSearchData}
-					setRedditSearchData={
-						searchAppController.setRedditSearchData
+				(searchAppController.showRegisterForm ||
+				searchAppController.showLoginForm) && (
+				<div
+					className={
+						(searchAppController.showLoginForm ||
+							searchAppController.showRegisterForm) &&
+						"login-register-form-holder"
 					}
-					setSoSearchResults={searchAppController.setSoSearchResults}
-					setRedditSearchResults={
-						searchAppController.setRedditSearchResults
-					}
-					searchButtonActive={searchButtonActive}
-					setSearchButtonActive={setSearchButtonActive}
-				/>
+				>
+					{searchAppController.showRegisterForm && (
+						<>
+							<RegisterForm
+								setLoginStatus={
+									searchAppController.setLoginStatus
+								}
+							/>
+						</>
+					)}
+					{searchAppController.showLoginForm && (
+						<>
+							<LoginForm
+								setLoginStatus={
+									searchAppController.setLoginStatus
+								}
+							/>
+						</>
+					)}
+				</div>
+				)
+				<div className="search-functions-container">
+					<SiteHeader
+						loginStatus={searchAppController.loginStatus}
+						setLoginStatus={searchAppController.setLoginStatus}
+						setShowLoginForm={searchAppController.setShowLoginForm}
+						setShowRegisterForm={
+							searchAppController.setShowRegisterForm
+						}
+					/>
+					<LocalSearch />
+					<StredSearch
+						showReddit={searchAppController.showReddit}
+						setShowReddit={searchAppController.setShowReddit}
+						showSO={searchAppController.showSO}
+						setShowSO={searchAppController.setShowSO}
+						soSearchData={searchAppController.soSearchData}
+						setSoSearchData={searchAppController.setSoSearchData}
+						redditSearchData={searchAppController.redditSearchData}
+						setRedditSearchData={
+							searchAppController.setRedditSearchData
+						}
+						setSoSearchResults={
+							searchAppController.setSoSearchResults
+						}
+						setRedditSearchResults={
+							searchAppController.setRedditSearchResults
+						}
+						searchButtonActive={searchButtonActive}
+						setSearchButtonActive={setSearchButtonActive}
+					/>
 
-				<SearchResultsContainer
-					soSearchResults={searchAppController.soSearchResults}
-					redditSearchResults={
-						searchAppController.redditSearchResults
-					}
-					setSearchButtonActive={setSearchButtonActive}
-					searchButtonActive={searchButtonActive}
-				/>
+					<SearchResultsContainer
+						soSearchResults={searchAppController.soSearchResults}
+						redditSearchResults={
+							searchAppController.redditSearchResults
+						}
+						setSearchButtonActive={setSearchButtonActive}
+						searchButtonActive={searchButtonActive}
+					/>
+				</div>
 			</div>
 		</>
 	);
