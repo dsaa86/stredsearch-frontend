@@ -40,6 +40,10 @@
     margin-bottom: 5px;
 }
 
+.form-alert-container{
+    padding-top: 20px;
+}
+
 .stack-options-container, .reddit-options-container {
     margin-top: 20px;
     margin-bottom: 20px;

@@ -1,9 +1,21 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 import "../SearchAppComponentsStyle.css";
 import FormButton from "./FormButton";
 import FormInput from "./FormInput";
+import FormAlertContainer from "./FormAlertContainer";
+
+import {
+	handleRegisterUserToStredSearch,
+	validateFormSubmission,
+	handleUserLoginToStredSearch,
+} from "../functions/LoginLogoutFunctions";
 
 export default function RegisterForm({ setLoginStatus }) {
+	let registerCancelToken;
+
+	const [errorsRendered, setErrorsRendered] = useState(0);
+
 	const [formState, setFormState] = useState({
 		register_username: "",
 		register_email: "",
@@ -11,8 +23,78 @@ export default function RegisterForm({ setLoginStatus }) {
 		register_password_confirm: "",
 	});
 
+	const [formInvalid, setFormInvalid] = useState({
+		error: {
+			blank: "",
+		},
+		valid: true,
+		attempt: 0,
+	});
+
+	useEffect(() => {}, [formInvalid]);
+
 	const registerFormSubmit = () => {
-		console.log(formState);
+		setFormInvalid({
+			error: {
+				blank: "",
+			},
+			valid: true,
+			attempt: formInvalid.attempt + 1,
+		});
+
+		const validatedFormSubmission = validateFormSubmission(formState);
+
+		// user needs to update their information in the form
+		if (!validatedFormSubmission.valid) {
+			setFormInvalid(validatedFormSubmission);
+			return;
+		}
+
+		//let's register the user
+		if (registerCancelToken) {
+			registerCancelToken.cancel("Operation canceled by the user.");
+		}
+
+		registerCancelToken = axios.CancelToken.source();
+
+		const url = "http://localhost:8000/register/";
+
+		handleRegisterUserToStredSearch(url, registerCancelToken, formState, [
+			["Content-Type", "multipart/form-data"],
+			["cancelToken", registerCancelToken.token],
+		])
+			.then((response) => {
+				if (response.status === 201) {
+					// user has been registered successfully, let's log them in
+					handleUserLoginToStredSearch(
+						response.data.username,
+						formState.register_password,
+					)
+						.then((response) => {
+							sessionStorage.setItem(
+								"token",
+								response.data.token,
+							);
+							setLoginStatus(true);
+						})
+						.catch((errors) => {});
+				}
+			})
+			.catch((error) => {
+				let response = {
+					error: {},
+					valid: false,
+				};
+				// check if username is valid
+				if (error.response.status === 409) {
+					response.error.existinguser =
+						"Your username or email already exists. Please try again.";
+				} else {
+					response.error.servererror =
+						"Bad server request. Try again later.";
+				}
+				setFormInvalid(response);
+			});
 	};
 
 	return (
@@ -76,6 +158,12 @@ export default function RegisterForm({ setLoginStatus }) {
 					label={"Register"}
 					id={"register-submit-button"}
 					onClick={registerFormSubmit}
+				/>
+
+				<FormAlertContainer
+					formInvalid={formInvalid}
+					errorsRendered={errorsRendered}
+					setErrorsRendered={setErrorsRendered}
 				/>
 			</form>
 		</div>

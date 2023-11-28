@@ -1,12 +1,10 @@
-import { useEffect, useState } from "react";
-import Axios from "axios";
 import "./SearchAppComponentsStyle.css";
 
-import SoRedditPicker from "./SO-RedditPicker";
-import StackOptions from "./StackOptions";
 import RedditOptions from "./RedditOptions";
-import SearchOptionsHeader from "./generic-components/search-options-header";
+import SoRedditPicker from "./SO-RedditPicker";
 import SearchButton from "./SearchButton";
+import StackOptions from "./StackOptions";
+import SearchOptionsHeader from "./generic-components/search-options-header";
 
 export default function StredSearch({
 	showReddit,
