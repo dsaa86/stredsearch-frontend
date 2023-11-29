@@ -1,5 +1,4 @@
 import "../SearchAppComponentsStyle.css";
-import SearchOptionsHeader from "../generic-components/search-options-header";
 import LoginButton from "./LoginButton";
 import LogoutButton from "./LogoutButton";
 import RegisterButton from "./RegisterButton";
@@ -23,7 +22,10 @@ export default function LoginLogoutButtonContainer({
 				loginStatus={loginStatus}
 				setShowRegisterForm={setShowRegisterForm}
 			/>
-			<LogoutButton loginStatus={loginStatus} />
+			<LogoutButton
+				loginStatus={loginStatus}
+				setLoginStatus={setLoginStatus}
+			/>
 		</div>
 	);
 }

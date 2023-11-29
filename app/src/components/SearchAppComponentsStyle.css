@@ -186,6 +186,10 @@ a.stack-response-question-title-link:hover{
     justify-content: center;
 }
 
+#site-header-container{
+    padding-bottom: 50px;
+}
+
 
 .site-header{
     width: 100%;
@@ -193,13 +197,26 @@ a.stack-response-question-title-link:hover{
     background-color: #f8f9fa;
     display: flex;
     position: relative;
+    padding-left: 50px;
 }
 
-.login-logout-button-container{
+#button-and-greeting-container{
     position: absolute;
     height: 100%;
     display: flex;
     right: 0px;
+    padding-right: 40px;
+}
+
+.login-logout-button-container, #greeting-container{
+    height: 100%;
+    display: flex;
+}
+
+#greeting-container{
+    align-items: center;
+    justify-content: center;
+    padding-right: 20px;
 }
 
 #login-button, #register-button, #logout-button{

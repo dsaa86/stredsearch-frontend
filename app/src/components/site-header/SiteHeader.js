@@ -1,12 +1,13 @@
 import "../SearchAppComponentsStyle.css";
 import SearchOptionsHeader from "../generic-components/search-options-header";
-import LoginLogoutButtonContainer from "./Login-LogoutContainer";
+import ButtonAndGreetingContainer from "./ButtonAndGreetingContainer";
 
 export default function SiteHeader({
 	loginStatus,
 	setLoginStatus,
 	setShowLoginForm,
 	setShowRegisterForm,
+	userDetails,
 }) {
 	return (
 		<div id="site-header-container">
@@ -15,11 +16,12 @@ export default function SiteHeader({
 					title={"StredSearch"}
 					headerType={1}
 				/>
-				<LoginLogoutButtonContainer
+				<ButtonAndGreetingContainer
 					loginStatus={loginStatus}
 					setLoginStatus={setLoginStatus}
 					setShowLoginForm={setShowLoginForm}
 					setShowRegisterForm={setShowRegisterForm}
+					userDetails={userDetails}
 				/>
 			</div>
 		</div>

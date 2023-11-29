@@ -19,6 +19,7 @@ const useSearchAppController = () => {
 	const [redditSearchResults, setRedditSearchResults] = useState([]);
 
 	const [loginStatus, setLoginStatus] = useState(false);
+	const [userDetails, setUserDetails] = useState(false);
 	const [showLoginForm, setShowLoginForm] = useState(false);
 	const [showRegisterForm, setShowRegisterForm] = useState(false);
 
@@ -85,6 +86,8 @@ const useSearchAppController = () => {
 		setRedditSearchResults: setRedditSearchResults,
 		loginStatus: loginStatus,
 		setLoginStatus: setLoginStatus,
+		userDetails: userDetails,
+		setUserDetails: setUserDetails,
 		showLoginForm: showLoginForm,
 		setShowLoginForm: setShowLoginForm,
 		showRegisterForm: showRegisterForm,
@@ -113,6 +116,13 @@ export default function SearchApp() {
 								setLoginStatus={
 									searchAppController.setLoginStatus
 								}
+								setShowRegisterForm={
+									searchAppController.setShowRegisterForm
+								}
+								userDetails={searchAppController.userDetails}
+								setUserDetails={
+									searchAppController.setUserDetails
+								}
 							/>
 						</>
 					)}
@@ -121,6 +131,13 @@ export default function SearchApp() {
 							<LoginForm
 								setLoginStatus={
 									searchAppController.setLoginStatus
+								}
+								setShowLoginForm={
+									searchAppController.setShowLoginForm
+								}
+								userDetails={searchAppController.userDetails}
+								setUserDetails={
+									searchAppController.setUserDetails
 								}
 							/>
 						</>
@@ -135,6 +152,7 @@ export default function SearchApp() {
 						setShowRegisterForm={
 							searchAppController.setShowRegisterForm
 						}
+						userDetails={searchAppController.userDetails}
 					/>
 					<LocalSearch />
 					<StredSearch

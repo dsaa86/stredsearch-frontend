@@ -1,89 +1,203 @@
 import axios from "axios";
 
-export const validateFormSubmission = (formState) => {
+const findMissingParamsAndThrowError = (paramList, message) => {
+	paramList.forEach((param) => {
+		if (param === undefined) {
+			throw new Error(message);
+		}
+	});
+	return true;
+};
+
+const validateInputSubmission = (params) => {
+	// params structure differs based on type selected
+	let response;
+	if (params.type === "simple") {
+		findMissingParamsAndThrowError(
+			[
+				params.input,
+				params.operator,
+				params.value,
+				params.errorKey,
+				params.errorMessage,
+			],
+			"Missing parameters for validation type 'simple'. Params should be: input, operator, value, errorKey, errorMessage.",
+		);
+		response = validateInputSubmissionSimple(params);
+	} else if (params.type === "regexp") {
+		findMissingParamsAndThrowError(
+			[params.input, params.regexp, params.errorKey, params.errorMessage],
+			"Missing parameters for validation type 'regexp'. Params should be: input, regexp, errorKey, errorMessage.",
+		);
+		response = validateInputSubmissionRegExp(params);
+	} else if (params.type === "includes") {
+		findMissingParamsAndThrowError(
+			[
+				params.input,
+				params.includes,
+				params.errorKey,
+				params.errorMessage,
+			],
+			"Missing parameters for validation type 'includes'. Params should be: input, includes, errorKey, errorMessage.",
+		);
+		response = validateInputSubmissionIncludes(params);
+	}
+	return response;
+};
+
+const validateInputSubmissionSimple = (params) => {
+	// example:
+	// params = {
+	// 	input: val,
+	// 	operator: ">",
+	// 	value: 0,
+	// 	error key: "username_minlength",
+	// 	error message: "Username must be at least 3 characters long.",
+	// }
+
+	let response = {
+		passed: false,
+		error: {},
+	};
+
+	if (params.operator === ">") {
+		if (params.input > params.value) {
+			response.error[params.errorKey] = params.errorMessage;
+		}
+	} else if (params.operator === "<") {
+		if (params.input < params.value) {
+			response.error[params.errorKey] = params.errorMessage;
+		}
+	} else if (params.operator === ">=") {
+		if (params.input >= params.value) {
+			response.error[params.errorKey] = params.errorMessage;
+		}
+	} else if (params.operator === "<=") {
+		if (params.input <= params.value) {
+			response.error[params.errorKey] = params.errorMessage;
+		}
+	} else if (params.operator === "=") {
+		if (params.input === params.value) {
+			response.error[params.errorKey] = params.errorMessage;
+		}
+	} else if (params.operator === "!=") {
+		if (params.input !== params.value) {
+			response.error[params.errorKey] = params.errorMessage;
+		}
+	}
+
+	if (Object.keys(response.error).length === 0) {
+		response.passed = true;
+	}
+
+	return response;
+};
+
+const validateInputSubmissionRegExp = (params) => {
+	// example:
+	// params = {
+	// 	input: val,
+	// 	regexp: "",
+	// 	error key: "username_minlength",
+	// 	error message: "Username must be at least 3 characters long.",
+	// }
+
+	let response = {
+		passed: false,
+		error: {},
+	};
+
+	if (!params.regexp.test(params.input)) {
+		response.error[params.errorKey] = params.errorMessage;
+		return response;
+	}
+
+	response.passed = true;
+	return response;
+};
+
+const validateInputSubmissionIncludes = (params) => {
+	// example:
+	// params = {
+	// 	input: val,
+	// 	includes: ">"
+	// 	error key: "username_minlength",
+	// 	error message: "Username must be at least 3 characters long.",
+	// }
+
+	let response = {
+		passed: false,
+		error: {},
+	};
+
+	//catch an edge case for email addresses
+	if (typeof params.includes === "object") {
+		console.log(params.includes);
+		const strAfterAt = params.input.split(params.includes[0])[1];
+		console.log(strAfterAt);
+		try {
+			const dotPresent = strAfterAt.includes(params.includes[1]);
+			console.log(dotPresent);
+			if (!dotPresent) {
+				response.error[params.errorKey] = params.errorMessage;
+				return response;
+			}
+		} catch (error) {
+			if (strAfterAt === undefined) {
+				response.error["email_atpresent"] =
+					"Email must contain an @ sign.";
+				return response;
+			}
+		}
+		response.passed = true;
+		return response;
+	}
+
+	if (!params.input.includes(params.includes)) {
+		response.error[params.errorKey] = params.errorMessage;
+		return response;
+	}
+
+	response.passed = true;
+	return response;
+};
+
+export const validateFormSubmission = (validationTests) => {
+	// example: validationTests = [
+	// 	{
+	// 		type: "simple",
+	// 		input: formState.register_username.length,
+	// 		operator: ">",
+	// 		value: 3,
+	// 		errorKey: "username_minlength",
+	// 		errorMessage: "Username must be at least 3 characters long.",
+	// 	}, {
+	// 		type: "regexp",
+	// 		input: formState.register_email,
+	// 		regexp: /^[a-zA-Z0-9_]*$/,
+	// 		errorKey: "username_format",
+	// 		errorMessage: "Username can only contain letters, numbers, and underscores.",
+	// 	}, {
+	// 		type: "includes",
+	// 		input: formState.register_email,
+	// 		includes: "@",
+	// 		errorKey: "email_atpresent",
+	// 		errorMessage: "Email must contain an @ sign.",
+	// 	}
+	// ];
+
 	let response = {
 		error: {},
 		valid: false,
 	};
-	// check if username is valid
-	if (formState.register_username.length < 3) {
-		response.error.username_minlength =
-			"Username must be at least 3 characters long.";
-	}
-	if (formState.register_username.length > 20) {
-		response.error.username_maxlength =
-			"Username cannot be more than 20 characters long.";
-	}
-	const usernameRegex = /^[a-zA-Z0-9_]*$/;
-	if (!usernameRegex.test(formState.register_username)) {
-		response.error.username_format =
-			"Username can only contain letters, numbers, and underscores.";
-	}
 
-	// check if email is valid
-	const atSignPresent = formState.register_email.includes("@");
-	if (!atSignPresent) {
-		response.error.email_atpresent = "Email must contain an @ sign.";
-	}
-	const strAfterAt = formState.register_email.split("@")[1];
-	// if there is no @ sign in the email address, strAfterAt will be undefined and an error will be returned - the try-catch block deals with this.
-	try {
-		const dotPresent = strAfterAt.includes(".");
-		if (!dotPresent) {
-			response.error.email_domainpresent =
-				"Email must contain a fully qualified domain after the @ sign.";
+	validationTests.forEach((test) => {
+		const validationResult = validateInputSubmission(test);
+
+		if (!validationResult.passed) {
+			response.error = { ...response.error, ...validationResult.error };
 		}
-	} catch (error) {
-		if (strAfterAt === undefined) {
-			response.error.email_atpresent = "Email must contain an @ sign.";
-		}
-	}
-
-	const strBeforeAt = formState.register_email.split("@")[0];
-	const strBeforeAtRegex = /^[a-zA-Z0-9_]*$/;
-	if (!strBeforeAtRegex.test(strBeforeAt)) {
-		response.error.email_identifierformat =
-			"Email must contain only letters, numbers, and underscores before the @ sign.";
-	}
-	// check if password is valid
-	if (formState.register_password.length < 8) {
-		response.error.password_minlength =
-			"Password must be at least 8 characters long.";
-	}
-	if (formState.register_password.length > 30) {
-		response.error.password_maxlength =
-			"Password cannot be more than 20 characters long.";
-	}
-	const passwordAlphaNumericRegex = /^[a-zA-Z0-9_!£$%^&*(){}:;@~'#<>?,.]*$/;
-	if (!passwordAlphaNumericRegex.test(formState.register_password)) {
-		response.error.password_format =
-			"Password can only contain letters, numbers, and the following special characters: !£$%^&*(){}:;@~'#<>?,.";
-	}
-	const passwordUpperCase = /[A-Z]/;
-	if (!passwordUpperCase.test(formState.register_password)) {
-		response.error.password_uppercase =
-			"Password must contain at least one uppercase letter.";
-	}
-	const passwordLowerCase = /[a-z]/;
-	if (!passwordLowerCase.test(formState.register_password)) {
-		response.error.password_lowercase =
-			"Password must contain at least one lowercase letter.";
-	}
-	const passwordNumber = /[0-9]/;
-	if (!passwordNumber.test(formState.register_password)) {
-		response.error.password_number =
-			"Password must contain at least one number.";
-	}
-	const passwordSpecial = /[_!£$%&*(){}[\]:;@~'#<>?,.]/;
-	if (!passwordSpecial.test(formState.register_password)) {
-		response.error.password_special =
-			"Password must contain at least one of the following special characters: _!£$%^&*(){}[]:;@~'#<>?,.";
-	}
-
-	// check if password_confirm is valid
-	if (formState.register_password_confirm !== formState.register_password) {
-		response.error.password_confirm = "Passwords must match.";
-	}
+	});
 
 	if (Object.keys(response.error).length === 0) {
 		response.valid = true;
@@ -107,14 +221,18 @@ export const handleRegisterUserToStredSearch = (
 
 	const headerData = buildAxiosPostData(headers);
 
-	return registerUserOnStredSearch(url, postData, headerData);
+	return registerUserOnStredSearchAsync(url, postData, headerData);
 };
 
-const registerUserOnStredSearch = async (url, data, headers) => {
+const registerUserOnStredSearchAsync = async (url, data, headers) => {
 	return await axios.post(url, data, headers);
 };
 
-export const handleUserLoginToStredSearch = (username, password) => {
+export const handleUserLoginToStredSearch = (
+	username,
+	password,
+	cancelToken,
+) => {
 	const url = "http://localhost:8000/api-token-auth/";
 
 	const postData = buildAxiosPostData([
@@ -126,11 +244,27 @@ export const handleUserLoginToStredSearch = (username, password) => {
 		["Content-Type", "multipart/form-data"],
 	]);
 
-	return loginUserOnStredSearch(postData, headerData);
+	return loginUserOnStredSearchAsync(url, postData, headerData, cancelToken);
 };
 
-const loginUserOnStredSearch = async (url, data, headers) => {
-	return await axios.post(url, data, headers);
+const loginUserOnStredSearchAsync = async (url, data, headers, cancelToken) => {
+	return await axios.post(url, data, {
+		headers,
+		cancelToken: cancelToken.token,
+	});
+};
+
+export const handleGetUserDetailsFromServer = (token) => {
+	const url = "http://localhost:8000/get-details/";
+	const headers = {
+		Authorization: `Token ${token}`,
+	};
+
+	return getUserDetailsFromServerAsync(url, headers);
+};
+
+const getUserDetailsFromServerAsync = async (url, headers) => {
+	return await axios.get(url, { headers });
 };
 
 const buildAxiosPostData = (data) => {
