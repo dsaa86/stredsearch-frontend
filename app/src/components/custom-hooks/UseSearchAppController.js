@@ -15,6 +15,8 @@ const useSearchAppController = () => {
 	const [showLoginForm, setShowLoginForm] = useState(false);
 	const [showRegisterForm, setShowRegisterForm] = useState(false);
 
+	const [searchButtonActive, setSearchButtonActive] = useState(true);
+
 	useEffect(() => {
 		setSoSearchData({
 			category: "questions",
@@ -84,6 +86,8 @@ const useSearchAppController = () => {
 		setShowLoginForm: setShowLoginForm,
 		showRegisterForm: showRegisterForm,
 		setShowRegisterForm: setShowRegisterForm,
+		searchButtonActive: searchButtonActive,
+		setSearchButtonActive: setSearchButtonActive,
 	};
 };
 
