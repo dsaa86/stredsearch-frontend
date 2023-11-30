@@ -1,43 +1,24 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
 import "./SearchAppComponentsStyle.css";
 
+import SearchResultsContainer from "./SearchResultsContainer";
+import { performLocalSearch } from "./functions/LocalSearchFunctions";
 import SearchOptionsHeader from "./generic-components/search-options-header";
 import LocalSearchFields from "./local-search/LocalSearchFields";
-import { queryLocalSearch } from "./functions/SearchFunctions";
-import SearchResultsContainer from "./SearchResultsContainer";
+
+import useLocalSearchData from "./custom-hooks/LocalSearch/UseLocalSearchData";
 
 export default function LocalSearch() {
+	const localSearchData = useLocalSearchData();
 	let stackCancelTokenSource;
 	let redditCancelTokenSource;
-	const [soLocalSearchData, setSoLocalSearchData] = useState({});
-	const [redditLocalSearchData, setRedditLocalSearchData] = useState({});
-	const [searchBoxValue, setSearchBoxValue] = useState("");
-	const [searchButtonActive, setSearchButtonActive] = useState(true);
 
 	const localSearchButtonHandler = () => {
-		if (stackCancelTokenSource) {
-			stackCancelTokenSource.cancel("Operation canceled by the user.");
-		}
-		stackCancelTokenSource = axios.CancelToken.source();
-
-		if (redditCancelTokenSource) {
-			redditCancelTokenSource.cancel("Operation canceled by the user.");
-		}
-		redditCancelTokenSource = axios.CancelToken.source();
-
-		const stackSearchDataReturned = queryLocalSearch(
-			searchBoxValue,
-			"stackoverflow",
-			stackCancelTokenSource.token,
-			setSoLocalSearchData,
-		);
-
-		const redditSearchDataReturned = queryLocalSearch(
-			searchBoxValue,
-			"reddit",
-			redditCancelTokenSource.token,
-			setRedditLocalSearchData,
+		performLocalSearch(
+			stackCancelTokenSource,
+			redditCancelTokenSource,
+			localSearchData.searchBoxValue,
+			localSearchData.setSoLocalSearchData,
+			localSearchData.setRedditLocalSearchData,
 		);
 	};
 
@@ -53,13 +34,13 @@ export default function LocalSearch() {
 			</div>
 			<LocalSearchFields
 				localSearchButtonHandler={localSearchButtonHandler}
-				setSearchBoxValue={setSearchBoxValue}
+				setSearchBoxValue={localSearchData.setSearchBoxValue}
 			/>
 			<SearchResultsContainer
-				soSearchResults={soLocalSearchData}
-				redditSearchResults={redditLocalSearchData}
-				setSearchButtonActive={setSearchButtonActive}
-				searchButtonActive={searchButtonActive}
+				soSearchResults={localSearchData.soLocalSearchData}
+				redditSearchResults={localSearchData.redditLocalSearchData}
+				setSearchButtonActive={localSearchData.setSearchButtonActive}
+				searchButtonActive={localSearchData.searchButtonActive}
 			/>
 		</div>
 	);

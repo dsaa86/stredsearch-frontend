@@ -1,25 +1,83 @@
-import {useEffect, useState} from 'react';
-import './StackOptionsStyle.css';
+import "./StackOptionsStyle.css";
 
-import SOAcceptedAnswerOptions from './SOAcceptedAnswerOptions';
-import SOClosedQuestionOptions from './SOClosedQuestionOptions';
-import SOMigratedQuestionOptions from './SOMigratedQuestionOptions';
-import SOHasWikiOptions from './SOHasWikiOptions';
+import useSOAcceptedAnswerOptions from "../custom-hooks/SOTickBoxOptionsContainer/UseSOAcceptedAnswerOptions";
+import useSOClosedQuestionOptions from "../custom-hooks/SOTickBoxOptionsContainer/UseSOClosedQuestionOptions";
+import useSOMigratedQuestionsOptions from "../custom-hooks/SOTickBoxOptionsContainer/UseSOMigratedQuestionsOptions";
+import useSOHasWikiOptions from "../custom-hooks/SOTickBoxOptionsContainer/UseSOHasWikiOptions";
+import SOTickBoxOptionsInput from "./SOTickBoxOptionsInput";
 
-export default function SOTickBoxOptionsContainer({soFieldStatus, soSearchData, setSoSearchData}){
+export default function SOTickBoxOptionsContainer({
+	soFieldStatus,
+	soSearchData,
+	setSoSearchData,
+}) {
+	const useSoAcceptedAnswerOptions = useSOAcceptedAnswerOptions(
+		soSearchData,
+		setSoSearchData,
+	);
 
-    return(
-        <div className="row">
-            <div className="col-sm-3 col-0"></div>
-            <div className="col-sm-9">
-                <div className="row">
-                    <SOAcceptedAnswerOptions soFieldStatus={soFieldStatus} soSearchData={soSearchData} setSoSearchData={setSoSearchData} />
-                    <SOClosedQuestionOptions soFieldStatus={soFieldStatus} soSearchData={soSearchData} setSoSearchData={setSoSearchData} />
-                    <SOMigratedQuestionOptions soFieldStatus={soFieldStatus} soSearchData={soSearchData} setSoSearchData={setSoSearchData} />
-                    <SOHasWikiOptions soFieldStatus={soFieldStatus} soSearchData={soSearchData} setSoSearchData={setSoSearchData} />
-                </div>
-            </div>
-        </div>
-    );
+	const useSoMigratedQuestionsOptions = useSOMigratedQuestionsOptions(
+		soSearchData,
+		setSoSearchData,
+	);
 
+	const useSoHasWikiOptions = useSOHasWikiOptions(
+		soSearchData,
+		setSoSearchData,
+	);
+
+	const useSoClosedQuestionOptions = useSOClosedQuestionOptions(
+		soSearchData,
+		setSoSearchData,
+	);
+
+	const handleChangeAcceptedAnswer = (e) => {
+		useSoAcceptedAnswerOptions.setAcceptedAnswer(e.target.checked);
+	};
+
+	const handleChangeMigratedQuestion = (e) => {
+		useSoMigratedQuestionsOptions.setMigratedQuestion(e.target.checked);
+	};
+
+	const handleChangeWikiOption = (e) => {
+		useSoHasWikiOptions.setWiki(e.target.checked);
+	};
+
+	const handleChangeClosedQuestion = (e) => {
+		useSoClosedQuestionOptions.setClosedQuestion(e.target.checked);
+	};
+
+	return (
+		<div className="row">
+			<div className="col-sm-3 col-0"></div>
+			<div className="col-sm-9">
+				<div className="row">
+					<SOTickBoxOptionsInput
+						identifier={"so-accepted"}
+						formattedIdentifier={"Accepted"}
+						disabledState={soFieldStatus.accepted}
+						onChangeHandler={handleChangeAcceptedAnswer}
+					/>
+					<SOTickBoxOptionsInput
+						identifier={"so-closed"}
+						formattedIdentifier={"Closed"}
+						disabledState={soFieldStatus.closed}
+						onChangeHandler={handleChangeClosedQuestion}
+					/>
+					<SOTickBoxOptionsInput
+						identifier={"so-migrated"}
+						formattedIdentifier={"Migrated"}
+						disabledState={soFieldStatus.migrated}
+						onChangeHandler={handleChangeMigratedQuestion}
+					/>
+					<SOTickBoxOptionsInput
+						identifier={"so-wiki"}
+						formattedIdentifier={"Wiki"}
+						disabledState={soFieldStatus.wiki}
+						onChangeHandler={handleChangeWikiOption}
+					/>
+				</div>
+			</div>
+		</div>
+	);
 }

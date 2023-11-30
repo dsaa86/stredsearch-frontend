@@ -4,16 +4,11 @@ import { useEffect, useState } from "react";
 import "./SearchAppComponentsStyle.css";
 
 import SearchOptionsHeader from "./generic-components/search-options-header";
-import SORouteSelect from "./stackoptions-components/SORouteSelect";
-import SOPageOptions from "./stackoptions-components/SOPageOptions";
 import SODateOptions from "./stackoptions-components/SODateOptions";
+import SOOptionsTextInput from "./stackoptions-components/SOOptionsTextInput";
+import SOPageOptions from "./stackoptions-components/SOPageOptions";
+import SORouteSelect from "./stackoptions-components/SORouteSelect";
 import SOSortandOrderOptions from "./stackoptions-components/SOSortandOrderOptions";
-import SOTagsOptions from "./stackoptions-components/SOTagsOptions";
-import SONotTaggedOptions from "./stackoptions-components/SONotTaggedOptions";
-import SOInTitleOptions from "./stackoptions-components/SOInTitleOptions";
-import SOUserOptions from "./stackoptions-components/SOUserOptions";
-import SOQueryOptions from "./stackoptions-components/SOQueryOptions";
-import SOBodyOptions from "./stackoptions-components/SOBodyOptions";
 import SOTickBoxOptionsContainer from "./stackoptions-components/SOTickBoxOptionsContainer";
 
 const fieldStatus = {
@@ -133,35 +128,53 @@ export default function StackOptions({
 				soSearchData={soSearchData}
 				setSoSearchData={setSoSearchData}
 			/>
-			<SOTagsOptions
-				soFieldStatus={soFieldStatus}
+			<SOOptionsTextInput
 				soSearchData={soSearchData}
 				setSoSearchData={setSoSearchData}
+				changeIdentifier={"tagged"}
+				disabledStatus={soFieldStatus.tagged}
+				identifier={"so-tag"}
+				identifierLabel={"Question Tags"}
 			/>
-			<SONotTaggedOptions
-				soFieldStatus={soFieldStatus}
+			<SOOptionsTextInput
 				soSearchData={soSearchData}
 				setSoSearchData={setSoSearchData}
+				changeIdentifier={"nottagged"}
+				disabledStatus={soFieldStatus.nottagged}
+				identifier={"so-not-tagged"}
+				identifierLabel={"Question Not Tagged"}
 			/>
-			<SOInTitleOptions
-				soFieldStatus={soFieldStatus}
+			<SOOptionsTextInput
 				soSearchData={soSearchData}
 				setSoSearchData={setSoSearchData}
+				changeIdentifier={"intitle"}
+				disabledStatus={soFieldStatus.intitle}
+				identifier={"so-in-title"}
+				identifierLabel={"In Title"}
 			/>
-			<SOUserOptions
-				soFieldStatus={soFieldStatus}
+			<SOOptionsTextInput
 				soSearchData={soSearchData}
 				setSoSearchData={setSoSearchData}
+				changeIdentifier={"user"}
+				disabledStatus={soFieldStatus.user}
+				identifier={"so-user"}
+				identifierLabel={"User"}
 			/>
-			<SOQueryOptions
-				soFieldStatus={soFieldStatus}
+			<SOOptionsTextInput
 				soSearchData={soSearchData}
 				setSoSearchData={setSoSearchData}
+				changeIdentifier={"query"}
+				disabledStatus={soFieldStatus.query}
+				identifier={"so-query"}
+				identifierLabel={"Query"}
 			/>
-			<SOBodyOptions
-				soFieldStatus={soFieldStatus}
+			<SOOptionsTextInput
 				soSearchData={soSearchData}
 				setSoSearchData={setSoSearchData}
+				changeIdentifier={"body"}
+				disabledStatus={soFieldStatus.body}
+				identifier={"so-body"}
+				identifierLabel={"Body"}
 			/>
 			<SOTickBoxOptionsContainer
 				soFieldStatus={soFieldStatus}

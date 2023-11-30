@@ -1,16 +1,16 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./SearchAppComponentsStyle.css";
 
-import StredSearch from "./StredSearch";
-import SearchResultsContainer from "./SearchResultsContainer";
 import LocalSearch from "./LocalSearch";
-import SiteHeader from "./site-header/SiteHeader";
+import SearchResultsContainer from "./SearchResultsContainer";
+import StredSearch from "./StredSearch";
 import LoginForm from "./site-header/LoginForm";
 import RegisterForm from "./site-header/RegisterForm";
+import SiteHeader from "./site-header/SiteHeader";
 
-import useRedditSearchData from "./custom-hooks/UseRedditSearchData";
-import useStackOverflowSearchData from "./custom-hooks/UseStackOverflowSearchData";
-import useStredSearchAuth from "./custom-hooks/UseStredSearchAuth";
+import useRedditSearchData from "./custom-hooks/SearchApp/UseRedditSearchData";
+import useStackOverflowSearchData from "./custom-hooks/SearchApp/UseStackOverflowSearchData";
+import useStredSearchAuth from "./custom-hooks/SearchApp/UseStredSearchAuth";
 
 export default function SearchApp() {
 	const redditSearchController = useRedditSearchData();
