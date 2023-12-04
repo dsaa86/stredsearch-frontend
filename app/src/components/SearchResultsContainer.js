@@ -1,8 +1,7 @@
-import { useEffect, useState } from "react";
 import "./SearchAppComponentsStyle.css";
 
-import StackSearchResultsContainer from "./StackSearchResultsContainer";
 import RedditSearchResultsContainer from "./RedditSearchResultsContainer";
+import StackSearchResultsContainer from "./StackSearchResultsContainer";
 
 export default function SearchResultsContainer({
 	soSearchResults,
@@ -10,9 +9,21 @@ export default function SearchResultsContainer({
 	setSearchButtonActive,
 	searchButtonActive,
 }) {
+	// const redditLoadingAnimationHook = useLoadingAnimation(
+	// 	soSearchResults,
+	// 	setSearchButtonActive,
+	// 	searchButtonActive,
+	// );
+
+	// const stackLoadingAnimationHook = useLoadingAnimation(
+	// 	redditSearchResults,
+	// 	setSearchButtonActive,
+	// 	searchButtonActive,
+	// );
+
 	return (
 		<div
-			id=""
+			id="search-results-container"
 			className="container search-results-container"
 		>
 			<div className="row">

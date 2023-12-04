@@ -1,6 +1,6 @@
 import "./SearchAppComponentsStyle.css";
 
-import LoadingAnimation from "./generic-components/LoadingAnimation";
+import LoadingAnimationContainer from "./generic-components/LoadingAnimationContainer";
 import SearchOptionsHeader from "./generic-components/search-options-header";
 import StackResponseContainer from "./response-components/stackoverflow/StackResponseContainer";
 
@@ -18,18 +18,7 @@ export default function StackSearchResultsContainer({
 	);
 
 	return useLoadingAnimationHook.showLoadingAnimation ? (
-		<div className="col-sm-12 col-xl-6 stack-search-results-container">
-			<div className="row">
-				<div className="col-12">
-					<SearchOptionsHeader title={"Stack Overflow Results"} />
-				</div>
-			</div>
-			<div className="row">
-				<div className="col-12">
-					<LoadingAnimation />
-				</div>
-			</div>
-		</div>
+		<LoadingAnimationContainer title={"Stack Overflow Results"} />
 	) : (
 		useLoadingAnimationHook.searchResults.length > 0 && (
 			<div className="col-sm-12 col-xl-6 stack-search-results-container">

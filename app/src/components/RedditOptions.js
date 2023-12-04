@@ -1,10 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import "./SearchAppComponentsStyle.css";
 
 import SearchOptionsHeader from "./generic-components/search-options-header";
-import RedditSearchQuery from "./redditoptions-components/RedditSearchQuery";
-import RedditSubReddits from "./redditoptions-components/RedditSubreddits";
 import RedditSearchBy from "./redditoptions-components/RedditSearchBy";
+import RedditSearchTextInput from "./redditoptions-components/RedditSearchTextInput";
 
 export default function RedditOptions({
 	redditSearchData,
@@ -12,6 +11,14 @@ export default function RedditOptions({
 	searchButtonActive,
 }) {
 	useEffect(() => {}, [searchButtonActive]);
+
+	const handleInputChangeSubReddit = (e) => {
+		setRedditSearchData({ ...redditSearchData, subreddit: e.target.value });
+	};
+
+	const handleInputChangeQuery = (e) => {
+		setRedditSearchData({ ...redditSearchData, query: e.target.value });
+	};
 
 	return (
 		<div
@@ -23,13 +30,13 @@ export default function RedditOptions({
 			}
 		>
 			<SearchOptionsHeader title={"Reddit Search Options"} />
-			<RedditSearchQuery
-				redditSearchData={redditSearchData}
-				setRedditSearchData={setRedditSearchData}
+			<RedditSearchTextInput
+				identifier={"search-query"}
+				handleInputChange={handleInputChangeQuery}
 			/>
-			<RedditSubReddits
-				redditSearchData={redditSearchData}
-				setRedditSearchData={setRedditSearchData}
+			<RedditSearchTextInput
+				identifier={"search-subreddit"}
+				handleInputChange={handleInputChangeSubReddit}
 			/>
 			<RedditSearchBy
 				redditSearchData={redditSearchData}
