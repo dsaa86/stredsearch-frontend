@@ -34,8 +34,8 @@ export const searchButtonPerformSearch = (
 		stackSearchSuccessResponse = searchStackOverflow(
 			setSoSearchResults,
 			setSearchButtonActive,
-			stackCancelTokenSource,
 			soSearchData,
+			stackCancelTokenSource,
 		);
 	}
 
@@ -43,8 +43,8 @@ export const searchButtonPerformSearch = (
 		redditSearchSuccessResponse = searchReddit(
 			setRedditSearchResults,
 			setSearchButtonActive,
-			redditCancelTokenSource,
 			redditSearchData,
+			redditCancelTokenSource,
 		);
 	}
 
@@ -57,10 +57,10 @@ export const searchButtonPerformSearch = (
 export const searchStackOverflow = (
 	setSoSearchResults,
 	setSearchButtonActive,
-	stackCancelTokenSource,
 	soSearchData,
-	stackSearchSuccessResponse,
+	stackCancelTokenSource,
 ) => {
+	let stackSearchSuccessResponse;
 	setSoSearchResults([]);
 	setSearchButtonActive(false);
 	if (stackCancelTokenSource) {
@@ -96,15 +96,15 @@ export const searchStackOverflow = (
 };
 
 export const searchReddit = (
-	showReddit,
 	setRedditSearchResults,
 	setSearchButtonActive,
-	redditCancelTokenSource,
 	redditSearchData,
-	redditSearchSuccessResponse,
+	redditCancelTokenSource,
 ) => {
+	let redditSearchSuccessResponse;
 	setRedditSearchResults([]);
 	setSearchButtonActive(false);
+
 	if (redditCancelTokenSource) {
 		redditCancelTokenSource.cancel("Operation canceled by the user.");
 	}

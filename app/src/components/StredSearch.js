@@ -64,8 +64,8 @@ export default function StredSearch({
 				setRedditSearchResults={setRedditSearchResults}
 				soSearchData={soSearchData}
 				redditSearchData={redditSearchData}
-				searchButtonActive={searchButtonActive}
 				setSearchButtonActive={setSearchButtonActive}
+				searchButtonActive={searchButtonActive}
 			/>
 		</div>
 	);
