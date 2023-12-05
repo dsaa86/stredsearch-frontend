@@ -1,6 +1,5 @@
 import useSOSortandOrderOptions from "../custom-hooks/SOSortandOrderOptions/UseSOSortandOrderOptions";
 import SOSortandOrderOptionsInput from "./SOSortandOrderOptionsInput";
-import "./StackOptionsStyle.css";
 
 export default function SOSortandOrderOptions({
 	soFieldStatus,

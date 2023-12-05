@@ -1,4 +1,3 @@
-import "./SearchAppComponentsStyle.css";
 import { searchButtonPerformSearch } from "./functions/SearchButton";
 
 export default function SearchButton({

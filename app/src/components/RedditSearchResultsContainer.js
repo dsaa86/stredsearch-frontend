@@ -1,9 +1,6 @@
-import { useEffect, useState, useRef } from "react";
-import "./SearchAppComponentsStyle.css";
-
-import RedditResponseContainer from "./response-components/reddit/RedditResponseContainer";
-import SearchOptionsHeader from "./generic-components/search-options-header";
 import LoadingAnimationContainer from "./generic-components/LoadingAnimationContainer";
+import SearchOptionsHeader from "./generic-components/search-options-header";
+import RedditResponseContainer from "./response-components/reddit/RedditResponseContainer";
 
 import useLoadingAnimation from "./custom-hooks/StackSearch-Reddit-ResultsContainer/UseLoadingAnimation";
 

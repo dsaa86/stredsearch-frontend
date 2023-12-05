@@ -1,6 +1,5 @@
 import useSOPageOptions from "../custom-hooks/SOPageOptions/UseSOPageOptions";
 import SOPageOptionsInput from "./SOPageOptionsInput";
-import "./StackOptionsStyle.css";
 
 export default function SOPageOptions({
 	soFieldStatus,

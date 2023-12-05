@@ -1,5 +1,3 @@
-import "./StackOptionsStyle.css";
-
 import useSOAcceptedAnswerOptions from "../custom-hooks/SOTickBoxOptionsContainer/UseSOAcceptedAnswerOptions";
 import useSOClosedQuestionOptions from "../custom-hooks/SOTickBoxOptionsContainer/UseSOClosedQuestionOptions";
 import useSOMigratedQuestionsOptions from "../custom-hooks/SOTickBoxOptionsContainer/UseSOMigratedQuestionsOptions";

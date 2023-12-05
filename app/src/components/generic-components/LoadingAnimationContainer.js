@@ -1,5 +1,3 @@
-import "../SearchAppComponentsStyle.css";
-
 import LoadingAnimation from "./LoadingAnimation";
 import SearchOptionsHeader from "./search-options-header";
 

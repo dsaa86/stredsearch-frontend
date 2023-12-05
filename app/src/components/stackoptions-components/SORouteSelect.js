@@ -1,5 +1,3 @@
-import "./StackOptionsStyle.css";
-
 import useRouteSelect from "../custom-hooks/SORouteSelect/UseRouteSelect";
 import SORouteSelectInput from "./SORouteSelectInput";
 

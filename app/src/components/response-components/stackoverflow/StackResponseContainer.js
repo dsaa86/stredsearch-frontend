@@ -1,13 +1,12 @@
-import "./StackoverflowResponseComponentsStyle.css";
-
+import ResponseTitle from "../ResponseTitle.js";
 import StackQuestionMetaDataContainer from "./StackQuestionMetaDataContainer.js";
 import StackQuestionTags from "./StackQuestionTags.js";
-import StackQuestionTitle from "./StackQuestionTitle.js";
 
 export default function StackResponseContainer({ question }) {
 	return (
 		<div className="container stack-response-container">
-			<StackQuestionTitle
+			<ResponseTitle
+				engine={"stack"}
 				title={question.title}
 				link={question.link}
 			/>

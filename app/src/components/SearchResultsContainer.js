@@ -1,5 +1,3 @@
-import "./SearchAppComponentsStyle.css";
-
 import RedditSearchResultsContainer from "./RedditSearchResultsContainer";
 import StackSearchResultsContainer from "./StackSearchResultsContainer";
 
@@ -9,18 +7,6 @@ export default function SearchResultsContainer({
 	setSearchButtonActive,
 	searchButtonActive,
 }) {
-	// const redditLoadingAnimationHook = useLoadingAnimation(
-	// 	soSearchResults,
-	// 	setSearchButtonActive,
-	// 	searchButtonActive,
-	// );
-
-	// const stackLoadingAnimationHook = useLoadingAnimation(
-	// 	redditSearchResults,
-	// 	setSearchButtonActive,
-	// 	searchButtonActive,
-	// );
-
 	return (
 		<div
 			id="search-results-container"

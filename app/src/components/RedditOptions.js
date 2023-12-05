@@ -1,6 +1,4 @@
 import { useEffect } from "react";
-import "./SearchAppComponentsStyle.css";
-
 import SearchOptionsHeader from "./generic-components/search-options-header";
 import RedditSearchBy from "./redditoptions-components/RedditSearchBy";
 import RedditSearchTextInput from "./redditoptions-components/RedditSearchTextInput";

@@ -2,7 +2,6 @@ import {
 	generateFormattedIdentifier,
 	prettifyString,
 } from "../functions/GenericFunctions";
-import "./StackOptionsStyle.css";
 
 export default function SOSortandOrderOptionsInput({
 	identifier,

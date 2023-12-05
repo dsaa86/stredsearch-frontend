@@ -1,5 +1,3 @@
-import "./StackOptionsStyle.css";
-
 export default function SOOptionsTextInput({
 	soSearchData,
 	setSoSearchData,

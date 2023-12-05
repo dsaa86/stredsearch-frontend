@@ -1,5 +1,3 @@
-import "./SearchAppComponentsStyle.css";
-
 export default function SoRedditPickerInput({
 	identifier,
 	formattedIdentifier,

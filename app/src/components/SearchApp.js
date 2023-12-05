@@ -1,5 +1,4 @@
 import { useState } from "react";
-import "./SearchAppComponentsStyle.css";
 
 import LocalSearch from "./LocalSearch";
 import SearchResultsContainer from "./SearchResultsContainer";

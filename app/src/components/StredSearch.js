@@ -1,5 +1,3 @@
-import "./SearchAppComponentsStyle.css";
-
 import RedditOptions from "./RedditOptions";
 import SoRedditPicker from "./SO-RedditPicker";
 import SearchButton from "./SearchButton";

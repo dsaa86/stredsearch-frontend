@@ -1,7 +1,4 @@
-import "./StackOptionsStyle.css";
-
 import useSODateOptions from "../custom-hooks/SODateOptions/UseSODateOptions";
-
 import SODateOptionInput from "./SODateOptionInput";
 
 export default function SODateOptions({

@@ -1,5 +1,4 @@
 import { generateFormattedIdentifier } from "../functions/GenericFunctions";
-import "./StackOptionsStyle.css";
 
 export default function SODateOptionInput({
 	identifier,

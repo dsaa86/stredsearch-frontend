@@ -1,5 +1,4 @@
 import SoRedditPickerInput from "./SORedditPickerInput";
-import "./SearchAppComponentsStyle.css";
 
 export default function SoRedditPicker({
 	showSO,

@@ -1,8 +1,5 @@
 import { useEffect, useState } from "react";
 
-// import './stackoptions-components/StackOptionsStyle.css';
-import "./SearchAppComponentsStyle.css";
-
 import SearchOptionsHeader from "./generic-components/search-options-header";
 import SODateOptions from "./stackoptions-components/SODateOptions";
 import SOOptionsTextInput from "./stackoptions-components/SOOptionsTextInput";

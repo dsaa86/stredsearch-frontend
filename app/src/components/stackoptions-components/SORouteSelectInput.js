@@ -1,6 +1,4 @@
 // TODO: It would be nice to amalgamate this component with the SOSortandOrderOptions component as they both use select inputs.
-import "./StackOptionsStyle.css";
-
 import {
 	generateFormattedIdentifier,
 	prettifyString,

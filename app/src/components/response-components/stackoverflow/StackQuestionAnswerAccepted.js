@@ -1,5 +1,3 @@
-import "../../SearchAppComponentsStyle.css";
-
 // TODO: Responsive size of container needs to be adjusted for side-by-side results
 
 export default function StackQuestionAnswerAccepted({ accepted }) {

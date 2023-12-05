@@ -1,5 +1,3 @@
-import "./StackOptionsStyle.css";
-
 import { generateFormattedIdentifier } from "../functions/GenericFunctions";
 
 export default function SOPageOptionsInput({

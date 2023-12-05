@@ -1,5 +1,3 @@
-import "./SearchAppComponentsStyle.css";
-
 import LoadingAnimationContainer from "./generic-components/LoadingAnimationContainer";
 import SearchOptionsHeader from "./generic-components/search-options-header";
 import StackResponseContainer from "./response-components/stackoverflow/StackResponseContainer";

@@ -1,7 +1,5 @@
-import "../../SearchAppComponentsStyle.css";
-
+import ResponseTitle from "../ResponseTitle";
 import RedditResponseSubReddit from "../reddit/RedditResponseSubReddit";
-import RedditResponseTitle from "../reddit/RedditResponseTitle";
 
 export default function RedditResponseContainer({ question }) {
 	const subreddit = question.question_link
@@ -13,7 +11,8 @@ export default function RedditResponseContainer({ question }) {
 			id=""
 			className="container reddit-response-container"
 		>
-			<RedditResponseTitle
+			<ResponseTitle
+				engine={"reddit"}
 				title={question.question_title}
 				link={question.question_link}
 			/>

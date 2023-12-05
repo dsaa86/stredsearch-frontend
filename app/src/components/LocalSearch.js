@@ -1,5 +1,3 @@
-import "./SearchAppComponentsStyle.css";
-
 import SearchResultsContainer from "./SearchResultsContainer";
 import { performLocalSearch } from "./functions/LocalSearchFunctions";
 import SearchOptionsHeader from "./generic-components/search-options-header";
