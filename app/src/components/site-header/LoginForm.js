@@ -1,15 +1,9 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
-import "../SearchAppComponentsStyle.css";
-
-import FormInput from "./FormInput";
-import FormButton from "./FormButton";
 import FormAlertContainer from "./FormAlertContainer";
+import FormButton from "./FormButton";
+import FormInput from "./FormInput";
 
-import {
-	handleUserLoginToStredSearch,
-	handleGetUserDetailsFromServer,
-} from "../functions/LoginLogoutFunctions";
+import UseLoginForm from "../custom-hooks/LoginForm/UseLoginForm";
+import loginUser from "../functions/LoginUser";
 
 export default function LoginForm({
 	setLoginStatus,
@@ -19,61 +13,23 @@ export default function LoginForm({
 }) {
 	let loginCancelToken;
 
-	const [errorsRendered, setErrorsRendered] = useState(0);
+	const useLoginForm = UseLoginForm(
+		setLoginStatus,
+		setShowLoginForm,
+		userDetails,
+		setUserDetails,
+	);
 
-	const [formState, setFormState] = useState({
-		login_username: "",
-		login_password: "",
-	});
-
-	const [formInvalid, setFormInvalid] = useState({
-		error: {
-			blank: "",
-		},
-		valid: true,
-		attempt: 0,
-	});
-
-	useEffect(() => {}, [formInvalid]);
-
-	const loginFormSubmit = () => {
-		if (loginCancelToken) {
-			loginCancelToken.cancel("Operation canceled by the user.");
-		}
-
-		loginCancelToken = axios.CancelToken.source();
-
-		handleUserLoginToStredSearch(
-			formState.login_username,
-			formState.login_password,
+	const loginFormSubmitHandler = () => {
+		loginUser(
 			loginCancelToken,
-		)
-			.then((response) => {
-				sessionStorage.setItem("token", response.data.token);
-				setLoginStatus(true);
-				setShowLoginForm(false);
-				handleGetUserDetailsFromServer(sessionStorage.getItem("token"))
-					.then((response) => {
-						sessionStorage.setItem(
-							"user_name",
-							response.data.username,
-						);
-						setUserDetails(true);
-					})
-					.catch((error) => {
-						console.log(error);
-					});
-			})
-			.catch((error) => {
-				console.log(error);
-				// user has not logged in successfully, tidy up app state and inform user
-				setFormInvalid({
-					error: {
-						servererror: "Login failed.",
-					},
-					valid: false,
-				});
-			});
+			useLoginForm.formState.login_username,
+			useLoginForm.formState.login_password,
+			useLoginForm.setLoginStatus,
+			useLoginForm.setShowLoginForm,
+			useLoginForm.setUserDetails,
+			useLoginForm.setFormInvalid,
+		);
 	};
 
 	return (
@@ -90,8 +46,8 @@ export default function LoginForm({
 					type={"text"}
 					id={"login_username"}
 					name={"login_username"}
-					formState={formState}
-					setFormState={setFormState}
+					formState={useLoginForm.formState}
+					setFormState={useLoginForm.setFormState}
 				/>
 				<FormInput
 					divclass={"login-form-block row"}
@@ -101,21 +57,21 @@ export default function LoginForm({
 					type={"password"}
 					id={"login_password"}
 					name={"login_password"}
-					formState={formState}
-					setFormState={setFormState}
+					formState={useLoginForm.formState}
+					setFormState={useLoginForm.setFormState}
 				/>
 				<FormButton
 					divclass={"login-form-block row"}
 					buttonclass={"col-12 btn btn-primary"}
 					label={"Login"}
 					id={"login-submit-button"}
-					onClick={loginFormSubmit}
+					onClick={loginFormSubmitHandler}
 				/>
 
 				<FormAlertContainer
-					formInvalid={formInvalid}
-					errorsRendered={errorsRendered}
-					setErrorsRendered={setErrorsRendered}
+					formInvalid={useLoginForm.formInvalid}
+					errorsRendered={useLoginForm.errorsRendered}
+					setErrorsRendered={useLoginForm.setErrorsRendered}
 				/>
 			</form>
 		</div>

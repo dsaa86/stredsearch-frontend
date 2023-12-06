@@ -1,4 +1,4 @@
-import SearchOptionsHeader from "../../generic-components/search-options-header";
+import SearchOptionsHeader from "../generic-components/search-options-header";
 
 export default function ResponseTitle({ engine, title, link }) {
 	return (

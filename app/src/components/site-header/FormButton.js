@@ -1,6 +1,3 @@
-import { useEffect } from "react";
-import "../SearchAppComponentsStyle.css";
-
 export default function RegisterForm({
 	divclass,
 	buttonclass,

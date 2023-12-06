@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import "../SearchAppComponentsStyle.css";
 
 export default function GreetingContainer({ loginStatus, userDetails }) {
 	useEffect(() => {}, [loginStatus, userDetails]);

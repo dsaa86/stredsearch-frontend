@@ -1,5 +1,3 @@
-import "../../SearchAppComponentsStyle.css";
-
 export default function RedditResponseSubreddits({ subreddit }) {
 	return (
 		<div className="row">

@@ -20,53 +20,53 @@ export default function SearchApp() {
 	return (
 		<>
 			<div className="search-app-container">
-				(stredSearchAuthController.showRegisterForm ||
-				stredSearchAuthController.showLoginForm) && (
-				<div
-					className={
-						(stredSearchAuthController.showLoginForm ||
-							stredSearchAuthController.showRegisterForm) &&
-						"login-register-form-holder"
-					}
-				>
-					{stredSearchAuthController.showRegisterForm && (
-						<>
-							<RegisterForm
-								setLoginStatus={
-									stredSearchAuthController.setLoginStatus
-								}
-								setShowRegisterForm={
-									stredSearchAuthController.setShowRegisterForm
-								}
-								userDetails={
-									stredSearchAuthController.userDetails
-								}
-								setUserDetails={
-									stredSearchAuthController.setUserDetails
-								}
-							/>
-						</>
-					)}
-					{stredSearchAuthController.showLoginForm && (
-						<>
-							<LoginForm
-								setLoginStatus={
-									stredSearchAuthController.setLoginStatus
-								}
-								setShowLoginForm={
-									stredSearchAuthController.setShowLoginForm
-								}
-								userDetails={
-									stredSearchAuthController.userDetails
-								}
-								setUserDetails={
-									stredSearchAuthController.setUserDetails
-								}
-							/>
-						</>
-					)}
-				</div>
-				)
+				{(stredSearchAuthController.showRegisterForm ||
+					stredSearchAuthController.showLoginForm) && (
+					<div
+						className={
+							(stredSearchAuthController.showLoginForm ||
+								stredSearchAuthController.showRegisterForm) &&
+							"login-register-form-holder"
+						}
+					>
+						{stredSearchAuthController.showRegisterForm && (
+							<>
+								<RegisterForm
+									setLoginStatus={
+										stredSearchAuthController.setLoginStatus
+									}
+									setShowRegisterForm={
+										stredSearchAuthController.setShowRegisterForm
+									}
+									userDetails={
+										stredSearchAuthController.userDetails
+									}
+									setUserDetails={
+										stredSearchAuthController.setUserDetails
+									}
+								/>
+							</>
+						)}
+						{stredSearchAuthController.showLoginForm && (
+							<>
+								<LoginForm
+									setLoginStatus={
+										stredSearchAuthController.setLoginStatus
+									}
+									setShowLoginForm={
+										stredSearchAuthController.setShowLoginForm
+									}
+									userDetails={
+										stredSearchAuthController.userDetails
+									}
+									setUserDetails={
+										stredSearchAuthController.setUserDetails
+									}
+								/>
+							</>
+						)}
+					</div>
+				)}
 				<div className="search-functions-container">
 					<SiteHeader
 						loginStatus={stredSearchAuthController.loginStatus}

@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import "../SearchAppComponentsStyle.css";
 import FormAlert from "./FormAlert";
 
 export default function FormAlertContainer({

@@ -1,4 +1,3 @@
-import "../SearchAppComponentsStyle.css";
 import SearchOptionsHeader from "../generic-components/search-options-header";
 import ButtonAndGreetingContainer from "./ButtonAndGreetingContainer";
 

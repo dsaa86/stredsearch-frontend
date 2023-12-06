@@ -1,6 +1,3 @@
-import "../SearchAppComponentsStyle.css";
-import SearchOptionsHeader from "../generic-components/search-options-header";
-
 export default function LogoutButton({ loginStatus, setLoginStatus }) {
 	return (
 		loginStatus && (

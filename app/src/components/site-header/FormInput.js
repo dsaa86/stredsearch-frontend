@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import "../SearchAppComponentsStyle.css";
 
 export default function Input({
 	divclass,

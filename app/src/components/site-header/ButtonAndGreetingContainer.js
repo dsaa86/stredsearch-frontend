@@ -1,7 +1,5 @@
-import "../SearchAppComponentsStyle.css";
-import SearchOptionsHeader from "../generic-components/search-options-header";
-import LoginLogoutButtonContainer from "./Login-LogoutContainer";
 import GreetingContainer from "./GreetingContainer";
+import LoginLogoutButtonContainer from "./Login-LogoutContainer";
 
 export default function ButtonAndGreetingContainer({
 	loginStatus,
