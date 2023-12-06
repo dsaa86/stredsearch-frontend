@@ -1,5 +1,6 @@
 import useSOPageOptions from "../custom-hooks/SOPageOptions/UseSOPageOptions";
 import SOPageOptionsInput from "./SOPageOptionsInput";
+import addTokenToSoSearchData from "../functions/AddTokenToSoSearchData";
 
 export default function SOPageOptions({
 	soFieldStatus,
@@ -14,6 +15,11 @@ export default function SOPageOptions({
 
 	const pageNumberChangeHandler = (e) => {
 		useSoPageOptions.setPageNumber(e.target.value);
+
+		addTokenToSoSearchData(
+			useSoPageOptions.setSoSearchData,
+			useSoPageOptions.soSearchData,
+		);
 	};
 
 	const pageSizeChangeHandler = (e) => {

@@ -7,6 +7,7 @@ export default function SiteHeader({
 	setShowLoginForm,
 	setShowRegisterForm,
 	userDetails,
+	authController,
 }) {
 	return (
 		<div id="site-header-container">
@@ -21,6 +22,7 @@ export default function SiteHeader({
 					setShowLoginForm={setShowLoginForm}
 					setShowRegisterForm={setShowRegisterForm}
 					userDetails={userDetails}
+					authController={authController}
 				/>
 			</div>
 		</div>

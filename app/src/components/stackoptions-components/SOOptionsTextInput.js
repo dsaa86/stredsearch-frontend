@@ -1,3 +1,5 @@
+import addTokenToSoSearchData from "../functions/AddTokenToSoSearchData";
+
 export default function SOOptionsTextInput({
 	soSearchData,
 	setSoSearchData,
@@ -10,6 +12,7 @@ export default function SOOptionsTextInput({
 		setSoSearchData({
 			...soSearchData,
 			[changeIdentifier]: e.target.value,
+			token: sessionStorage.getItem("token"),
 		});
 	};
 

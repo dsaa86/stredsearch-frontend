@@ -1,5 +1,6 @@
 import useSODateOptions from "../custom-hooks/SODateOptions/UseSODateOptions";
 import SODateOptionInput from "./SODateOptionInput";
+import addTokenToSoSearchData from "../functions/AddTokenToSoSearchData";
 
 export default function SODateOptions({
 	soFieldStatus,
@@ -14,10 +15,18 @@ export default function SODateOptions({
 
 	const handleFromDateChange = (event) => {
 		useSoDateOptions.setFromDate(event.target.value);
+		addTokenToSoSearchData(
+			useSoDateOptions.setSoSearchData,
+			useSoDateOptions.soSearchData,
+		);
 	};
 
 	const handleToDateChange = (event) => {
 		useSoDateOptions.setToDate(event.target.value);
+		addTokenToSoSearchData(
+			useSoDateOptions.setSoSearchData,
+			useSoDateOptions.soSearchData,
+		);
 	};
 
 	return (

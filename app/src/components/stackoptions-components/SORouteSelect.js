@@ -1,5 +1,6 @@
 import useRouteSelect from "../custom-hooks/SORouteSelect/UseRouteSelect";
 import SORouteSelectInput from "./SORouteSelectInput";
+import addTokenToSoSearchData from "../functions/AddTokenToSoSearchData";
 
 export default function SORouteSelect({
 	fieldStatus,
@@ -20,6 +21,11 @@ export default function SORouteSelect({
 		useRouteSelectHook.handleRouteChange(
 			event,
 			useRouteSelectHook.setCurrentRoute,
+		);
+
+		addTokenToSoSearchData(
+			useRouteSelectHook.setSoSearchData,
+			useRouteSelectHook.soSearchData,
 		);
 	};
 

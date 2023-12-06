@@ -11,11 +11,19 @@ export default function RedditOptions({
 	useEffect(() => {}, [searchButtonActive]);
 
 	const handleInputChangeSubReddit = (e) => {
-		setRedditSearchData({ ...redditSearchData, subreddit: e.target.value });
+		setRedditSearchData({
+			...redditSearchData,
+			subreddit: e.target.value,
+			token: sessionStorage.getItem("token"),
+		});
 	};
 
 	const handleInputChangeQuery = (e) => {
-		setRedditSearchData({ ...redditSearchData, query: e.target.value });
+		setRedditSearchData({
+			...redditSearchData,
+			query: e.target.value,
+			token: sessionStorage.getItem("token"),
+		});
 	};
 
 	return (

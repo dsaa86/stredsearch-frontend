@@ -3,6 +3,7 @@ import useSOClosedQuestionOptions from "../custom-hooks/SOTickBoxOptionsContaine
 import useSOMigratedQuestionsOptions from "../custom-hooks/SOTickBoxOptionsContainer/UseSOMigratedQuestionsOptions";
 import useSOHasWikiOptions from "../custom-hooks/SOTickBoxOptionsContainer/UseSOHasWikiOptions";
 import SOTickBoxOptionsInput from "./SOTickBoxOptionsInput";
+import addTokenToSoSearchData from "../functions/AddTokenToSoSearchData";
 
 export default function SOTickBoxOptionsContainer({
 	soFieldStatus,

@@ -19,7 +19,7 @@
     z-index: 1;
 }
 
-#register-form-div, #login-form-div{
+#register-form-div, #login-form-div, #search-history-div{
     position: absolute;
     display: flex;
     justify-content: center;

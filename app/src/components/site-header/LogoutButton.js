@@ -8,7 +8,8 @@ export default function LogoutButton({ loginStatus, setLoginStatus }) {
 					id="logout-button"
 					onClick={() => {
 						setLoginStatus(false);
-						localStorage.removeItem("token");
+						sessionStorage.removeItem("token");
+						sessionStorage.removeItem("user_name");
 						window.location.reload();
 					}}
 				>

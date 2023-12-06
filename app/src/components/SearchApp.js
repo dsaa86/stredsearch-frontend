@@ -10,6 +10,7 @@ import SiteHeader from "./site-header/SiteHeader";
 import useRedditSearchData from "./custom-hooks/SearchApp/UseRedditSearchData";
 import useStackOverflowSearchData from "./custom-hooks/SearchApp/UseStackOverflowSearchData";
 import useStredSearchAuth from "./custom-hooks/SearchApp/UseStredSearchAuth";
+import SearchHistoryContainer from "./SearchHistory/SearchHistoryContainer";
 
 export default function SearchApp() {
 	const redditSearchController = useRedditSearchData();
@@ -21,14 +22,26 @@ export default function SearchApp() {
 		<>
 			<div className="search-app-container">
 				{(stredSearchAuthController.showRegisterForm ||
-					stredSearchAuthController.showLoginForm) && (
+					stredSearchAuthController.showLoginForm ||
+					stredSearchAuthController.showSearchHistory) && (
 					<div
 						className={
 							(stredSearchAuthController.showLoginForm ||
-								stredSearchAuthController.showRegisterForm) &&
+								stredSearchAuthController.showRegisterForm ||
+								stredSearchAuthController.showSearchHistory) &&
 							"login-register-form-holder"
 						}
 					>
+						{stredSearchAuthController.showRegisterForm && (
+							<SearchHistoryContainer
+								showSearchHistory={
+									stredSearchAuthController.showSearchHistory
+								}
+								setShowSearchHistory={
+									stredSearchAuthController.setShowSearchHistory
+								}
+							/>
+						)}
 						{stredSearchAuthController.showRegisterForm && (
 							<>
 								<RegisterForm
@@ -80,6 +93,7 @@ export default function SearchApp() {
 							stredSearchAuthController.setShowRegisterForm
 						}
 						userDetails={stredSearchAuthController.userDetails}
+						authController={stredSearchAuthController}
 					/>
 					<LocalSearch />
 					<StredSearch

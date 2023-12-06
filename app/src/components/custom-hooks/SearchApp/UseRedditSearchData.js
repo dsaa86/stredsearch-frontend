@@ -10,6 +10,7 @@ const useRedditSearchData = () => {
 			query: "",
 			subreddit: "",
 			search_by: "link",
+			token: sessionStorage.getItem("token"),
 		});
 	}, []);
 

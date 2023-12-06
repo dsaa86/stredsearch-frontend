@@ -1,5 +1,6 @@
 import useSOSortandOrderOptions from "../custom-hooks/SOSortandOrderOptions/UseSOSortandOrderOptions";
 import SOSortandOrderOptionsInput from "./SOSortandOrderOptionsInput";
+import addTokenToSoSearchData from "../functions/AddTokenToSoSearchData";
 
 export default function SOSortandOrderOptions({
 	soFieldStatus,
@@ -14,10 +15,20 @@ export default function SOSortandOrderOptions({
 
 	const handleChangeSort = (event) => {
 		useSoSortandOrderOptions.setSortOptions(event.target.value);
+
+		addTokenToSoSearchData(
+			useSoSortandOrderOptions.setSoSearchData,
+			useSoSortandOrderOptions.soSearchData,
+		);
 	};
 
 	const handleChangeOrder = (event) => {
 		useSoSortandOrderOptions.setOrderOptions(event.target.value);
+
+		addTokenToSoSearchData(
+			useSoSortandOrderOptions.setSoSearchData,
+			useSoSortandOrderOptions.soSearchData,
+		);
 	};
 
 	return (

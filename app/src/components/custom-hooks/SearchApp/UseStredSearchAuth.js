@@ -5,6 +5,7 @@ const useStredSearchAuth = () => {
 	const [userDetails, setUserDetails] = useState(false);
 	const [showLoginForm, setShowLoginForm] = useState(false);
 	const [showRegisterForm, setShowRegisterForm] = useState(false);
+	const [showSearchHistory, setShowSearchHistory] = useState(false);
 
 	useEffect(() => {
 		const keyPressHandler = (event) => {
@@ -12,6 +13,7 @@ const useStredSearchAuth = () => {
 				event.preventDefault();
 				setShowLoginForm(false);
 				setShowRegisterForm(false);
+				setShowSearchHistory(false);
 			}
 		};
 
@@ -31,6 +33,8 @@ const useStredSearchAuth = () => {
 		setShowLoginForm: setShowLoginForm,
 		showRegisterForm: showRegisterForm,
 		setShowRegisterForm: setShowRegisterForm,
+		showSearchHistory: showSearchHistory,
+		setShowSearchHistory: setShowSearchHistory,
 	};
 };
 

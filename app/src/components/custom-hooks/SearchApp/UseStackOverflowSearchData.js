@@ -26,6 +26,7 @@ const useStackOverflowSearchData = () => {
 			closed: false,
 			migrated: false,
 			wiki: false,
+			token: sessionStorage.getItem("token"),
 		});
 	}, []);
 
