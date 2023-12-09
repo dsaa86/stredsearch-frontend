@@ -8,6 +8,7 @@ export default function ButtonAndGreetingContainer({
 	setShowRegisterForm,
 	userDetails,
 	authController,
+	searchHistoryController,
 }) {
 	return (
 		<div id="button-and-greeting-container">
@@ -15,6 +16,7 @@ export default function ButtonAndGreetingContainer({
 				loginStatus={loginStatus}
 				userDetails={userDetails}
 				authController={authController}
+				searchHistoryController={searchHistoryController}
 			/>
 			<LoginLogoutButtonContainer
 				loginStatus={loginStatus}

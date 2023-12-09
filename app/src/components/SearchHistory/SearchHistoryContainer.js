@@ -1,7 +1,9 @@
-export default function SearchHistoryContainer({}) {
+import SearchHistory from "./SearchHistory";
+
+export default function SearchHistoryContainer({ searchHistoryController }) {
 	return (
-		<div id="search-history-div">
-			<div id="search-history-container"></div>
+		<div id="search-history-container">
+			<SearchHistory searchHistoryController={searchHistoryController} />
 		</div>
 	);
 }

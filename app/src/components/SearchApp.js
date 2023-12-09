@@ -11,11 +11,13 @@ import useRedditSearchData from "./custom-hooks/SearchApp/UseRedditSearchData";
 import useStackOverflowSearchData from "./custom-hooks/SearchApp/UseStackOverflowSearchData";
 import useStredSearchAuth from "./custom-hooks/SearchApp/UseStredSearchAuth";
 import SearchHistoryContainer from "./SearchHistory/SearchHistoryContainer";
+import useSearchHistory from "./custom-hooks/SearchHistory/UseSearchHistory";
 
 export default function SearchApp() {
 	const redditSearchController = useRedditSearchData();
 	const soSearchController = useStackOverflowSearchData();
 	const stredSearchAuthController = useStredSearchAuth();
+	const searchHistoryController = useSearchHistory();
 	const [searchButtonActive, setSearchButtonActive] = useState(true);
 
 	return (
@@ -32,13 +34,16 @@ export default function SearchApp() {
 							"login-register-form-holder"
 						}
 					>
-						{stredSearchAuthController.showRegisterForm && (
+						{stredSearchAuthController.showSearchHistory && (
 							<SearchHistoryContainer
 								showSearchHistory={
 									stredSearchAuthController.showSearchHistory
 								}
 								setShowSearchHistory={
 									stredSearchAuthController.setShowSearchHistory
+								}
+								searchHistoryController={
+									searchHistoryController
 								}
 							/>
 						)}
@@ -94,6 +99,7 @@ export default function SearchApp() {
 						}
 						userDetails={stredSearchAuthController.userDetails}
 						authController={stredSearchAuthController}
+						searchHistoryController={searchHistoryController}
 					/>
 					<LocalSearch />
 					<StredSearch

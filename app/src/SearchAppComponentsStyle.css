@@ -28,7 +28,7 @@
     height: 100%;
 }
 
-#register-form, #login-form{
+#register-form, #login-form, #search-history-container{
     background-color: lightblue;
     width: 50%;
     padding: 20px;

@@ -5,11 +5,12 @@ export default function GreetingContainer({
 	loginStatus,
 	userDetails,
 	authController,
+	searchHistoryController,
 }) {
 	useEffect(() => {}, [loginStatus, userDetails]);
 
 	const showSearchHistoryHandler = () => {
-		showSearchHistory(authController);
+		showSearchHistory(authController, searchHistoryController);
 	};
 
 	return (

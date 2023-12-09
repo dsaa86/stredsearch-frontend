@@ -8,6 +8,7 @@ export default function SiteHeader({
 	setShowRegisterForm,
 	userDetails,
 	authController,
+	searchHistoryController,
 }) {
 	return (
 		<div id="site-header-container">
@@ -23,6 +24,7 @@ export default function SiteHeader({
 					setShowRegisterForm={setShowRegisterForm}
 					userDetails={userDetails}
 					authController={authController}
+					searchHistoryController={searchHistoryController}
 				/>
 			</div>
 		</div>
