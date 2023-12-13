@@ -1,4 +1,6 @@
+import { useEffect, useState } from "react";
 import SearchOptionsHeader from "../generic-components/search-options-header";
+import axios from "axios";
 
 export default function SearchHistory({ searchHistoryController }) {
 	let searchTerms = [];
@@ -6,7 +8,7 @@ export default function SearchHistory({ searchHistoryController }) {
 		if (term.search_term === null || term.search_term === undefined) {
 			return;
 		}
-		// The objects returned from Django are a big funky. This decodes them appropriately, but server-side refactoring is necessary in order to optimise this code.
+		// The objects returned from Django are a bit funky. This decodes them appropriately, but server-side refactoring is necessary in order to optimise this code.
 		const termValues = Object.entries(term);
 		termValues.forEach(([key, value]) => {
 			if (
@@ -21,6 +23,31 @@ export default function SearchHistory({ searchHistoryController }) {
 			searchTerms.push(value.search_term);
 		});
 	});
+
+	const retrieveSearchHistoryItems = async (term) => {
+		const loginToken = sessionStorage.getItem("token");
+		const url = `http://localhost:8000/searchhistory/retrieve-search-results/${loginToken}/${term}/`;
+
+		const response = await axios.get(url);
+
+		if (response.status === 200) {
+			return { success: true, response: response.data };
+		}
+		return { success: false, response: response.data };
+	};
+
+	const clickHandler = (term) => {
+		searchHistoryController.setSearchHistoryData([]);
+
+		retrieveSearchHistoryItems(term)
+			.then((response) => {
+				searchHistoryController.setSearchHistoryData(response.response);
+			})
+			.catch((error) => {
+				console.log(error);
+			});
+	};
+
 	searchTerms = [...new Set(searchTerms)];
 	return (
 		<div
@@ -50,10 +77,12 @@ export default function SearchHistory({ searchHistoryController }) {
 									paddingBottom: "5px",
 								}}
 							>
-								<SearchOptionsHeader
-									title={term}
-									headerType={4}
-								/>
+								<span onClick={() => clickHandler(term)}>
+									<SearchOptionsHeader
+										title={term}
+										headerType={4}
+									/>
+								</span>
 							</div>
 						</div>
 					</div>
