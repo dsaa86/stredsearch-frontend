@@ -1,8 +1,11 @@
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import SearchOptionsHeader from "../generic-components/search-options-header";
 import axios from "axios";
 
 export default function SearchHistory({ searchHistoryController }) {
+	const redditTestRegExp = /reddit.com/;
+	const stackTestRegExp = /stackoverflow.com/;
+
 	let searchTerms = [];
 	searchHistoryController.searchHistory.map((term) => {
 		if (term.search_term === null || term.search_term === undefined) {
@@ -14,8 +17,8 @@ export default function SearchHistory({ searchHistoryController }) {
 			if (
 				value === null ||
 				value === undefined ||
-				value.search_term == " " ||
-				value.search_term == "" ||
+				value.search_term === " " ||
+				value.search_term === "" ||
 				(key !== "search_term" && typeof value !== "object")
 			) {
 				return;
@@ -23,6 +26,8 @@ export default function SearchHistory({ searchHistoryController }) {
 			searchTerms.push(value.search_term);
 		});
 	});
+
+	searchTerms = [...new Set(searchTerms)];
 
 	const retrieveSearchHistoryItems = async (term) => {
 		const loginToken = sessionStorage.getItem("token");
@@ -48,7 +53,6 @@ export default function SearchHistory({ searchHistoryController }) {
 			});
 	};
 
-	searchTerms = [...new Set(searchTerms)];
 	return (
 		<div
 			className="container"
@@ -88,6 +92,50 @@ export default function SearchHistory({ searchHistoryController }) {
 					</div>
 				);
 			})}
+			{searchHistoryController.searchHistoryProcessedData.length > 0 && (
+				<div className="container">
+					{searchHistoryController.searchHistoryProcessedData.map(
+						(searchResult) => {
+							return (
+								<div className="row">
+									<div className="col-12">
+										{redditTestRegExp.test(
+											searchResult.link,
+										) && (
+											<div
+												style={{
+													backgroundColor: "green",
+													paddingBottom: "20px",
+												}}
+											>
+												<SearchOptionsHeader
+													title={searchResult.title}
+													headerType={6}
+												/>
+											</div>
+										)}
+										{stackTestRegExp.test(
+											searchResult.link,
+										) && (
+											<div
+												style={{
+													backgroundColor: "red",
+													paddingBottom: "20px",
+												}}
+											>
+												<SearchOptionsHeader
+													title={searchResult.title}
+													headerType={6}
+												/>
+											</div>
+										)}
+									</div>
+								</div>
+							);
+						},
+					)}
+				</div>
+			)}
 		</div>
 	);
 }

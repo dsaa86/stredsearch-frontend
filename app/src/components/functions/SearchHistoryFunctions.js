@@ -15,7 +15,6 @@ const showSearchHistory = (authController, searchHistoryController) => {
 		retrieveSearchHistory()
 			.then((response) => {
 				searchHistoryController.setSearchHistory(response.response);
-				console.log(response.response[0][0]);
 				authController.setShowSearchHistory(true);
 			})
 			.catch((error) => {
