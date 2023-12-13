@@ -6,6 +6,46 @@
 
 }
 
+.search-history-reddit-result, .search-history-stack-overflow-result{
+    margin: 10px;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.search-history-reddit-result {
+    background-color: black;
+    color: white;
+}
+
+.search-history-stack-overflow-result {
+    background-color: orange;
+    color: black;
+}
+
+.search-history-reddit-result:hover, .search-history-stack-overflow-result:hover{
+    cursor: pointer;
+}
+
+.search-history-reddit-result:hover{
+    background-color: white;
+    color: black;
+}
+
+.search-history-stack-overflow-result:hover{
+    background-color: black;
+    color: white;
+}
+
+.search-history-term{
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.search-history-term:hover{
+    cursor: pointer;
+    background-color: #f8f9fa;
+}
+
 .login-register-form-holder, .search-functions-container{
     position: absolute;
     width: 100%;
@@ -26,6 +66,7 @@
     align-items: center;
     width: 100%;
     height: 100%;
+    overflow: hidden;
 }
 
 #register-form, #login-form, #search-history-container{
@@ -33,6 +74,18 @@
     width: 50%;
     padding: 20px;
     border-radius: 10px;
+}
+
+#register-form, #login-form{
+    width: 50%;
+}
+
+#search-history-container{
+    position: absolute;
+    top: 20px;
+    height: 90%;
+    overflow: scroll;
+    width: 90%;
 }
 
 #register-form input, #register-form label, #login-form input, #login-form label{
@@ -223,4 +276,8 @@ a.stack-response-question-title-link:hover{
     height: 100%;
     margin-left: 5px;
     margin-right: 5px;
+}
+
+.no-scroll{
+    overflow: hidden;
 }

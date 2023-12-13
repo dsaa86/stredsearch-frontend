@@ -24,6 +24,32 @@ const useStredSearchAuth = () => {
 		};
 	}, []);
 
+	useEffect(() => {
+		const element = document.getElementById("search-app-container");
+		if (showSearchHistory) {
+			if (!element) {
+				return;
+			}
+			element.classList.add("no-scroll");
+			return;
+		}
+
+		if (!element) {
+			return;
+		}
+
+		element.classList.remove("no-scroll");
+		return;
+
+		return () => {
+			if (!element) {
+				return;
+			}
+			element.classList.remove("no-scroll");
+			return;
+		};
+	}, [showSearchHistory]);
+
 	return {
 		loginStatus: loginStatus,
 		setLoginStatus: setLoginStatus,

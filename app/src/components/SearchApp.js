@@ -22,7 +22,10 @@ export default function SearchApp() {
 
 	return (
 		<>
-			<div className="search-app-container">
+			<div
+				className="search-app-container"
+				id="search-app-container"
+			>
 				{(stredSearchAuthController.showRegisterForm ||
 					stredSearchAuthController.showLoginForm ||
 					stredSearchAuthController.showSearchHistory) && (

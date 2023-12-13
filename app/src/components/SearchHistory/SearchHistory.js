@@ -1,4 +1,5 @@
 // import { useEffect, useState } from "react";
+import { prettifyString } from "../functions/GenericFunctions";
 import SearchOptionsHeader from "../generic-components/search-options-header";
 import axios from "axios";
 
@@ -41,7 +42,7 @@ export default function SearchHistory({ searchHistoryController }) {
 		return { success: false, response: response.data };
 	};
 
-	const clickHandler = (term) => {
+	const searchTermClickHandler = (term) => {
 		searchHistoryController.setSearchHistoryData([]);
 
 		retrieveSearchHistoryItems(term)
@@ -53,60 +54,73 @@ export default function SearchHistory({ searchHistoryController }) {
 			});
 	};
 
+	const searchResultClickHandler = (link) => {
+		window.open(link, "_blank");
+	};
+
 	return (
-		<div
-			className="container"
-			id="search-history-container"
-		>
+		<>
 			<div
-				className="row"
-				id="search-history-top-row"
+				className="container"
+				style={{ width: "100%" }}
 			>
-				<div className="col-12">
-					<div style={{ paddingBottom: "20px" }}>
-						<SearchOptionsHeader
-							title={"Search History"}
-							headerType={1}
-						/>
-					</div>
-				</div>
-			</div>
-			{searchTerms.map((term) => {
-				return (
-					<div className="row">
-						<div className="col-12">
-							<div
-								style={{
-									paddingTop: "5px",
-									paddingBottom: "5px",
-								}}
-							>
-								<span onClick={() => clickHandler(term)}>
-									<SearchOptionsHeader
-										title={term}
-										headerType={4}
-									/>
-								</span>
-							</div>
+				<div
+					className="row"
+					id="search-history-top-row"
+				>
+					<div className="col-12">
+						<div style={{ marginBottom: "20px" }}>
+							<SearchOptionsHeader
+								title={"Search History"}
+								headerType={1}
+							/>
 						</div>
 					</div>
-				);
-			})}
+				</div>
+				{searchTerms.map((term) => {
+					return (
+						<div className="row">
+							<div className="col-md-4 col-6">
+								<div className="search-history-term">
+									<span
+										onClick={() =>
+											searchTermClickHandler(term)
+										}
+									>
+										<SearchOptionsHeader
+											title={prettifyString(term, true)}
+											headerType={4}
+										/>
+									</span>
+								</div>
+							</div>
+						</div>
+					);
+				})}
+			</div>
 			{searchHistoryController.searchHistoryProcessedData.length > 0 && (
-				<div className="container">
+				<div
+					className="container"
+					id="search-history-results-container"
+				>
 					{searchHistoryController.searchHistoryProcessedData.map(
 						(searchResult) => {
 							return (
-								<div className="row">
+								<div
+									className="row"
+									style={{ paddingBottom: "20px;" }}
+								>
 									<div className="col-12">
 										{redditTestRegExp.test(
 											searchResult.link,
 										) && (
 											<div
-												style={{
-													backgroundColor: "green",
-													paddingBottom: "20px",
-												}}
+												className="search-history-reddit-result"
+												onClick={() =>
+													searchResultClickHandler(
+														searchResult.link,
+													)
+												}
 											>
 												<SearchOptionsHeader
 													title={searchResult.title}
@@ -117,12 +131,7 @@ export default function SearchHistory({ searchHistoryController }) {
 										{stackTestRegExp.test(
 											searchResult.link,
 										) && (
-											<div
-												style={{
-													backgroundColor: "red",
-													paddingBottom: "20px",
-												}}
-											>
+											<div className="search-history-stack-overflow-result">
 												<SearchOptionsHeader
 													title={searchResult.title}
 													headerType={6}
@@ -136,6 +145,6 @@ export default function SearchHistory({ searchHistoryController }) {
 					)}
 				</div>
 			)}
-		</div>
+		</>
 	);
 }
