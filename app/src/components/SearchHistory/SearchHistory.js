@@ -131,7 +131,14 @@ export default function SearchHistory({ searchHistoryController }) {
 										{stackTestRegExp.test(
 											searchResult.link,
 										) && (
-											<div className="search-history-stack-overflow-result">
+											<div
+												className="search-history-stack-overflow-result"
+												onClick={() =>
+													searchResultClickHandler(
+														searchResult.link,
+													)
+												}
+											>
 												<SearchOptionsHeader
 													title={searchResult.title}
 													headerType={6}

@@ -12,12 +12,12 @@ TODO: Implement CI through GitHub
 
 TODO: Better handling of errors during external API calls
 
-TODO: Ability to retrive past search history
-
 FIXME: Local search Stack Overflow tags not rendering 'search.StackTags.none'
 
 TODO: Include some default DB population questions / data for demonstration purposes
 
 TODO: Include scroll prevention for login and register modals
 
-TODO: Include link click for stack overflow search history results
+TODO: Add titles to login and register forms
+
+TODO: Refactor search history
