@@ -1,61 +1,70 @@
 // import { useEffect, useState } from "react";
 import { prettifyString } from "../functions/GenericFunctions";
+import decodeSearchTerms from "../functions/SearchHistoryAdditionalFunctions/DecodeSearchTerms";
 import SearchOptionsHeader from "../generic-components/search-options-header";
-import axios from "axios";
+import retrieveSearchResultsForTerm from "../functions/SearchHistoryAdditionalFunctions/RetrieveSearchResultsForTerm";
+import openResultInNewWindow from "../functions/SearchHistoryAdditionalFunctions/OpenResultInNewWindow";
 
 export default function SearchHistory({ searchHistoryController }) {
 	const redditTestRegExp = /reddit.com/;
 	const stackTestRegExp = /stackoverflow.com/;
 
-	let searchTerms = [];
-	searchHistoryController.searchHistory.map((term) => {
-		if (term.search_term === null || term.search_term === undefined) {
-			return;
-		}
-		// The objects returned from Django are a bit funky. This decodes them appropriately, but server-side refactoring is necessary in order to optimise this code.
-		const termValues = Object.entries(term);
-		termValues.forEach(([key, value]) => {
-			if (
-				value === null ||
-				value === undefined ||
-				value.search_term === " " ||
-				value.search_term === "" ||
-				(key !== "search_term" && typeof value !== "object")
-			) {
-				return;
-			}
-			searchTerms.push(value.search_term);
-		});
-	});
+	const searchTerms = decodeSearchTerms(searchHistoryController);
 
-	searchTerms = [...new Set(searchTerms)];
+	// let searchTerms = [];
+	// searchHistoryController.searchHistory.map((term) => {
+	// 	if (term.search_term === null || term.search_term === undefined) {
+	// 		return;
+	// 	}
+	// 	// The objects returned from Django are a bit funky. This decodes them appropriately, but server-side refactoring is necessary in order to optimise this code.
+	// 	const termValues = Object.entries(term);
+	// 	termValues.forEach(([key, value]) => {
+	// 		if (
+	// 			value === null ||
+	// 			value === undefined ||
+	// 			value.search_term === " " ||
+	// 			value.search_term === "" ||
+	// 			(key !== "search_term" && typeof value !== "object")
+	// 		) {
+	// 			return;
+	// 		}
+	// 		searchTerms.push(value.search_term);
+	// 	});
+	// });
 
-	const retrieveSearchHistoryItems = async (term) => {
-		const loginToken = sessionStorage.getItem("token");
-		const url = `http://localhost:8000/searchhistory/retrieve-search-results/${loginToken}/${term}/`;
+	// searchTerms = [...new Set(searchTerms)];
 
-		const response = await axios.get(url);
+	// const retrieveSearchHistoryItems = async (term) => {
+	// 	const loginToken = sessionStorage.getItem("token");
+	// 	const url = `http://localhost:8000/searchhistory/retrieve-search-results/${loginToken}/${term}/`;
 
-		if (response.status === 200) {
-			return { success: true, response: response.data };
-		}
-		return { success: false, response: response.data };
-	};
+	// 	const response = await axios.get(url);
+
+	// 	if (response.status === 200) {
+	// 		return { success: true, response: response.data };
+	// 	}
+	// 	return { success: false, response: response.data };
+	// };
 
 	const searchTermClickHandler = (term) => {
-		searchHistoryController.setSearchHistoryData([]);
+		retrieveSearchResultsForTerm(
+			searchHistoryController,
+			term,
+			sessionStorage.getItem("token"),
+		);
+		// searchHistoryController.setSearchHistoryData([]);
 
-		retrieveSearchHistoryItems(term)
-			.then((response) => {
-				searchHistoryController.setSearchHistoryData(response.response);
-			})
-			.catch((error) => {
-				console.log(error);
-			});
+		// retrieveSearchHistoryItems(term, sessionStorage.getItem("token"))
+		// 	.then((response) => {
+		// 		searchHistoryController.setSearchHistoryData(response.response);
+		// 	})
+		// 	.catch((error) => {
+		// 		console.log(error);
+		// 	});
 	};
 
 	const searchResultClickHandler = (link) => {
-		window.open(link, "_blank");
+		openResultInNewWindow(link);
 	};
 
 	return (
