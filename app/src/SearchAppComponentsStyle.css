@@ -6,7 +6,7 @@
 
 }
 
-.search-history-reddit-result, .search-history-stack-overflow-result{
+.search-history-reddit-result, .search-history-stack-result{
     margin: 10px;
     border-radius: 5px;
     padding: 10px;
@@ -17,7 +17,7 @@
     color: white;
 }
 
-.search-history-stack-overflow-result {
+.search-history-stack-result {
     background-color: orange;
     color: black;
 }
