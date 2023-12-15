@@ -7,10 +7,7 @@ export default function RedditResponseContainer({ question }) {
 		.split("/")[0];
 
 	return (
-		<div
-			id=""
-			className="container reddit-response-container"
-		>
+		<div className="container reddit-response-container">
 			<ResponseTitle
 				engine={"reddit"}
 				title={question.question_title}

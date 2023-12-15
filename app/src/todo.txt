@@ -19,5 +19,3 @@ TODO: Include some default DB population questions / data for demonstration purp
 TODO: Include scroll prevention for login and register modals
 
 TODO: Add titles to login and register forms
-
-TODO: Refactor search history

@@ -2,9 +2,6 @@ export default function LocalSearchFields({
 	localSearchButtonHandler,
 	setSearchBoxValue,
 }) {
-	let stackCancelTokenSource;
-	let redditCancelTokenSource;
-
 	const handleChangeQuery = (event) => {
 		setSearchBoxValue(event.target.value);
 	};
