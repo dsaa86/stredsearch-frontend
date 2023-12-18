@@ -37,6 +37,7 @@ export default function SORouteSelectInput({
 					className="col-sm-6 col-12"
 				>
 					<select
+						id={identifier}
 						className="col"
 						value={
 							identifier === "search-category"
