@@ -4,7 +4,7 @@ export default function RegisterButton({ loginStatus, setShowRegisterForm }) {
 			<div id="register-button-div">
 				<button
 					type="button"
-					class="btn btn-primary"
+					className="btn btn-primary"
 					id="register-button"
 					onClick={() => setShowRegisterForm(true)}
 				>

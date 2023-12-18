@@ -11,7 +11,10 @@ export default function ButtonAndGreetingContainer({
 	searchHistoryController,
 }) {
 	return (
-		<div id="button-and-greeting-container">
+		<div
+			data-testid="button-and-greeting-container"
+			id="button-and-greeting-container"
+		>
 			<GreetingContainer
 				loginStatus={loginStatus}
 				userDetails={userDetails}

@@ -4,7 +4,7 @@ export default function LoginButton({ loginStatus, setShowLoginForm }) {
 			<div id="login-button-div">
 				<button
 					type="button"
-					class="btn btn-primary"
+					className="btn btn-primary"
 					id="login-button"
 					onClick={() => setShowLoginForm(true)}
 				>

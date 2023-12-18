@@ -4,6 +4,7 @@ export default function FormAlert({ message, index }) {
 			className="alert alert-danger col-12"
 			role="alert"
 			key={index}
+			data-testid="form-alert"
 		>
 			{message}
 		</div>
