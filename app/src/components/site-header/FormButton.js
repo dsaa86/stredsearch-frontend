@@ -1,4 +1,4 @@
-export default function RegisterForm({
+export default function FormButton({
 	divclass,
 	buttonclass,
 	label,
@@ -12,6 +12,7 @@ export default function RegisterForm({
 				className={buttonclass}
 				onClick={onClick}
 				id={id}
+				data-testid="form-button"
 			>
 				{label}
 			</button>

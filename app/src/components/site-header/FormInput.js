@@ -27,7 +27,7 @@ export default function Input({
 	return (
 		<div className={divclass}>
 			<label
-				for={id}
+				htmlFor={id}
 				className={labelclass}
 			>
 				{label}

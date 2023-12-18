@@ -19,7 +19,7 @@ test("RegisterForm handles form submission", async () => {
 		/>,
 	);
 
-	fireEvent.click(screen.getByText("Register"));
+	fireEvent.click(screen.getByTestId("form-button"));
 
 	await waitFor(() => expect(registerUser).toHaveBeenCalled());
 });
