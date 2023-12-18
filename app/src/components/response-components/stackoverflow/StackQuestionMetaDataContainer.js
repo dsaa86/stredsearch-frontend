@@ -12,7 +12,7 @@ export default function StackQuestionMetaDataContainer({
 	lastActivity,
 }) {
 	return (
-		<div class="row stack-response-question-metadata-holder">
+		<div className="row stack-response-question-metadata-holder">
 			<StackQuestionUserContainer
 				username={username}
 				userId={userId}

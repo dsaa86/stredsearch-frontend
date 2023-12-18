@@ -10,7 +10,7 @@ export default function SearchHistorySearchResultRow({ searchResult }) {
 				className="row"
 				style={{ paddingBottom: "20px;" }}
 			>
-				<div className="col-12">
+				<div className="col-12 search-history-search-result">
 					{redditTestRegExp.test(searchResult.link) && (
 						<SearchHistorySearchResult
 							destination={"reddit"}

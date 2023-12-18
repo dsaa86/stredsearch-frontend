@@ -1,5 +1,5 @@
 import StackQuestionAnswerAccepted from "./StackQuestionAnswerAccepted";
-import TitleAndData from "./StackQuestionTitleAndDataComponent";
+import TitleAndData from "./StackQuestionTitleAndData";
 
 export default function StackQuestionAnswerData({ accepted, answers, score }) {
 	return (
@@ -9,6 +9,7 @@ export default function StackQuestionAnswerData({ accepted, answers, score }) {
 					<TitleAndData
 						title={"Total Answers"}
 						data={answers}
+						isTotalAnswers={true}
 					/>
 				</div>
 				<div className="col-12 col-sm-4">
@@ -18,6 +19,7 @@ export default function StackQuestionAnswerData({ accepted, answers, score }) {
 					<TitleAndData
 						title={"Score"}
 						data={score}
+						isScore={true}
 					/>
 				</div>
 			</div>

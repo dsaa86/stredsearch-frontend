@@ -1,4 +1,4 @@
-import TitleAndData from "./StackQuestionTitleAndDataComponent";
+import TitleAndData from "./StackQuestionTitleAndData";
 
 export default function StackQuestionAnswerData({ created, lastActivity }) {
 	return (
