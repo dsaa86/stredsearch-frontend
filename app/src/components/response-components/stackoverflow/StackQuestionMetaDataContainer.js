@@ -19,7 +19,6 @@ export default function StackQuestionMetaDataContainer({
 			/>
 			<hr></hr>
 			<StackQuestionAnswerContainer
-				accepted={accepted}
 				answers={answers}
 				score={score}
 			/>

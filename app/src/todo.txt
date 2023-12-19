@@ -1,8 +1,4 @@
-TODO: Check gutters of containers
-
 FIXME: Create modals for error in search params
-
-FIXME: Check styling of SO results box
 
 TODO: Implement CI through GitHub
 
@@ -11,3 +7,5 @@ TODO: Better handling of errors during external API calls
 FIXME: Local search Stack Overflow tags not rendering 'search.StackTags.none'
 
 TODO: Include some default DB population questions / data for demonstration purposes
+
+TODO: Process text for special characters out of db

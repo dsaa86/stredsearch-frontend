@@ -1,6 +1,7 @@
 import ResponseTitle from "../ResponseTitle.js";
 import StackQuestionMetaDataContainer from "./StackQuestionMetaDataContainer.js";
 import StackQuestionTags from "./StackQuestionTags.js";
+import StackQuestionAnswerAccepted from "./StackQuestionAnswerAccepted.js";
 
 export default function StackResponseContainer({ question }) {
 	return (
@@ -11,6 +12,7 @@ export default function StackResponseContainer({ question }) {
 				link={question.link}
 			/>
 			<StackQuestionTags tags={question.tags} />
+			<StackQuestionAnswerAccepted accepted={question.is_answered} />
 			<StackQuestionMetaDataContainer
 				username={question.display_name}
 				userId={question.user_id}

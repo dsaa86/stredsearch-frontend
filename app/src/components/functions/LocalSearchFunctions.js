@@ -38,8 +38,9 @@ const queryLocalSearch = async (
 	cancelToken,
 	setSearchResults,
 ) => {
-	const url = `http://localhost:8000/search/${dataSourceToSearch}/?search=${searchParameter}`;
-
+	// const url = `http://localhost:8000/search/${dataSourceToSearch}/?search=${searchParameter}`;
+	const url = `http://localhost:8000/search/${dataSourceToSearch}/${searchParameter}/`;
+	console.log(url);
 	const response = await axios
 		.get(url, {
 			cancelToken: cancelToken,

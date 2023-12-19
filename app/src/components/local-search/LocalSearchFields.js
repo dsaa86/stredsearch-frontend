@@ -18,7 +18,10 @@ export default function LocalSearchFields({
 					/>
 				</div>
 			</div>
-			<div className="row">
+			<div
+				className="row"
+				id="local-search-button-row"
+			>
 				<div className="col-12">
 					<button
 						className="col-12 btn btn-primary"

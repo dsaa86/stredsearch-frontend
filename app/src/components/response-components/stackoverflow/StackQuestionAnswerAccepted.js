@@ -4,9 +4,9 @@ export default function StackQuestionAnswerAccepted({ accepted }) {
 	return (
 		<>
 			<div className="row">
-				<div className="col-6">
+				<div className="col-12">
 					<div
-						className={`col ${
+						className={`col-12 ${
 							accepted === true
 								? "stack-question-accepted"
 								: "stack-question-not-accepted"

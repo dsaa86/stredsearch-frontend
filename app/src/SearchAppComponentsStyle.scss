@@ -1,0 +1,347 @@
+$standard-margin: 10px;
+$standard-padding: 10px;
+$standard-border-radius: 5px;
+$top-position: 0px;
+$left-position: 0px;
+$right-position: 0px;
+
+$reddit-result-background-color: black;
+$reddit-result-text-color: white;
+$reddit-result-hover-background-color: white;
+$reddit-result-hover-text-color: rgb(232, 189, 72);
+$reddit-result-subreddit-background-color: rgb(232, 189, 72);
+$reddit-result-subreddit-color: black;
+
+$stack-result-background-color: rgb(239, 193, 107);
+$stack-result-text-color: black;
+$stack-result-hover-background-color: black;
+$stack-result-hover-text-color: white;
+$stack-result-accepted-color: #155724;
+$stack-result-accepted-background-color: #d4edda;
+$stack-result-accepted-background-color-hover: #155724;
+$stack-result-accepted-color-hover: #d4edda;
+$stack-result-not-accepted-color: #721c24;
+$stack-result-not-accepted-background-color: #f8d7da;
+$stack-result-not-accepted-background-color-hover: #721c24;
+$stack-result-not-accepted-color-hover: #f8d7da;
+$stack-result-tag-background-color: #3c8cd1;
+$stack-result-tag-color: white;
+
+$form-background-color: lightblue;
+$search-history-term-hover-color: #f8f9fa;
+
+$options-container-border-color: grey;
+
+$site-header-color: #f8f9fa;
+
+$form-holder-color: rgba(0,0,0,0.5);
+$form-z-index: 1;
+
+$hover-cursor: pointer;
+
+@mixin standard-spacing($divisor: 1){
+    margin: $standard-margin/$divisor;
+    padding: $standard-padding/$divisor;
+    border-radius: $standard-border-radius;
+}
+
+@mixin display-flex-and-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin full-height-pc($divisor: 1){
+    height: 100%*$divisor;
+}
+
+@mixin full-width-pc($divisor: 1){
+    width: 100%*$divisor;
+}
+
+@mixin full-height-and-width-pc ($width-divisor: 1, $height-divisor: 1){
+    @include full-height-pc($height-divisor);
+    @include full-width-pc($width-divisor);
+}
+
+@mixin full-height-vh($divisor: 1){
+    height: 100vh*$divisor;
+}
+
+@mixin full-width-vw($divisor: 1){
+    width: 100vw*$divisor;
+}
+
+@mixin full-height-and-width-v ($width-divisor: 1, $height-divisor: 1){
+    @include full-height-vh($height-divisor);
+    @include full-width-vw($width-divisor);
+}
+
+%response-container-sizing{
+    @include standard-spacing();
+    border-radius: $standard-border-radius*2;
+}
+
+.search-app-container{
+    @include full-height-and-width-v();
+    position: relative;
+    overflow: scroll;
+}
+
+.search-history-reddit-result, .search-history-stack-result{
+    @include standard-spacing();
+    &:hover{
+        cursor: $hover-cursor;
+    }
+}
+
+.search-history-reddit-result{
+    background-color: $reddit-result-background-color;
+    color: $reddit-result-text-color;
+    &:hover{
+        background-color: $reddit-result-hover-background-color;
+        color: $reddit-result-hover-text-color;
+    }
+}
+
+.search-history-stack-result{
+    background-color: $stack-result-background-color;
+    color: $stack-result-text-color;
+    &:hover{
+        background-color: $stack-result-hover-background-color;
+        color: $stack-result-hover-text-color;
+    }
+}
+
+.search-history-term{
+    @include standard-spacing();
+    &:hover{
+        cursor: $hover-cursor;
+        background-color: $search-history-term-hover-color;
+    }
+}
+
+.login-register-form-holder, .search-functions-container{
+    @include full-height-and-width-pc();
+    position: absolute;
+    top: $top-position;
+    left: $left-position;
+}
+
+.login-register-form-holder{
+    background-color: $form-holder-color;
+    z-index: $form-z-index;
+}
+
+#register-form-div, #login-form-div, #search-history-div{
+    @include display-flex-and-center();
+    @include full-height-and-width-pc();
+    position: absolute;
+    overflow: hidden;
+}
+
+#register-form, #login-form, #search-history-container{
+    @include full-width-pc(0.5);
+    background-color: $form-background-color;
+    padding: $standard-padding*2;
+    border-radius: $standard-border-radius;
+}
+
+#register-form, #login-form{
+    @include full-width-pc(0.5);
+    &input, &label{
+        margin-top: $standard-margin/2;
+        margin-bottom: $standard-margin/2;
+    }
+}
+
+#search-history-container{
+    @include full-height-and-width-pc(0.9, 0.9);
+    position: absolute;
+    top: $top-position+20;
+    overflow: scroll;
+}
+
+.form-alert-container{
+    padding-top: $standard-padding*2;
+}
+
+#local-search-button-row{
+    padding-top: $standard-padding*2;
+}
+
+.stack-options-container, .reddit-options-container {
+    margin-top: $standard-margin*2;
+    margin-bottom: $standard-margin*2;
+    padding: $standard-padding*2;
+    padding-bottom: $standard-padding;
+    border-radius: $standard-border-radius;
+    border: 2px solid $options-container-border-color;
+}
+
+.stredsearch-container{
+    padding-bottom: $standard-padding*2;
+}
+
+.so-reddit-picker{
+    border-radius: $standard-border-radius;
+    padding: $standard-padding;
+    padding-bottom: $standard-padding/2;
+    margin-top: $standard-margin;
+}
+
+.search-results-container{
+    @include full-width-pc()
+}
+
+.stack-search-results-container, .reddit-search-results-container {
+    padding: $standard-padding;
+}
+
+.stack-search-results-container{
+}
+
+.reddit-search-results-container{
+}
+
+.stack-response-container{
+    @extend %response-container-sizing;
+    background-color: $stack-result-background-color;
+
+    .stack-response-question-title{}
+
+    .stack-response-question-title-link{
+        color: $stack-result-text-color;
+        text-decoration: none; 
+    }
+
+    .stack-response-question-title-link:hover{
+        color: $stack-result-hover-text-color;
+        cursor: $hover-cursor;
+    }
+
+    .stack-response-question-tags-container{
+        @include display-flex-and-center();
+        flex-wrap: wrap;
+    }
+    
+    .stack-response-question-tag{
+        @include standard-spacing(2);
+        position: relative;
+        background-color: $stack-result-tag-background-color;
+        color: $stack-result-tag-color
+    }
+    
+    .stack-response-question-tag-span{
+        @include display-flex-and-center();
+        @include full-height-and-width-pc();
+    }
+    
+    .stack-response-question-metadata-holder{}
+    
+    .stack-question-response-user-container{
+        padding: $standard-padding/2;
+        margin: $standard-margin/2;
+    }
+    
+    .stack-question-accepted, .stack-question-not-accepted {
+        @include display-flex-and-center();
+        @include standard-spacing(2);
+    }
+    
+    .stack-question-accepted{
+        background-color: $stack-result-accepted-background-color;
+        color: $stack-result-accepted-color;
+    }
+    
+    .stack-question-accepted:hover{
+        background-color: $stack-result-accepted-background-color-hover;
+        color: $stack-result-accepted-color-hover;
+    }
+
+    .stack-question-not-accepted{
+        background-color: $stack-result-not-accepted-background-color;
+        color: $stack-result-not-accepted-color;
+    }
+
+    .stack-question-not-accepted:hover{
+        background-color: $stack-result-not-accepted-background-color-hover;
+        color: $stack-result-not-accepted-color-hover;
+    }
+
+}
+
+.reddit-response-container{
+    @extend %response-container-sizing;
+    background-color: $reddit-result-background-color;
+
+    .reddit-response-question-subreddit-container{
+        @include display-flex-and-center();
+        margin: $standard-margin/2;
+        flex-wrap: wrap;
+    }
+    
+    .reddit-response-question-subreddit{
+        @include standard-spacing(2);
+        position: relative;
+        background-color: $reddit-result-subreddit-background-color;
+        color: $reddit-result-subreddit-color;
+    
+    }
+
+    .reddit-response-question-title-link{
+        color: $reddit-result-text-color;
+        text-decoration: none; 
+    }
+
+    .reddit-response-question-title-link:hover{
+        color: $reddit-result-hover-text-color;
+        cursor: $hover-cursor;
+    }
+    
+    .reddit-response-question-tag-span{
+        @include display-flex-and-center();
+        @include full-height-and-width-pc();
+    }
+}
+
+#site-header-container{
+    padding-bottom: $standard-padding*5;
+}
+
+.site-header{
+    @include full-width-pc();
+    height: 50px;
+    background-color: $site-header-color;
+    display: flex;
+    position: relative;
+    padding-left: $standard-padding*5;
+}
+
+#button-and-greeting-container{
+    @include display-flex-and-center();
+    @include full-height-pc();
+    position: absolute;
+    right: $right-position;
+    padding-right: $standard-padding*4;
+}
+
+.login-logout-button-container, #greeting-container{
+    @include full-height-pc();
+    display: flex;
+}
+
+#greeting-container{
+    @include display-flex-and-center();
+    padding-right: $standard-padding*2;
+}
+
+#login-button, #register-button, #logout-button{
+    @include full-height-pc();
+    margin-left: $standard-margin/2;
+    margin-right: $standard-margin/2;
+}
+
+.no-scroll{
+    overflow: hidden;
+}

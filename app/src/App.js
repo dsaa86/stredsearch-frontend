@@ -1,5 +1,5 @@
 import SearchApp from "./components/SearchApp.js";
-import "./SearchAppComponentsStyle.css";
+import "./SearchAppComponentsStyle.scss";
 export default function App() {
 	return (
 		<>
