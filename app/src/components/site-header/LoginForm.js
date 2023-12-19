@@ -1,8 +1,10 @@
 import FormAlertContainer from "./FormAlertContainer";
 import FormButton from "./FormButton";
 import FormInput from "./FormInput";
+import SearchOptionsHeader from "../generic-components/search-options-header";
 
 import UseLoginForm from "../custom-hooks/LoginForm/UseLoginForm";
+import UseModalVisibility from "../custom-hooks/LoginFormRegisterFormSearchHistory/UseModalVisibility";
 import loginUser from "../functions/LoginUser";
 
 export default function LoginForm({
@@ -32,12 +34,18 @@ export default function LoginForm({
 		);
 	};
 
+	const useModalVisibility = UseModalVisibility(
+		setShowLoginForm,
+		"login-form-div",
+	);
+
 	return (
 		<div id="login-form-div">
 			<form
 				id="login-form"
 				className="container"
 			>
+				<SearchOptionsHeader title={"Login User"} />
 				<FormInput
 					divclass={"login-form-block row"}
 					labelclass={"col-xlg-2 col-md-3 col-sm-4 col-12"}

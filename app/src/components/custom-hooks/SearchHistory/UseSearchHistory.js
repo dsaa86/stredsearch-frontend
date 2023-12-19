@@ -16,15 +16,6 @@ const useSearchHistory = () => {
 	}, [searchHistoryData]);
 
 	const processSearchHistoryData = () => {
-		// console.log(searchHistoryData);
-		// console.log(searchHistoryData);
-		// console.log(searchHistoryData[0]);
-		// console.log(searchHistoryData[0].search_term);
-		// console.log(searchHistoryData[0].reddit_responses.length);
-		// console.log(searchHistoryData[0].stack_responses.length);
-		// console.log(searchHistoryData[0].reddit_responses);
-		// console.log(searchHistoryData[0].stack_responses);
-
 		if (searchHistoryData[0].reddit_responses.length > 0) {
 			setSearchHistoryProcessedData(
 				searchHistoryData[0].reddit_responses,

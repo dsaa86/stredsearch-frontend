@@ -50,6 +50,58 @@ const useStredSearchAuth = () => {
 		};
 	}, [showSearchHistory]);
 
+	useEffect(() => {
+		const element = document.getElementById("search-app-container");
+		if (showRegisterForm) {
+			if (!element) {
+				return;
+			}
+			element.classList.add("no-scroll");
+			return;
+		}
+
+		if (!element) {
+			return;
+		}
+
+		element.classList.remove("no-scroll");
+		return;
+
+		return () => {
+			if (!element) {
+				return;
+			}
+			element.classList.remove("no-scroll");
+			return;
+		};
+	}, [showRegisterForm]);
+
+	useEffect(() => {
+		const element = document.getElementById("search-app-container");
+		if (showLoginForm) {
+			if (!element) {
+				return;
+			}
+			element.classList.add("no-scroll");
+			return;
+		}
+
+		if (!element) {
+			return;
+		}
+
+		element.classList.remove("no-scroll");
+		return;
+
+		return () => {
+			if (!element) {
+				return;
+			}
+			element.classList.remove("no-scroll");
+			return;
+		};
+	}, [showLoginForm]);
+
 	return {
 		loginStatus: loginStatus,
 		setLoginStatus: setLoginStatus,

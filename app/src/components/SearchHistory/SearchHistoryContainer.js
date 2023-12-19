@@ -1,31 +1,15 @@
-import { useEffect } from "react";
 import SearchHistory from "./SearchHistory";
-
-import { handleClickOutsideModal } from "../functions/GenericFunctions";
+import UseModalVisibility from "../custom-hooks/LoginFormRegisterFormSearchHistory/UseModalVisibility";
 
 export default function SearchHistoryContainer({
 	showSearchHistory,
 	setShowSearchHistory,
 	searchHistoryController,
 }) {
-	const clickHandler = (event) => {
-		if (event.target.id !== "search-history-div") {
-			return;
-		}
-		handleClickOutsideModal(event, setShowSearchHistory);
-	};
-
-	useEffect(() => {
-		const element = document.getElementById("search-history-div");
-		if (!element) {
-			return;
-		}
-		element.addEventListener("click", clickHandler);
-
-		return () => {
-			element.removeEventListener("click", clickHandler);
-		};
-	}, []);
+	const useModalVisibility = UseModalVisibility(
+		setShowSearchHistory,
+		"search-history-div",
+	);
 
 	return (
 		<div id="search-history-div">

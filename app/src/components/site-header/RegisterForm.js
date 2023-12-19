@@ -1,8 +1,10 @@
 import UseRegisterForm from "../custom-hooks/RegisterForm/UseRegisterForm";
+import UseModalVisibility from "../custom-hooks/LoginFormRegisterFormSearchHistory/UseModalVisibility";
 import registerUser from "../functions/RegisterUser";
 import FormAlertContainer from "./FormAlertContainer";
 import FormButton from "./FormButton";
 import FormInput from "./FormInput";
+import SearchOptionsHeader from "../generic-components/search-options-header";
 
 export default function RegisterForm({
 	setLoginStatus,
@@ -24,6 +26,11 @@ export default function RegisterForm({
 		registerUser(useRegisterForm, registerCancelToken, loginCancelToken);
 	};
 
+	const useModalVisibility = UseModalVisibility(
+		setShowRegisterForm,
+		"register-form-div",
+	);
+
 	return (
 		<div id="register-form-div">
 			<form
@@ -33,6 +40,7 @@ export default function RegisterForm({
 					e.preventDefault();
 				}}
 			>
+				<SearchOptionsHeader title={"Register New User"} />
 				<FormInput
 					divclass={"register-form-block row"}
 					labelclass={"col-xlg-2 col-md-3 col-sm-4 col-12"}
