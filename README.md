@@ -1,6 +1,9 @@
 # stredsearch-frontend
 The front end for the StredSearch web app
 
+## ENHANCEMENTS AND BUGS ARE LOGGED IN THE ISSUES SECTION OF THE REPO
+## THIS PROJECT IS VERY MUCH A WORK-IN-PROGRESS, WITH ACTIVITY TAKING PLACE AROUND CONTRACT COMMITMENTS. IT DOES, HOWEVER, SERVE AS A SMALL INDICATION OF MY CAPABILITY IN THIS DOMAIN.
+
 # Project Overview:
 
 The StredSearch-Frontend provides an independent UI for the Django Rest Framework project ['StredSearch'](https://github.com/dsaa86/stredsearch).
