@@ -1,7 +1,5 @@
 FIXME: Create modals for error in search params
 
-TODO: Implement CI through GitHub
-
 TODO: Better handling of errors during external API calls
 
 TODO: Include some default DB population questions / data for demonstration purposes

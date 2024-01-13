@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  react:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: node:20.10-bookworm
+    restart: unless-stopped
+    expose: 
+      - 3000
+    ports:
+      - 3000:3000
